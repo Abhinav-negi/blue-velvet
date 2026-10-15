@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:drift/native.dart';
+import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -199,6 +200,53 @@ void main() {
     final after = (await t.runAsync(() => db.select(db.snapshots).get()))!;
     expect(after.length, before.length + 2);
     expect(find.text('Restored: Start'), findsOneWidget);
+    await finish(t);
+  });
+
+  testWidgets('restore dialog warns about linked characters', (t) async {
+    await open(t, at: '/project/p/history');
+    await t.runAsync(() async {
+      await db
+          .into(db.characters)
+          .insert(
+            CharactersCompanion.insert(
+              id: 'c',
+              name: 'Kid',
+              role: '',
+              appearance: '',
+              background: '',
+              traits: '',
+              habits: '',
+              wantsNeedsFears: '',
+              notes: '',
+              createdAt: 1,
+              updatedAt: 1,
+            ),
+          );
+      await db
+          .into(db.projectCharacters)
+          .insert(
+            ProjectCharactersCompanion.insert(
+              id: 'pc',
+              projectId: 'p',
+              characterId: const Value('c'),
+              mode: CharacterMode.linked,
+              createdAt: 1,
+              updatedAt: 1,
+            ),
+          );
+      await ProposalEngine(db).snapshots
+          .create('p', SnapshotReason.manual, 'Linked');
+    });
+    await t.runAsync(() => Future.delayed(const Duration(milliseconds: 100)));
+    await t.pump();
+    await t.tap(find.text('Linked'));
+    await t.pumpAndSettle();
+    await t.tap(find.text('Restore this version'));
+    await t.pumpAndSettle();
+    expect(find.textContaining('shared sheets'), findsOneWidget);
+    await t.tap(find.text('Cancel'));
+    await t.pumpAndSettle();
     await finish(t);
   });
 }
