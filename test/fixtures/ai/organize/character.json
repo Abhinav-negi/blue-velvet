@@ -1,0 +1,30 @@
+{
+ "raw_transcript": "There's a watchman, he's like seventy, um, old guy, never sleeps, always drinks tea from a steel flask.",
+ "response": {
+  "type": "character",
+  "summary_sentences": [
+   {
+    "text": "The watchman is about seventy, an old man who never sleeps and always drinks tea from a steel flask.",
+    "source_quotes": [
+     "he's like seventy",
+     "old guy, never sleeps, always drinks tea from a steel flask"
+    ]
+   }
+  ],
+  "structure": {
+   "name": "Watchman",
+   "age": "70",
+   "role": null,
+   "appearance": "old man",
+   "background": null,
+   "traits": "never sleeps",
+   "habits": "always drinks tea from a steel flask",
+   "wants_needs_fears": null,
+   "notes": null
+  },
+  "tags": [
+   "watchman",
+   "tea"
+  ]
+ }
+}

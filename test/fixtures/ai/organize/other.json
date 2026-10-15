@@ -1,0 +1,19 @@
+{
+ "raw_transcript": "Remind me to check the, um, the train timetable before the shoot on Friday.",
+ "response": {
+  "type": "other",
+  "summary_sentences": [
+   {
+    "text": "Check the train timetable before the shoot on Friday.",
+    "source_quotes": [
+     "check the, um, the train timetable before the shoot on Friday"
+    ]
+   }
+  ],
+  "structure": {},
+  "tags": [
+   "timetable",
+   "shoot"
+  ]
+ }
+}

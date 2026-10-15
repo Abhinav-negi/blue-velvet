@@ -1,0 +1,28 @@
+{
+ "raw_transcript": "Okay so um there's this kid, like eight years old, and he finds a rusty key in the sandbox. Um, and the watchman, the old guy who never sleeps, he sees him.",
+ "response": {
+  "type": "story_idea",
+  "summary_sentences": [
+   {
+    "text": "There's a kid, about eight years old, who finds a rusty key in the sandbox.",
+    "source_quotes": [
+     "there's this kid, like eight years old, and he finds a rusty key in the sandbox"
+    ]
+   },
+   {
+    "text": "The watchman, an old man who never sleeps, sees him.",
+    "source_quotes": [
+     "the old guy who never sleeps",
+     "he sees him"
+    ]
+   }
+  ],
+  "structure": {},
+  "tags": [
+   "kid",
+   "key",
+   "sandbox",
+   "watchman"
+  ]
+ }
+}

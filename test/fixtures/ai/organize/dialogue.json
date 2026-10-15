@@ -1,0 +1,37 @@
+{
+ "raw_transcript": "The watchman goes \"Nobody sleeps here.\" and the kid says \"I wasn't sleeping.\" That's the whole exchange.",
+ "response": {
+  "type": "dialogue",
+  "summary_sentences": [
+   {
+    "text": "The watchman says \"Nobody sleeps here.\"",
+    "source_quotes": [
+     "The watchman goes \"Nobody sleeps here.\""
+    ]
+   },
+   {
+    "text": "The kid says \"I wasn't sleeping.\"",
+    "source_quotes": [
+     "the kid says \"I wasn't sleeping.\""
+    ]
+   }
+  ],
+  "structure": {
+   "lines": [
+    {
+     "speaker": "Watchman",
+     "text": "Nobody sleeps here."
+    },
+    {
+     "speaker": "Kid",
+     "text": "I wasn't sleeping."
+    }
+   ],
+   "context": ""
+  },
+  "tags": [
+   "watchman",
+   "kid"
+  ]
+ }
+}

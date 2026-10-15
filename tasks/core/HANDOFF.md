@@ -7,3 +7,4 @@ Read before starting work in this folder. Under 15 lines. Delete a note once it'
 - SPK-03 (docs/spikes/SPK-03-gemini.md): use model `gemini-3.5-flash` (one constant); 3.x Flash often returns 503 → retry 503/429 with backoff (≈5 s steps, 4 tries). Calls take 1–3 min (thinking tokens). Spans: say "character offsets into the returned transcript" explicitly in prompts.
 - D-21: no Search grounding on free tier. fetchConvert = app-side search (Wikipedia/Commons, optional Brave key, pasted URLs) + one Gemini conversion call. AI_CONTRACT §4.11 updated.
 - DB-02 done: `SeedLoader(db).load()` (lib/core/data/seed_loader.dart) is not yet called anywhere; call it once after DB open at startup. Name mapping lives only in seed_mapping.dart.
+- AI-03: SHARED_RULES constant is in lib/core/ai/prompts/organize_prompt.dart (`sharedRules`); reuse it. `splitSentences`/`computeSpans` in organize.dart do the AI_CONTRACT section 2 span work for buildProposal/reviseProposal too.
