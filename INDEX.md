@@ -6,7 +6,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 
 | ID | Task | Status | Needs | Wave | Note |
 |----|------|--------|-------|------|------|
-| INF-01 | Flutter project setup | IN-PROGRESS | - | 1 | main folder |
+| INF-01 | Flutter project setup | DONE | - | 1 | |
 | CON-01 | Contract: data model | DONE | - | 1 | |
 | CON-02 | Contract: seed schemas + validator | DONE | - | 1 | |
 | SPK-01 | Spike: S Pen input in Flutter | TODO | - | 1 | Waits for S25 Ultra (S21 FE: no S Pen) |
@@ -17,7 +17,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | RES-02 | Research: shots, camera (size, angle, movement) | DONE | CON-02 | 2 | |
 | RES-08 | Research: shots, look (composition, lens, lighting) | DONE | CON-02 | 2 | Some entries weakly sourced |
 | RES-03 | Research: screenplay format + Fountain | DONE | CON-02 | 2 | A4 values derived, not cited |
-| RES-04 | Research: project-type defaults | IN-PROGRESS | CON-02 | 2 | main folder |
+| RES-04 | Research: project-type defaults | DONE | CON-02 | 2 | |
 | RES-05 | Research: song structures | TODO | CON-02 | 2 | |
 | RES-06 | Research: relationship labels | TODO | CON-02 | 2 | |
 | RES-07 | Research: aspect ratios + composition guides | TODO | CON-02 | 2 | |

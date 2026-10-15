@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "short",
+      "name": "Short",
+      "length_min_seconds": 15,
+      "length_max_seconds": 90,
+      "default_template": "shorts-hook-build-payoff",
+      "writing_section": "script",
+      "default_aspect_ratio": "9-16",
+      "has_storyboard": true,
+      "characters": "optional",
+      "extra_fields": [
+        {
+          "id": "hook-text",
+          "name": "Hook text",
+          "description": "First ~2 s"
+        }
+      ],
+      "sources": [
+        "https://example.org/x"
+      ],
+      "template_options": [
+        "shorts-hook-build-payoff",
+        "three-act"
+      ]
+    }
+  ]
+}

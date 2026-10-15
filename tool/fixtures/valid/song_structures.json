@@ -1,0 +1,1 @@
+{"version":1,"items":[{"id":"chorus","kind":"section","name":"Chorus","description":"Main hook."},{"id":"verse-chorus","kind":"arrangement","name":"Verse-chorus","description":"Common pop form.","sequence":["intro","verse","chorus","verse","chorus","bridge","chorus","outro"],"sources":["https://example.org/x"]}]}

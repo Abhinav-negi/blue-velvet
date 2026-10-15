@@ -1,0 +1,1 @@
+{"version":1,"items":[{"id":"parent-of","name":"Parent of","group":"family","inverse":"child-of"},{"id":"child-of","name":"Child of","group":"family","inverse":"parent-of"},{"id":"friend","name":"Friend","group":"social","symmetric":true}]}
