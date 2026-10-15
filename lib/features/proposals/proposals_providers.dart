@@ -21,6 +21,26 @@ final proposalProvider = StreamProvider.family<Proposal?, String>((ref, id) {
   )..where((t) => t.id.equals(id))).watchSingleOrNull();
 });
 
+/// A project's snapshots, newest first.
+final snapshotsProvider = StreamProvider.family<List<Snapshot>, String>((
+  ref,
+  projectId,
+) {
+  final db = ref.watch(dbProvider);
+  return (db.select(db.snapshots)
+        ..where((t) => t.projectId.equals(projectId))
+        ..orderBy([
+          (t) => OrderingTerm.desc(t.createdAt),
+          (t) => OrderingTerm.desc(t.id),
+        ]))
+      .watch();
+});
+
+final snapshotProvider = FutureProvider.family<Snapshot, String>((ref, id) {
+  final db = ref.watch(dbProvider);
+  return (db.select(db.snapshots)..where((t) => t.id.equals(id))).getSingle();
+});
+
 final projectTitleProvider = FutureProvider.family<String, String>((
   ref,
   id,
@@ -206,6 +226,13 @@ class ProposalActions {
       ),
     );
   }
+
+  /// Undo the project's latest approve (engine throws ProposalException when unsafe).
+  Future<void> undo(String projectId) => engine.undoLastApprove(projectId);
+
+  /// Restores a snapshot; the engine adds "Before restore" + "Restored" entries.
+  Future<void> restore(String snapshotId) =>
+      engine.snapshots.restore(snapshotId);
 }
 
 final proposalActionsProvider = Provider(

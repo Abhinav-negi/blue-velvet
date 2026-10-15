@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:lynch/core/data/proposal_engine.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:lynch/core/widgets/diff_view.dart';
 import 'package:lynch/core/widgets/suggested_text.dart';
@@ -25,7 +26,7 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
   bool _showSaid = false;
   bool _busy = false;
 
-  Future<void> _approve(List<bool> accepted) async {
+  Future<void> _approve(List<bool> accepted, String projectId) async {
     setState(() => _busy = true);
     try {
       final notes = await ref
@@ -37,6 +38,23 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
       for (final n in notes) {
         m.showSnackBar(SnackBar(content: Text(n)));
       }
+      final actions = ref.read(proposalActionsProvider);
+      m.showSnackBar(
+        SnackBar(
+          content: const Text('Approved'),
+          duration: const Duration(seconds: 6),
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () async {
+              try {
+                await actions.undo(projectId);
+              } on ProposalException catch (e) {
+                m.showSnackBar(SnackBar(content: Text(e.message)));
+              }
+            },
+          ),
+        ),
+      );
       context.pop();
     } catch (e) {
       if (!mounted) return;
@@ -110,6 +128,14 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
         title: const Text('Review'),
         actions: [
           IconButton(
+            tooltip: 'History',
+            icon: const Icon(LucideIcons.history),
+            onPressed: () => context.pushNamed(
+              'history',
+              pathParameters: {'projectId': p.projectId},
+            ),
+          ),
+          IconButton(
             tooltip: 'Edit text',
             icon: const Icon(LucideIcons.pencil),
             onPressed: () => _edit(p.summary),
@@ -155,7 +181,7 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
             ),
           const SizedBox(height: AppSpace.s2),
           FilledButton(
-            onPressed: _busy ? null : () => _approve(accepted),
+            onPressed: _busy ? null : () => _approve(accepted, p.projectId),
             child: Text(
               all ? 'Approve all' : 'Approve $n of ${accepted.length}',
             ),
