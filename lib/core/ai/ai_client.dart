@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 import 'errors.dart';
@@ -10,24 +9,23 @@ import 'permissions.dart';
 /// The one model ID used by the whole app (SPK-03). Aliases move; pin it here.
 const geminiModel = 'gemini-3.5-flash';
 
-/// Secure-storage entry holding the user's key.
-const geminiKeyStorageKey = 'gemini_api_key';
-
 const _endpoint = 'https://generativelanguage.googleapis.com/v1beta/models';
 
 /// Single gateway to Gemini: permission gate, key lookup, structured JSON
 /// output, retry on 429/503.
+///
+/// Pure Dart (no Flutter imports) so `dart run tool/...` scripts can use it.
+/// The app passes `readSecureGeminiKey` from key_store.dart as [readStoredKey].
 class AiClient {
   AiClient({
     http.Client? client,
-    Future<String?> Function()? readStoredKey,
+    required this._readStoredKey,
     this._dartDefineKey = const String.fromEnvironment('GEMINI_API_KEY'),
     this.retryStep = const Duration(seconds: 5),
     this.maxTries = 4,
     // Calls take 1-3 min (thinking tokens), so allow well beyond that.
     this.timeout = const Duration(minutes: 5),
-  })  : _client = client ?? http.Client(),
-        _readStoredKey = readStoredKey ?? _defaultRead;
+  }) : _client = client ?? http.Client();
 
   final http.Client _client;
   final Future<String?> Function() _readStoredKey;
@@ -35,9 +33,6 @@ class AiClient {
   final Duration retryStep;
   final int maxTries;
   final Duration timeout;
-
-  static Future<String?> _defaultRead() =>
-      const FlutterSecureStorage().read(key: geminiKeyStorageKey);
 
   /// Secure storage first, then --dart-define GEMINI_API_KEY.
   Future<String> _key() async {
