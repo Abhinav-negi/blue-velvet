@@ -23,4 +23,8 @@ Must not: lib/features/ · other lib/core/ai files · pubspec.yaml
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Files: lib/core/ai/scaffold.dart (scaffoldBeat, parseScaffold, hasUngrounded), remap.dart (remapTemplate, parsePlacements, suggestStructure, StructureSuggestion), prompts/scaffold_prompts.dart (SHARED_RULES verbatim + instructions + schemas), test/core/ai/scaffold_test.dart (MockClient, inline fixtures; no fixtures dir needed).
+Decisions: validation failure -> retry once with a "broke the rules" note, then AiMalformedResponse (AI_CONTRACT 9.3). Gates: scaffold=screenplay_scaffold, remap=auto_placement, suggestStructure ungated (explicit user request). Film needs blocks and no rows; youtube/short the reverse; say must be "". Remap rejects dropped/duplicated beats and unknown slot ids (never fills in silently). Suggestions are StructureSuggestion (isSuggestion true), not ops. Grounding (9.2) is a cheap flag: ungrounded=true, not a rejection.
+Gotchas: do not run `dart format` on lib/core/ai (it reformats frozen files; I reverted that). app_shell_test failed once under load ("did not complete"), passes on rerun.
+Commands: flutter analyze -> No issues found; flutter test -> all 43 pass; bash tool/check_boundaries.sh -> exit 0.
+Left: callers (proposal engine/UI) must wrap results in addScaffold / moveBeat ops; ungrounded flag has no diacritic/stem folding beyond trailing s.
