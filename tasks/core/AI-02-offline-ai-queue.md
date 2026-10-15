@@ -23,4 +23,8 @@ Must not: lib/features/ · other lib/core/ai files · pubspec.yaml
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Class is `AiQueueRunner` (lib/core/ai/queue.dart); `AiQueue` is the drift table name. Inputs: `db`, `online` (Stream<bool>; `connectivityStream()` adapts connectivity_plus), `runJob(AiJob)`, injectable `now`, `maxAttempts`=5, `baseBackoff`=30s (doubles per attempt).
+- Retryable = AiNetworkError, AiHttpError 429/5xx; anything else -> status failed at once. After maxAttempts -> failed. Retry failure keeps row needsAi with attempts, error, next_retry_at; other jobs keep running.
+- start() resets stuck `processing` rows to `needs_ai`. A Timer re-drains at the earliest next_retry_at. Uses only AiQueueDao.due/enqueue plus direct db.update (DAO frozen).
+- Not wired: nothing constructs the runner yet; the integrator must supply runJob (maps job.kind to AiClient ops and writes results) and call start().
+- Results: analyze clean, flutter test all pass, check_boundaries exit 0. Timer rescheduling is untested.
