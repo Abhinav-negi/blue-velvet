@@ -8,6 +8,8 @@ import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:uuid/uuid.dart';
 
+import 'sample_project.dart';
+
 final _projectsProvider = StreamProvider<List<Project>>(
   (ref) => ref.watch(dbProvider).projectsDao.watchAll(),
 );
@@ -18,9 +20,9 @@ final _pendingCountProvider = StreamProvider<int>((ref) {
   final count = countAll(
     filter: db.proposals.status.equalsValue(ProposalStatus.pending),
   );
-  return (db.selectOnly(db.proposals)..addColumns([count]))
-      .map((r) => r.read(count) ?? 0)
-      .watchSingle();
+  return (db.selectOnly(
+    db.proposals,
+  )..addColumns([count])).map((r) => r.read(count) ?? 0).watchSingle();
 });
 
 class HomeScreen extends ConsumerWidget {
@@ -28,6 +30,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(sampleInitProvider);
     final projects = ref.watch(_projectsProvider).value ?? const <Project>[];
     final pending = ref.watch(_pendingCountProvider).value ?? 0;
     final text = Theme.of(context).textTheme;
@@ -73,6 +76,10 @@ class HomeScreen extends ConsumerWidget {
             ListTile(
               leading: const Icon(LucideIcons.film),
               title: Text(p.title),
+              subtitle: p.isSample ? const Text('Sample project') : null,
+              onLongPress: p.isSample
+                  ? () => _deleteSample(context, ref, p)
+                  : null,
               onTap: () => context.goNamed(
                 'overview',
                 pathParameters: {'projectId': p.id},
@@ -88,6 +95,33 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
+  Future<void> _deleteSample(
+    BuildContext context,
+    WidgetRef ref,
+    Project p,
+  ) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Delete sample project?'),
+        content: const Text(
+          'Only the sample is removed. It will not come back.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+    if (ok == true) await deleteSampleProject(ref.read(dbProvider), p.id);
+  }
+
   /// Characters-first start: an empty project with a working title only.
   Future<void> _create(BuildContext context, WidgetRef ref) async {
     final title = await showDialog<String>(
@@ -97,19 +131,22 @@ class HomeScreen extends ConsumerWidget {
     if (title == null || title.trim().isEmpty) return;
     final now = DateTime.now().millisecondsSinceEpoch;
     final id = const Uuid().v4();
-    await ref.read(dbProvider).projectsDao.upsert(
-      ProjectsCompanion.insert(
-        id: id,
-        title: title.trim(),
-        type: ProjectType.shortFilm,
-        summary: '',
-        aspectRatio: '16:9',
-        typeFields: const {},
-        aiPermissions: const {},
-        createdAt: now,
-        updatedAt: now,
-      ),
-    );
+    await ref
+        .read(dbProvider)
+        .projectsDao
+        .upsert(
+          ProjectsCompanion.insert(
+            id: id,
+            title: title.trim(),
+            type: ProjectType.shortFilm,
+            summary: '',
+            aspectRatio: '16:9',
+            typeFields: const {},
+            aiPermissions: const {},
+            createdAt: now,
+            updatedAt: now,
+          ),
+        );
     if (context.mounted) {
       context.goNamed('overview', pathParameters: {'projectId': id});
     }

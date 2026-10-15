@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "project": {
+    "title": "The Watchman (sample)",
+    "type": "short_film",
+    "template": "five-point",
+    "aspect_ratio": "2.39:1",
+    "summary": "An eight-year-old kid finds a rusted key in the playground sandbox. The old watchman who never sleeps sees him do it."
+  },
+  "characters": [
+    {
+      "key": "kid",
+      "name": "The Kid",
+      "age": "about 8",
+      "role": "Protagonist",
+      "appearance": "",
+      "background": "",
+      "traits": "Curious",
+      "habits": "Digs in the sandbox",
+      "wants_needs_fears": "Afraid of the watchman",
+      "notes": ""
+    },
+    {
+      "key": "watchman",
+      "name": "The Watchman",
+      "age": "",
+      "role": "Playground watchman",
+      "appearance": "Old man",
+      "background": "",
+      "traits": "Never sleeps",
+      "habits": "",
+      "wants_needs_fears": "",
+      "notes": ""
+    }
+  ],
+  "beats": [
+    {
+      "key": "b1",
+      "slot": "setup",
+      "title": "The key in the sandbox",
+      "description": "The kid digs in the playground sandbox and finds a rusted key.",
+      "characters": ["kid"],
+      "blocks": [
+        {"key": "b1-h", "type": "scene_heading", "text": "EXT. PLAYGROUND - DAY", "scaffold": true},
+        {"key": "b1-a", "type": "action", "text": "A KID, 8, kneels in the sandbox.", "scaffold": true}
+      ]
+    },
+    {
+      "key": "b2",
+      "slot": "inciting-moment",
+      "title": "The watchman sees him",
+      "description": "The watchman, an old man who never sleeps, watches the kid pocket the key.",
+      "characters": ["kid", "watchman"],
+      "blocks": [
+        {"key": "b2-a", "type": "action", "text": "A WATCHMAN stands at the fence, watching the kid."},
+        {"key": "b2-c", "type": "character", "text": "WATCHMAN"},
+        {"key": "b2-d", "type": "dialogue", "text": "Nobody sleeps here, kid."}
+      ],
+      "frames": [
+        {
+          "key": "f1",
+          "shot_size": "Wide",
+          "angle": "Low angle",
+          "notes": "Watchman looms over the sandbox.",
+          "block": "b2-a",
+          "characters": ["kid", "watchman"],
+          "strokes": [
+            {"tool": "pen", "layer": "sketch", "color": "#1A1A1A", "width": 4.0, "points": [[200, 700], [400, 680], [600, 700]]},
+            {"tool": "pen", "layer": "sketch", "color": "#1A1A1A", "width": 4.0, "points": [[1300, 200], [1300, 600], [1260, 760]]}
+          ]
+        }
+      ]
+    },
+    {
+      "key": "b3",
+      "slot": "inciting-moment",
+      "title": "The kid runs",
+      "description": "The kid grips the key and runs from the playground.",
+      "characters": ["kid"],
+      "blocks": []
+    }
+  ],
+  "character_map": {
+    "groups": [{"key": "g1", "name": "Playground", "color": "sage"}],
+    "nodes": [
+      {"key": "n1", "character": "kid", "x": 120.0, "y": 80.0, "group": "g1"},
+      {"key": "n2", "character": "watchman", "x": 360.0, "y": 140.0, "group": null}
+    ],
+    "edges": [{"from": "n1", "to": "n2", "label": "afraid of"}]
+  }
+}
