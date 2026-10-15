@@ -27,6 +27,7 @@ const quotes = [
 ];
 
 Widget host(ThemeData t, Widget child, {Color? bg}) => MaterialApp(
+  debugShowCheckedModeBanner: false,
   theme: t,
   home: Scaffold(
     backgroundColor: bg,
@@ -49,9 +50,10 @@ Widget demo({required bool paper}) => Column(
       ],
     ),
     const SizedBox(height: AppSpace.s2),
-    const SuggestedText('A rusty key glints in the sand.'),
+    SuggestedText('A rusty key glints in the sand.', onPaper: paper),
     const SizedBox(height: AppSpace.s2),
     TranscriptHighlight(
+      onPaper: paper,
       transcript: raw,
       spans: [
         for (final q in quotes)
@@ -158,16 +160,11 @@ void main() {
       find.byType(MaterialApp),
       matchesGoldenFile('goldens/widgets_dark.png'),
     );
+    // Paper surface under the dark theme: proves onPaper picks paper ink.
     await t.pumpWidget(
-      host(
-        AppTheme.light,
-        DefaultTextStyle.merge(
-          style: const TextStyle(color: AppColors.paperInk),
-          child: demo(paper: true),
-        ),
-        bg: AppColors.paperBg,
-      ),
+      host(AppTheme.dark, demo(paper: true), bg: AppColors.paperBg),
     );
+    await t.pumpAndSettle();
     await expectLater(
       find.byType(MaterialApp),
       matchesGoldenFile('goldens/widgets_paper.png'),

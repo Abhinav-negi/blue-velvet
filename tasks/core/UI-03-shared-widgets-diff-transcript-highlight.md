@@ -28,4 +28,5 @@ None beyond the orchestrator brief.
 - Gotchas: Semantics label merges with child text, so tests match the Semantics widget, not bySemanticsLabel. Goldens need fonts loaded by hand (as test/core/shell).
 - Results: flutter analyze clean; flutter test all pass; check_boundaries exit 0; no Color(0x outside theme.
 - Screenshots: test/core/widgets/goldens/widgets_dark.png, test/core/widgets/goldens/widgets_paper.png
+- Review fix: paper golden was captured mid theme-animation (dark to light), so text looked near-white; test now pumpAndSettle. SuggestedText and TranscriptHighlight also got `onPaper` (paper ink, as DiffView), and the paper golden now renders a paper surface under the dark theme to prove it. Banner hidden in goldens. Both PNGs opened and checked legible (teal highlight readable on paper and dark).
 - Left: nothing.

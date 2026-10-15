@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_theme.dart';
 import '../theme/tokens.dart';
 
 /// Half-open range of UTF-16 offsets into [TranscriptHighlight.transcript]
@@ -18,11 +19,13 @@ class TranscriptHighlight extends StatelessWidget {
     super.key,
     required this.transcript,
     required this.spans,
-    this.color,
+    this.onPaper = false,
   });
   final String transcript;
   final List<HighlightRange> spans;
-  final Color? color;
+
+  /// Use paper ink (for paper surfaces, which stay light in the dark theme).
+  final bool onPaper;
 
   /// Sorted, merged, clamped ranges.
   static List<HighlightRange> merge(int length, List<HighlightRange> spans) {
@@ -47,7 +50,11 @@ class TranscriptHighlight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final base = AppType.story.copyWith(color: color ?? scheme.onSurface);
+    final base = AppType.story.copyWith(
+      color: onPaper
+          ? Theme.of(context).extension<PaperColors>()!.ink
+          : scheme.onSurface,
+    );
     final lit = base.copyWith(
       backgroundColor: scheme.secondary.withValues(alpha: 0.3),
     );
