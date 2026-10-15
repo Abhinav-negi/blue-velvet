@@ -7,7 +7,8 @@ final beatsRoutes = <RouteBase>[
   GoRoute(
     path: '/project/:projectId/beats',
     name: 'beats',
-    builder: (context, state) => const BeatsScreen(),
+    builder: (context, state) =>
+        BeatsScreen(projectId: state.pathParameters['projectId']!),
     routes: [
       GoRoute(
         path: 'templates',
