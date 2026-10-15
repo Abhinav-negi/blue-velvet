@@ -32,5 +32,5 @@ Decisions:
 - Per-file version gate: settings `seed_version` JSON `{"templates":1,...}`; file loads only if its version is greater. Each file is one transaction; whole file mapped before writing, so a malformed item skips that file (logged via `log` callback, default debugPrint).
 - Mapping: short-film->short_film, youtube-video->youtube; shot_size->size; proportion->runtime_proportion; template source_urls[0]->source_url; shot sources URL -> {title: host, url}.
 Gotchas: shot_images are keyed by `<shot>/<file>`; an image removed from the seed is not deleted (rule: never delete). Not yet wired into app startup (no caller; main.dart is not in my scope) -> call `SeedLoader(db).load()` once after opening the DB.
-Commands: flutter analyze -> No issues found; flutter test -> all 20 pass (incl. real assets/seed load test); check_boundaries.sh -> exit 0; Color(0x grep -> empty. No new dependencies. No schema change.
+Commands: flutter analyze -> No issues found; flutter test -> all 19 pass (incl. real assets/seed load test); check_boundaries.sh -> exit 0; Color(0x grep -> empty. No new dependencies. No schema change.
 Left: wire load() into startup.
