@@ -23,4 +23,11 @@ Must not: lib/features/ · other lib/core/ai files · pubspec.yaml
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- API (lib/core/ai/proposals.dart): `buildProposal`, `reviseProposal`, `generateProject`, `detectProjectMention`, `allowedOps`, `changesSchema`. Output ops carry `id` (uuid) + `accepted` (false when ungrounded per wordsCheck, or when the user had it off in a revise). Never writes data; ProposalEngine applies.
+- Decisions: per-call op enum from the switches (empty -> `changes` left out of schema); forbidden ops dropped with a note, ops on a dropped beat_ref go too; slot fields stripped when auto_placement off or no template; character_names filtered to existing characters when extraction off. Hard failures (bad refs, dialogue block, quoted text not said, wrong blocks/rows for project type, placeBeatInSlot on placed beat) retry once with a note, then AiMalformedResponse. Names/titles are grounded separately (prefix trick) so one-word names are not exempt as sentence starts. Context shape = AI_CONTRACT section 5 (beats[].id/slot_id, characters[].project_character_id/name, template.slots[].slot_id/seed_id, project.type).
+- File has `ignore_for_file: curly_braces_in_flow_control_structures` (flat guard list).
+- Tests: test/core/ai/proposals_test.dart (fixtures in test/fixtures/ai/proposals): engine applies build+generate fixtures; extraction off -> no addCharacter requested/accepted; detect cases; revise keeps ids/flags.
+- Commands: flutter analyze -> No issues found; flutter test -> all 139+ pass; check_boundaries.sh -> exit 0.
+- Done-when 5 (live smoke): NOT DONE. `dart run tool/ai_smoke.dart proposals <file>` (new op, written) hit 503 then persistent 429 "Rate limit or quota exceeded" across ~6 tries over ~10 min. Re-run: `timeout 600 dart run tool/ai_smoke.dart proposals <transcript-file>` with the AI_CONTRACT 2.3 transcript; paste ops + wordsCheck here.
+- Packages needed: none (uses existing uuid, http).
+- Section note: proposals.dart expects PROJECT_CONTEXT per AI_CONTRACT 5; callers must pass `beats[].slot_id` (null when unplaced) and `characters[].name`.

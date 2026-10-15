@@ -1,0 +1,16 @@
+{
+  "raw_transcript": "Okay so um there's this kid, like eight years old, and he finds a rusty key in the sandbox. Um, and the watchman, the old guy who never sleeps, he sees him.",
+  "response": {
+    "summary_sentences": [
+      {"text": "There's a kid, eight years old, who finds a rusty key in the sandbox.", "source_quotes": ["there's this kid, like eight years old, and he finds a rusty key in the sandbox"]},
+      {"text": "The watchman, the old guy who never sleeps, sees him.", "source_quotes": ["the old guy who never sleeps", "he sees him"]}
+    ],
+    "changes": [
+      {"op": "editCharacter", "project_character_id": "pc1", "fields": {"age": "8"}},
+      {"op": "addCharacter", "ref": "c1", "name": "Watchman", "fields": {"appearance": "old guy who never sleeps"}},
+      {"op": "addBeat", "ref": "b1", "title": "The watchman notices", "description": "The watchman sees the kid with the key.", "slot_seed_id": "five-point/inciting-moment", "slot_id": null, "position": null, "character_names": ["Watchman", "Kid"]},
+      {"op": "addScaffold", "beat_ref": "b1", "blocks": [{"type": "scene_heading", "text": "EXT. SANDBOX"}, {"type": "action", "text": "A KID kneels in the sandbox. A WATCHMAN sees him."}], "rows": null},
+      {"op": "setSummary", "text": "A kid, eight, finds a rusty key in the sandbox. The watchman, the old guy who never sleeps, sees him."}
+    ]
+  }
+}
