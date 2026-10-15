@@ -22,4 +22,9 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 Keep out of lib/features/storyboard/canvas/.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Code: lib/features/storyboard/{frames_providers,frame_editor,storyboard_screen,routes}.dart; test/features/storyboard/frames_test.dart. Board tab = "Board" heading + beat chips + FramesList (ReorderableListView; add/duplicate/delete/edit sheet with size, angle, movement, lens, duration in seconds, notes, script-block dropdown, character chips). Caption = "size · angle · movement · lens · 2.5s". No canvas; thumbnail shown if thumbnail_path exists, else numbered blank.
+- Decision: delete removes the frame row only; the stroke file is KEPT (DATA_MODEL 13.1 + caller's hard rule). Done-when #2 says "delete removes both": conflicts; test asserts row gone and file kept. Duplicate copies the stroke file to strokes/<newId>.json (relative to app documents dir, `filesDirProvider` here, override in tests).
+- Gotcha: widget tests mixing real file IO and fake async need alternating runAsync delay + pump (see `work` helper in test).
+- Shell goldens (test/core/shell) fail in this worktree: expected, regenerated goldens are uncommitted on master.
+- Packages needed: none new (path, path_provider already present).
+- Section note: Board route now passes projectId to BoardScreen; frames ops (addFrame/duplicateFrame/deleteFrame/moveFrame/saveFrameDetails) are in frames_providers.dart for SB-02..07. strokes_path is relative to app documents dir; a canvas should write to strokes/<frameId>.json.
