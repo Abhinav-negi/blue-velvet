@@ -21,4 +21,4 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 Shares the void/ folder: not in parallel with VOID-03.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Filter state in voidFilterProvider (type, tag, date 7/30d, used/unused, query; single-select per axis, AND-combined). filteredVoidItemsProvider: search via existing VoidItemsDao.search (FTS5, summary+transcript), then filters in Dart over the watch stream. UI: search field + chip row atop VoidScreen. grid.png golden regenerated (search bar added). Tests: test/features/void/void_filter_test.dart. Gotcha: horizontal ListView builds chips lazily; used Row in scroll view. Results: analyze clean, 83 tests pass, boundaries 0, token guard empty. Left: nothing.
