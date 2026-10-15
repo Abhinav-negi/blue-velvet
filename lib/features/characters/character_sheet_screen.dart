@@ -9,6 +9,15 @@ import 'package:uuid/uuid.dart';
 
 import 'characters_providers.dart';
 
+/// True when the membership [SheetKey.id] is still linked.
+final _linkedProvider = StreamProvider.family<bool, SheetKey>((ref, k) {
+  final db = ref.watch(dbProvider);
+  return (db.select(db.projectCharacters)
+        ..where((t) => t.id.equals(k.id ?? '')))
+      .watchSingleOrNull()
+      .map((m) => m?.mode == CharacterMode.linked);
+});
+
 /// One character sheet (spec 11.1). With [projectId], [id] is that project's
 /// membership row; without, a pool character. Null [id] creates one.
 class CharacterSheetScreen extends ConsumerWidget {
@@ -19,9 +28,20 @@ class CharacterSheetScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final key = (projectId: projectId, id: id);
     final sheet = ref.watch(sheetProvider(key)).value;
+    final linked = ref.watch(_linkedProvider(key)).value;
     final appears = ref.watch(appearsInProvider(key)).value ?? const [];
     return Scaffold(
-      appBar: AppBar(title: Text(id == null ? 'New character' : 'Character')),
+      appBar: AppBar(
+        title: Text(id == null ? 'New character' : 'Character'),
+        actions: [
+          if (projectId != null && id != null && (linked ?? false))
+            TextButton(
+              key: const Key('fork'),
+              onPressed: () => forkMember(ref.read(dbProvider), id!),
+              child: const Text('Fork'),
+            ),
+        ],
+      ),
       body: sheet == null
           ? const SizedBox.shrink()
           : _Form(

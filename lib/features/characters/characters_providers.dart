@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
+import 'package:uuid/uuid.dart';
 
 /// Spec 11.1 sheet fields, in display order: (key, label, multiline).
 const sheetFields = <(String, String, bool)>[
@@ -128,23 +129,77 @@ final sheetProvider = FutureProvider.family<Sheet?, SheetKey>((ref, k) async {
   return c == null ? null : sheetOfCharacter(c);
 });
 
-/// "Appears in" (derived): titles of beats that reference this character.
-final appearsInProvider = FutureProvider.family<List<String>, SheetKey>((
+/// "Appears in" (derived, live): titles of beats that reference this character.
+final appearsInProvider = StreamProvider.family<List<String>, SheetKey>((
   ref,
   k,
-) async {
-  if (k.id == null) return const [];
+) {
+  if (k.id == null) return Stream.value(const []);
   final db = ref.watch(dbProvider);
-  final ids = k.projectId != null
-      ? {k.id!}
-      : (await (db.select(
-              db.projectCharacters,
-            )..where((t) => t.characterId.equals(k.id!))).get())
-            .map((m) => m.id)
-            .toSet();
-  final beats = await db.select(db.beats).get();
-  return [
-    for (final b in beats)
-      if (b.characterIds.any(ids.contains)) b.title,
-  ];
+  return db.select(db.beats).watch().asyncMap((beats) async {
+    final ids = k.projectId != null
+        ? {k.id!}
+        : (await (db.select(
+                db.projectCharacters,
+              )..where((t) => t.characterId.equals(k.id!))).get())
+              .map((m) => m.id)
+              .toSet();
+    return [
+      for (final b in beats)
+        if (b.characterIds.any(ids.contains)) b.title,
+    ];
+  });
 });
+
+/// Import pool character [characterId] into [projectId], linked. Returns the
+/// membership id; an existing linked row is reused (unique per project).
+Future<String> importCharacter(
+  AppDatabase db,
+  String projectId,
+  String characterId,
+) async {
+  final existing =
+      await (db.select(db.projectCharacters)..where(
+            (t) =>
+                t.projectId.equals(projectId) &
+                t.characterId.equals(characterId) &
+                t.mode.equalsValue(CharacterMode.linked),
+          ))
+          .getSingleOrNull();
+  if (existing != null) return existing.id;
+  final id = const Uuid().v4();
+  final now = DateTime.now().millisecondsSinceEpoch;
+  await db
+      .into(db.projectCharacters)
+      .insert(
+        ProjectCharactersCompanion.insert(
+          id: id,
+          projectId: projectId,
+          characterId: Value(characterId),
+          mode: CharacterMode.linked,
+          createdAt: now,
+          updatedAt: now,
+        ),
+      );
+  return id;
+}
+
+/// Fork a linked membership: copy the global sheet into the row. The row id
+/// (used by beats) and `character_id` (origin) are kept.
+Future<void> forkMember(AppDatabase db, String memberId) async {
+  final m = await (db.select(
+    db.projectCharacters,
+  )..where((t) => t.id.equals(memberId))).getSingle();
+  if (m.mode == CharacterMode.forked) return;
+  final c = await (db.select(
+    db.characters,
+  )..where((t) => t.id.equals(m.characterId!))).getSingle();
+  await (db.update(
+    db.projectCharacters,
+  )..where((t) => t.id.equals(memberId))).write(
+    forkCompanion(
+      sheetOfCharacter(c),
+      DateTime.now().millisecondsSinceEpoch,
+    ).copyWith(mode: const Value(CharacterMode.forked)),
+  );
+}
