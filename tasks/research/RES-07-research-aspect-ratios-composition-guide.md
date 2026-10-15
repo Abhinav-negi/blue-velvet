@@ -23,4 +23,8 @@ Must not: lib/ · pubspec.yaml · docs/ · other seed files
 Write descriptions in your own words; never paste paragraphs from sources (copyright). Prefer primary, reputable sources (books, film-school or industry references). Data only, no app code. 
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Decisions: 9 ratios (ids 16-9, 2-39-1, 9-16 fixed by project_types; added 1-85-1, 4-3, 1-1, 1-37-1, 1-43-1, 2-76-1). 7 guides. Safe areas use EBU R95 (action 3.5% margin = 93%, title 5% margin = 90%), not legacy 90/80.
+- Golden spiral: 121-point polyline from quarter arcs in nested squares of a phi rectangle, x scaled by 1/phi to fill 0-1 (stretches on non-golden frames; focal point lower right).
+- Gotcha: Wikipedia Safe_area page gives no percentages; EBU R95 PDF did.
+- Ran: validate_seed on both files -> exit 0 (9 and 7 items). Done-when 2: 9 ratios incl. all six required PASS. 3: 7 guides all required PASS. 4: every item has sources, all 5 URLs listed in sources md PASS.
+- Left: nothing.

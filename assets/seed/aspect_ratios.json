@@ -1,0 +1,104 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "16-9",
+   "name": "16:9",
+   "width": 16,
+   "height": 9,
+   "ratio": 1.778,
+   "common_uses": "HDTV, YouTube and most online video, TV drama; default for short films that target streaming.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "2-39-1",
+   "name": "2.39:1",
+   "width": 239,
+   "height": 100,
+   "ratio": 2.39,
+   "common_uses": "Anamorphic widescreen theatrical features; the common 'scope' cinema look.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "1-85-1",
+   "name": "1.85:1",
+   "width": 37,
+   "height": 20,
+   "ratio": 1.85,
+   "common_uses": "Standard flat theatrical widescreen for features, especially US and UK releases.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "4-3",
+   "name": "4:3",
+   "width": 4,
+   "height": 3,
+   "ratio": 1.333,
+   "common_uses": "Legacy SD television and video, some arthouse and period-look films.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "1-1",
+   "name": "1:1",
+   "width": 1,
+   "height": 1,
+   "ratio": 1.0,
+   "common_uses": "Square social posts and feeds (e.g. Instagram), stylised film frames.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "9-16",
+   "name": "9:16",
+   "width": 9,
+   "height": 16,
+   "ratio": 0.562,
+   "common_uses": "Vertical phone video: YouTube Shorts, Reels, TikTok.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "1-37-1",
+   "name": "1.37:1",
+   "width": 137,
+   "height": 100,
+   "ratio": 1.37,
+   "common_uses": "Academy ratio, the studio standard 1932-1953; used for classic-look films.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "1-43-1",
+   "name": "1.43:1",
+   "width": 143,
+   "height": 100,
+   "ratio": 1.43,
+   "common_uses": "IMAX 70mm film frames; tall large-format cinema.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  },
+  {
+   "id": "2-76-1",
+   "name": "2.76:1",
+   "width": 69,
+   "height": 25,
+   "ratio": 2.76,
+   "common_uses": "Ultra Panavision 70 / MGM Camera 65 extreme widescreen roadshow epics.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ]
+  }
+ ]
+}
