@@ -23,4 +23,10 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Routes: `shots` (/shots) and `shot` (/shots/:id) in lib/features/shots/routes.dart. Nothing links to /shots yet (Home is another folder): orchestrator/Home must add an entry using goNamed('shots').
+- No Shots DAO exists in core, so providers query `db.shots` / `db.shotImages` directly. Filter + search (name, description, tags) run in memory.
+- Files folder: `filesDirProvider` (default getApplicationDocumentsDirectory); picker: `imagePickerProvider`. Both overridable. `addUserImage` copies to shot_images/<uuid>.<ext>, inserts kind=userFile row (path relative).
+- Sketches: treated as images from the gallery; no drawing canvas here (storyboard's job).
+- Riverpod 3: StateProvider needs `flutter_riverpod/legacy.dart`.
+- Not done (out of scope for this task's Done-when): attach to frame, ask-for-options, fetch.
+- Results: flutter analyze clean; flutter test 84 pass; check_boundaries exit 0; token guard empty.
