@@ -996,5 +996,70 @@ void main() {
         );
       },
     );
+
+    test('undo reverts the shared sheet; other projects and forks', () async {
+      await db.projectsDao.upsert(
+        ProjectsCompanion.insert(
+          id: 'p2',
+          title: 'P2',
+          type: ProjectType.shortFilm,
+          summary: '',
+          aspectRatio: '16:9',
+          typeFields: {},
+          aiPermissions: {},
+          createdAt: t0,
+          updatedAt: t0,
+        ),
+      );
+      await db
+          .into(db.projectCharacters)
+          .insert(
+            ProjectCharactersCompanion.insert(
+              id: 'pc9',
+              projectId: 'p2',
+              mode: CharacterMode.linked,
+              characterId: const Value('g1'),
+              createdAt: t0,
+              updatedAt: t0,
+            ),
+          );
+      Future<Character> g() => (db.select(
+        db.characters,
+      )..where((c) => c.id.equals('g1'))).getSingle();
+      final p2Before = (await eng.snapshots.capture(
+        'p2',
+      ))['project_characters'];
+      await eng.approve(
+        await propose([
+          {
+            'op': 'editCharacter',
+            'project_character_id': 'pc1',
+            'fields': {'age': '8', 'notes': 'x'},
+          },
+          {
+            'op': 'editCharacter',
+            'project_character_id': 'pc2',
+            'fields': {'role': 'new'},
+          },
+        ]),
+      );
+      expect((await g()).age, '8');
+      expect(
+        (await eng.snapshots.capture('p2'))['project_characters'],
+        isNot(p2Before),
+      );
+      await eng.undoLastApprove('p');
+      final g1 = await g();
+      expect([g1.age, g1.notes], [null, '']);
+      expect(
+        (await eng.snapshots.capture('p2'))['project_characters'],
+        p2Before,
+      );
+      final f = await (db.select(
+        db.projectCharacters,
+      )..where((c) => c.id.equals('pc2'))).getSingle();
+      expect(f.role, 'r');
+      expect(await db.select(db.characters).get(), hasLength(1));
+    });
   });
 }

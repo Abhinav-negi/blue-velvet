@@ -194,8 +194,9 @@ class SnapshotService {
     );
   });
 
-  // The global `characters` table is deliberately not reverted here (pending
-  // user decision); a linked row whose global character is gone becomes forked.
+  // A linked row's global sheet is written back from the snapshot (affects every
+  // project linked to it). Global characters are never deleted here. A linked
+  // row whose global character is gone becomes forked.
   Future<void> _restoreCharacters(String pid, Map<String, dynamic> d) async {
     await (db.delete(
       db.projectCharacters,
@@ -203,11 +204,31 @@ class SnapshotService {
     for (final m
         in (d['project_characters'] as List).cast<Map<String, dynamic>>()) {
       final r = _raw('project_characters', m);
+      final res = (m['resolved'] as Map?)?.cast<String, dynamic>();
+      if (r['mode'] == 'linked' &&
+          res != null &&
+          await _exists('characters', r['character_id'])) {
+        await (db.update(
+          db.characters,
+        )..where((c) => c.id.equals(r['character_id'] as String))).write(
+          CharactersCompanion(
+            name: Value(res['name'] as String),
+            age: Value(res['age'] as String?),
+            role: Value(res['role'] as String),
+            appearance: Value(res['appearance'] as String),
+            background: Value(res['background'] as String),
+            traits: Value(res['traits'] as String),
+            habits: Value(res['habits'] as String),
+            wantsNeedsFears: Value(res['wants_needs_fears'] as String),
+            notes: Value(res['notes'] as String),
+            updatedAt: Value(now()),
+          ),
+        );
+      }
       if (!await _exists('characters', r['character_id'])) {
         r['character_id'] = null;
         if (r['mode'] == 'linked') {
           r['mode'] = 'forked';
-          final res = (m['resolved'] as Map?)?.cast<String, dynamic>();
           if (res != null) r.addAll(res);
         }
       }
