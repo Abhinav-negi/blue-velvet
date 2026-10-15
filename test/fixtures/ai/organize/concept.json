@@ -1,0 +1,19 @@
+{
+ "raw_transcript": "So the idea is, um, a film where every scene happens in a single lift, like the whole thing is inside a lift.",
+ "response": {
+  "type": "concept",
+  "summary_sentences": [
+   {
+    "text": "A film where every scene happens in a single lift.",
+    "source_quotes": [
+     "a film where every scene happens in a single lift"
+    ]
+   }
+  ],
+  "structure": {},
+  "tags": [
+   "film",
+   "lift"
+  ]
+ }
+}

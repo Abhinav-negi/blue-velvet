@@ -1,0 +1,37 @@
+{
+ "raw_transcript": "Verse is, uh, the road is long and the night is thin. Chorus, bring me home, bring me home, bring me home tonight.",
+ "response": {
+  "type": "lyric",
+  "summary_sentences": [
+   {
+    "text": "Verse: the road is long and the night is thin.",
+    "source_quotes": [
+     "the road is long and the night is thin"
+    ]
+   },
+   {
+    "text": "Chorus: bring me home tonight.",
+    "source_quotes": [
+     "bring me home, bring me home, bring me home tonight"
+    ]
+   }
+  ],
+  "structure": {
+   "sections": [
+    {
+     "kind": "verse",
+     "text": "the road is long and the night is thin"
+    },
+    {
+     "kind": "chorus",
+     "text": "bring me home, bring me home, bring me home tonight"
+    }
+   ]
+  },
+  "tags": [
+   "road",
+   "night",
+   "home"
+  ]
+ }
+}

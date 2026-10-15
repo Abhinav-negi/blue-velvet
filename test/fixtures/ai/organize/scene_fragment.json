@@ -1,0 +1,32 @@
+{
+ "raw_transcript": "Picture this, the kid is kneeling in the sandbox at dawn and the watchman is standing behind him with his flask. They argue about the key.",
+ "response": {
+  "type": "scene_fragment",
+  "summary_sentences": [
+   {
+    "text": "The kid kneels in the sandbox at dawn with the watchman standing behind him holding his flask.",
+    "source_quotes": [
+     "the kid is kneeling in the sandbox at dawn and the watchman is standing behind him with his flask"
+    ]
+   },
+   {
+    "text": "They argue about the key.",
+    "source_quotes": [
+     "They argue about the key."
+    ]
+   }
+  ],
+  "structure": {
+   "description": "The kid kneels in the sandbox at dawn; the watchman stands behind him with his flask. They argue about the key.",
+   "characters": [
+    "Kid",
+    "Watchman"
+   ]
+  },
+  "tags": [
+   "sandbox",
+   "dawn",
+   "key"
+  ]
+ }
+}
