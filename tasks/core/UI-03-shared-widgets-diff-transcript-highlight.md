@@ -23,4 +23,9 @@ Must not: lib/features/ · pubspec.yaml
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Files: lib/core/widgets/{diff_view,suggested_text,transcript_highlight}.dart; test/core/widgets/shared_widgets_test.dart.
+- Decisions: DiffView takes `List<DiffLine>` (added/removed/changed) + `onPaper` (removed = red pencil on paper, ember on frame). Each row has a plus/minus icon and a Semantics label "Added"/"Removed"; removed is also struck through. TranscriptHighlight takes `HighlightRange(start,end)` (UTF-16, end exclusive, per AI_CONTRACT 2), merges overlaps, ignores bad spans; lit = teal (secondary) fill, not amber. SuggestedText = AppType.proposal + 4 dp amber rule (DiffColors.proposalRule). Faint-fill opacity constants (0.12, 0.3) are private literals in the widgets.
+- Gotchas: Semantics label merges with child text, so tests match the Semantics widget, not bySemanticsLabel. Goldens need fonts loaded by hand (as test/core/shell).
+- Results: flutter analyze clean; flutter test all pass; check_boundaries exit 0; no Color(0x outside theme.
+- Screenshots: test/core/widgets/goldens/widgets_dark.png, test/core/widgets/goldens/widgets_paper.png
+- Left: nothing.
