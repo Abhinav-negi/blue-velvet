@@ -6,6 +6,7 @@ final storyboardRoutes = <RouteBase>[
   GoRoute(
     path: '/project/:projectId/board',
     name: 'board',
-    builder: (context, state) => const BoardScreen(),
+    builder: (context, state) =>
+        BoardScreen(projectId: state.pathParameters['projectId']!),
   ),
 ];
