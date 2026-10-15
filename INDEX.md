@@ -10,8 +10,8 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | CON-01 | Contract: data model | DONE | - | 1 | |
 | CON-02 | Contract: seed schemas + validator | DONE | - | 1 | |
 | SPK-01 | Spike: S Pen input in Flutter | TODO | - | 1 | Waits for S25 Ultra (S21 FE: no S Pen) |
-| SPK-02 | Spike: mic sharing for live words + recording | TODO | - | 1 | |
-| SPK-03 | Spike: Gemini free tier | IN-PROGRESS | - | 1 | main folder |
+| SPK-02 | Spike: mic sharing for live words + recording | BLOCKED | - | 1 | Phone not visible to adb yet |
+| SPK-03 | Spike: Gemini free tier | DONE | - | 1 | Free RPM/RPD only visible in AI Studio |
 | CON-03 | Contract: AI operations | DONE | CON-01 | 2 | |
 | RES-01 | Research: story templates | DONE | CON-02 | 2 | Sources mostly Wikipedia; upgrade later |
 | RES-02 | Research: shots, camera (size, angle, movement) | DONE | CON-02 | 2 | |
@@ -21,10 +21,10 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | RES-05 | Research: song structures | TODO | CON-02 | 2 | |
 | RES-06 | Research: relationship labels | TODO | CON-02 | 2 | |
 | RES-07 | Research: aspect ratios + composition guides | TODO | CON-02 | 2 | |
-| UI-01 | Design tokens + theme | TODO | INF-01 | 2 | |
-| DB-01 | Drift schema + DAOs | TODO | INF-01, CON-01 | 2 | |
-| RES-09 | Research: free-license shot images | IN-PROGRESS | RES-02, RES-08 | 3 | main folder |
-| UI-02 | App shell + routes | TODO | UI-01 | 3 | |
+| UI-01 | Design tokens + theme | DONE | INF-01 | 2 | |
+| DB-01 | Drift schema + DAOs | DONE | INF-01, CON-01 | 2 | |
+| RES-09 | Research: free-license shot images | DONE | RES-02, RES-08 | 3 | Images for 37 of 80 entries |
+| UI-02 | App shell + routes | DONE | UI-01 | 3 | |
 | UI-03 | Shared widgets: diff + transcript highlight | TODO | UI-01, CON-03 | 3 | |
 | DB-02 | Seed loader | TODO | DB-01, CON-02 | 3 | |
 | DB-03 | Proposal engine + snapshots | TODO | DB-01, CON-03 | 3 | |

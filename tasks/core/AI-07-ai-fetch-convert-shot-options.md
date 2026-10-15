@@ -2,7 +2,7 @@
 Needs: AI-01, SPK-03, DB-02     Wave: 4
 
 ## Goal
-Search the web and convert results into a template or shot entry draft with sources (or say it can't), and answer 'what shots work for…' from the library plus fetched drafts.
+Gather source text in the app (Wikipedia + Wikimedia Commons APIs, optional Brave Search key, pasted/shared URLs; D-21) and convert it with one Gemini call into a template or shot entry draft with sources (or say it can't); answer "what shots work for…" from the library plus fetched drafts.
 
 ## Read
 - docs/ARCHITECTURE.md
@@ -19,7 +19,7 @@ Must not: lib/features/ · other lib/core/ai files · pubspec.yaml
 2. Test: fixture drafts (DATA_MODEL names, per AI_CONTRACT fetchConvert) save into the same templates/slots/shots rows the seed loader writes
 3. Test: an un-convertible result returns a 'cannotConvert' outcome, not a made-up format
 4. Test: every draft carries ≥ 1 source URL
-5. Live smoke: fetch "Kishōtenketsu" template draft in Evidence (or the SPK-03 fallback if grounding isn't free)
+5. Test (fake HTTP): with no Brave key, search uses only Wikipedia/Commons, and returned `sources` are a subset of the fetched URLs; live smoke of a "Kishōtenketsu" template draft in Evidence
 
 ## Rules
 None beyond the orchestrator brief.

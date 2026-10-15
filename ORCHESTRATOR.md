@@ -82,5 +82,5 @@ Plan: `plan/OVERVIEW.md` (v1, all areas MVP).
 | 8 | SHOT-02, EXP-03 | Yes | |
 | 9 | QA-01 | No | Needs the phone; failures become new tasks |
 
-Decisions already made (don't re-ask): everything in `plan/DECISIONS.md` (D-01 … D-20). Highlights: Flutter, Android-any-device; $0, no backend; Drift local-first + Drive backup; Gemini free tier from the phone; hybrid voice; Riverpod + go_router; all features MVP; design D1–D7 and spec A1–A5 accepted; name "Lynch", package `com.abhinavnegi.lynch`.
+Decisions already made (don't re-ask): everything in `plan/DECISIONS.md` (D-01 … D-22). Highlights: Flutter, Android-any-device; $0, no backend; Drift local-first + Drive backup; Gemini free tier from the phone; hybrid voice; Riverpod + go_router; all features MVP; design D1–D7 and spec A1–A5 accepted; name "Lynch", package `com.abhinavnegi.lynch`.
 Open questions are answered by the spikes: `plan/OPEN-QUESTIONS.md`. After each spike, record the answer there (orchestrator only) and, if it changes a decision, ask the user.

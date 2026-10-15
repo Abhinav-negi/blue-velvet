@@ -119,3 +119,15 @@ Chose: each feature lives in `lib/features/<name>/` and imports only `lib/core/*
 Over: free-form structure.
 Why: The owner wants to add, remove and update features easily. Removing a feature = delete its folder + one line in `lib/router.dart`.
 Revisit if: two features genuinely need to share code; then that code moves to `lib/core/`.
+
+## D-21 — Web fetch: the app searches free sources itself; Gemini only converts (2026-10-15)
+Chose: the app gathers source text itself from the Wikipedia and Wikimedia Commons APIs (free, no key), an optional free Brave Search API key for general web search, and any link the user pastes or shares. One Gemini call then converts that text into a template or shot entry.
+Over: enabling Gemini billing for Google Search grounding (breaks D-03); dropping web fetch.
+Why: SPK-03 found that Search grounding is not available on the free tier. The owner wants the app to search for itself.
+Revisit if: billing is enabled later; then grounding can replace step 1.
+
+## D-22 — Gemini free-tier data use accepted for now (2026-10-15)
+Chose: stay on the free tier, accepting that Google may use inputs to improve its products and human reviewers may read them.
+Over: enabling billing now.
+Why: Owner's choice; $0 matters more for now. Switching is an AI Studio setting with no code change.
+Revisit if: the owner starts capturing ideas they want kept private.
