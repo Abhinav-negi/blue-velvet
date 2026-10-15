@@ -21,4 +21,9 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 characters/ folder: CHR-02 runs after this.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Built: sheet form (all 9 §11.1 fields + derived "Appears in" from beats.character_ids), project list (linked resolved via global row, forked via own columns), pool screen. New character from a project = global row + linked project_characters row. Pool-created = global row only.
+- Decision: router.dart is frozen, so the pool routes are nested inside charactersRoutes (project shell): /project/:projectId/characters/pool (name 'character-pool'), pool/new ('pool-character-new'), pool/:id ('pool-character'); project sheet 'character-sheet' (:memberId), 'character-new'. Pool is reached via a "Character pool" row on the Characters tab.
+- Editing a linked member edits the global row; forked edits its own columns (no fork action yet: CHR-02).
+- Schema gaps: none. Pool only shows `characters` rows (forked-only copies are project-local by design).
+- Results: flutter analyze no issues; flutter test all pass; check_boundaries exit 0; token grep empty. No new packages.
+- Left: CHR-02 import/link/fork; promote from Void; AI extraction.
