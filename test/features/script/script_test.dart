@@ -79,7 +79,7 @@ void main() {
         ProviderScope(
           overrides: [dbProvider.overrideWithValue(db)],
           child: MaterialApp(
-            theme: ThemeData(extensions: const [PaperColors()]),
+            theme: AppTheme.light,
             home: const Scaffold(body: ScriptScreen(projectId: 'p')),
           ),
         ),

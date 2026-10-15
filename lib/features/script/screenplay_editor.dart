@@ -250,7 +250,11 @@ class _ScreenplayEditorState extends ConsumerState<ScreenplayEditor> {
           Expanded(
             child: Padding(
               padding: EdgeInsets.only(
-                left: (rules.leftIn - f.marginLeftIn) * ppi,
+                // Right-aligned text (transitions) must not wrap: its left indent
+                // is only a hint, so drop it.
+                left: rules.align == 'right'
+                    ? 0
+                    : (rules.leftIn - f.marginLeftIn) * ppi,
                 right: rules.rightIn * ppi,
               ),
               child: field,
