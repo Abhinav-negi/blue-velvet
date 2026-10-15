@@ -24,4 +24,13 @@ Must not: lib/core/data/db.dart (schema) · lib/features/ · assets/seed/
 Parse items into the same model classes that fetched entries will use (fetch-and-convert reuses them).
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Files: lib/core/data/seed_loader.dart (SeedLoader), lib/core/data/seed_mapping.dart (the one mapping: mapSeedTemplate / mapSeedShot), test/core/data/seed_loader_test.dart.
+Decisions:
+- Only templates, shots_camera, shots_look load: they are the only seed files with tables (templates, slots, shots, shot_images). project_types / screenplay_format / etc. have no table; features read them from the asset bundle.
+- Models = Drift Companions in DATA_MODEL names (what fetch-and-convert will also produce). Row id = seed_id (`three-act`, `three-act/act-1`, `<shot>/<file>`), deterministic, so re-runs and FKs line up.
+- Merge = one `INSERT ... ON CONFLICT(seed_id) DO UPDATE ... WHERE builtin AND NOT user_edited` (Drift DoUpdate+where); created_at kept on update; nothing deleted.
+- Per-file version gate: settings `seed_version` JSON `{"templates":1,...}`; file loads only if its version is greater. Each file is one transaction; whole file mapped before writing, so a malformed item skips that file (logged via `log` callback, default debugPrint).
+- Mapping: short-film->short_film, youtube-video->youtube; shot_size->size; proportion->runtime_proportion; template source_urls[0]->source_url; shot sources URL -> {title: host, url}.
+Gotchas: shot_images are keyed by `<shot>/<file>`; an image removed from the seed is not deleted (rule: never delete). Not yet wired into app startup (no caller; main.dart is not in my scope) -> call `SeedLoader(db).load()` once after opening the DB.
+Commands: flutter analyze -> No issues found; flutter test -> all 20 pass (incl. real assets/seed load test); check_boundaries.sh -> exit 0; Color(0x grep -> empty. No new dependencies. No schema change.
+Left: wire load() into startup.
