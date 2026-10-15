@@ -1,0 +1,622 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "three-act",
+   "name": "Three-act",
+   "description": "A classic frame: set up the world, test the hero with rising trouble, then resolve it.",
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/Three-act_structure",
+    "https://en.wikipedia.org/wiki/Save_the_Cat!"
+   ],
+   "project_types": [
+    "short-film",
+    "long-film",
+    "youtube-video"
+   ],
+   "slots": [
+    {
+     "id": "act-1",
+     "name": "Act 1: Setup",
+     "description": "Introduce the people and world, then an event that pulls the lead into the problem.",
+     "proportion": 0.25
+    },
+    {
+     "id": "act-2",
+     "name": "Act 2: Confrontation",
+     "description": "The lead pursues the goal while obstacles and stakes grow.",
+     "proportion": 0.5
+    },
+    {
+     "id": "act-3",
+     "name": "Act 3: Resolution",
+     "description": "The main tension peaks and the central question gets answered.",
+     "proportion": 0.25
+    }
+   ]
+  },
+  {
+   "id": "eight-sequence",
+   "name": "Eight-sequence",
+   "description": "Frank Daniel's approach: a feature as eight mini-stories of roughly equal length, two in the first act, four in the middle, two at the end.",
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/Frank_Daniel",
+    "https://en.wikipedia.org/wiki/Sequence_(filmmaking)"
+   ],
+   "project_types": [
+    "short-film",
+    "long-film"
+   ],
+   "slots": [
+    {
+     "id": "seq-1",
+     "name": "Sequence 1",
+     "description": "Opening world and the event that disturbs it.",
+     "proportion": 0.125
+    },
+    {
+     "id": "seq-2",
+     "name": "Sequence 2",
+     "description": "The lead reacts and decides to take on the problem.",
+     "proportion": 0.125
+    },
+    {
+     "id": "seq-3",
+     "name": "Sequence 3",
+     "description": "First pursuit of the goal in a new situation.",
+     "proportion": 0.125
+    },
+    {
+     "id": "seq-4",
+     "name": "Sequence 4",
+     "description": "Pressure builds toward a major turn at the middle.",
+     "proportion": 0.125
+    },
+    {
+     "id": "seq-5",
+     "name": "Sequence 5",
+     "description": "The turn changes the stakes and the plan.",
+     "proportion": 0.125
+    },
+    {
+     "id": "seq-6",
+     "name": "Sequence 6",
+     "description": "Setbacks mount and opposition tightens.",
+     "proportion": 0.125
+    },
+    {
+     "id": "seq-7",
+     "name": "Sequence 7",
+     "description": "Lowest point, then a final push begins.",
+     "proportion": 0.125
+    },
+    {
+     "id": "seq-8",
+     "name": "Sequence 8",
+     "description": "Climax and the new normal.",
+     "proportion": 0.125
+    }
+   ]
+  },
+  {
+   "id": "save-the-cat",
+   "name": "Save the Cat",
+   "description": "Blake Snyder's 15-beat sheet, with beats placed by approximate position in a 110-page script.",
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/Save_the_Cat!"
+   ],
+   "project_types": [
+    "short-film",
+    "long-film"
+   ],
+   "slots": [
+    {
+     "id": "opening-image",
+     "name": "Opening image",
+     "description": "A first picture that sets tone and the starting state.",
+     "proportion": 0.01
+    },
+    {
+     "id": "theme-stated",
+     "name": "Theme stated",
+     "description": "Someone hints at the lesson the lead will learn.",
+     "proportion": 0.01
+    },
+    {
+     "id": "set-up",
+     "name": "Set-up",
+     "description": "Show the lead's world and what in it needs fixing.",
+     "proportion": 0.08
+    },
+    {
+     "id": "catalyst",
+     "name": "Catalyst",
+     "description": "An event that upends the lead's life.",
+     "proportion": 0.01
+    },
+    {
+     "id": "debate",
+     "name": "Debate",
+     "description": "The lead hesitates over what to do.",
+     "proportion": 0.11
+    },
+    {
+     "id": "break-into-two",
+     "name": "Break into two",
+     "description": "The lead commits and enters the new world.",
+     "proportion": 0.01
+    },
+    {
+     "id": "b-story",
+     "name": "B story",
+     "description": "A secondary thread, often a relationship, that carries the theme.",
+     "proportion": 0.01
+    },
+    {
+     "id": "fun-and-games",
+     "name": "Fun and games",
+     "description": "Deliver the premise's main appeal.",
+     "proportion": 0.22
+    },
+    {
+     "id": "midpoint",
+     "name": "Midpoint",
+     "description": "A false win or loss that raises stakes.",
+     "proportion": 0.01
+    },
+    {
+     "id": "bad-guys-close-in",
+     "name": "Bad guys close in",
+     "description": "Opposition and inner doubts tighten.",
+     "proportion": 0.17
+    },
+    {
+     "id": "all-is-lost",
+     "name": "All is lost",
+     "description": "The lowest moment, something ends.",
+     "proportion": 0.01
+    },
+    {
+     "id": "dark-night",
+     "name": "Dark night of the soul",
+     "description": "The lead sits with defeat before an idea arrives.",
+     "proportion": 0.08
+    },
+    {
+     "id": "break-into-three",
+     "name": "Break into three",
+     "description": "A solution clicks and the threads join.",
+     "proportion": 0.01
+    },
+    {
+     "id": "finale",
+     "name": "Finale",
+     "description": "The lead applies what was learned and settles the conflict.",
+     "proportion": 0.22
+    },
+    {
+     "id": "final-image",
+     "name": "Final image",
+     "description": "A closing picture that echoes the opening and shows change.",
+     "proportion": 0.01
+    }
+   ]
+  },
+  {
+   "id": "heros-journey",
+   "name": "Hero's Journey",
+   "description": "Campbell's monomyth as condensed by Christopher Vogler into twelve stages: leave home, be tested, return changed.",
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/Hero%27s_journey"
+   ],
+   "project_types": [
+    "short-film",
+    "long-film",
+    "youtube-video"
+   ],
+   "slots": [
+    {
+     "id": "ordinary-world",
+     "name": "Ordinary world",
+     "description": "The hero's everyday life before the adventure."
+    },
+    {
+     "id": "call-to-adventure",
+     "name": "Call to adventure",
+     "description": "A challenge or invitation arrives."
+    },
+    {
+     "id": "refusal-of-the-call",
+     "name": "Refusal of the call",
+     "description": "Fear or doubt makes the hero hesitate."
+    },
+    {
+     "id": "meeting-the-mentor",
+     "name": "Meeting the mentor",
+     "description": "Guidance, a gift or confidence is gained."
+    },
+    {
+     "id": "crossing-the-threshold",
+     "name": "Crossing the first threshold",
+     "description": "The hero commits and enters the unknown."
+    },
+    {
+     "id": "tests-allies-enemies",
+     "name": "Tests, allies, enemies",
+     "description": "Learning the new world's rules and who to trust."
+    },
+    {
+     "id": "inmost-cave",
+     "name": "Approach to the inmost cave",
+     "description": "Preparing to face the greatest danger."
+    },
+    {
+     "id": "ordeal",
+     "name": "The ordeal",
+     "description": "The biggest crisis, a brush with loss."
+    },
+    {
+     "id": "reward",
+     "name": "Reward",
+     "description": "Surviving brings a prize or insight."
+    },
+    {
+     "id": "road-back",
+     "name": "The road back",
+     "description": "The hero heads home, pursued by consequences."
+    },
+    {
+     "id": "resurrection",
+     "name": "The resurrection",
+     "description": "A final test that proves the hero has changed."
+    },
+    {
+     "id": "return-with-elixir",
+     "name": "Return with the elixir",
+     "description": "The hero brings something of value back home."
+    }
+   ]
+  },
+  {
+   "id": "five-point",
+   "name": "Five-point",
+   "description": "A compact arc: setup, a disruption, rising complications, a peak, and the fallout. Useful for shorts and quick sketches.",
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/Three-act_structure",
+    "https://en.wikipedia.org/wiki/Freytag%27s_pyramid"
+   ],
+   "project_types": [
+    "short-film",
+    "long-film",
+    "youtube-video",
+    "short"
+   ],
+   "slots": [
+    {
+     "id": "setup",
+     "name": "Setup",
+     "description": "Who and where, and what normal looks like."
+    },
+    {
+     "id": "inciting-moment",
+     "name": "Inciting moment",
+     "description": "The event that starts the story moving."
+    },
+    {
+     "id": "escalation",
+     "name": "Escalation",
+     "description": "Complications that raise the cost of the goal."
+    },
+    {
+     "id": "climax",
+     "name": "Climax",
+     "description": "The decisive confrontation or choice."
+    },
+    {
+     "id": "resolution",
+     "name": "Resolution",
+     "description": "What changed and where things settle."
+    }
+   ]
+  },
+  {
+   "id": "story-circle",
+   "name": "Story Circle",
+   "description": "Dan Harmon's eight-step loop: a character leaves comfort, gets what they want at a price, and returns changed.",
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/Dan_Harmon"
+   ],
+   "project_types": [
+    "short-film",
+    "long-film",
+    "youtube-video",
+    "short"
+   ],
+   "slots": [
+    {
+     "id": "you",
+     "name": "You",
+     "description": "A character in a comfortable, familiar place."
+    },
+    {
+     "id": "need",
+     "name": "Need",
+     "description": "They want something."
+    },
+    {
+     "id": "go",
+     "name": "Go",
+     "description": "They enter an unfamiliar situation."
+    },
+    {
+     "id": "search",
+     "name": "Search",
+     "description": "They adapt and find their footing."
+    },
+    {
+     "id": "find",
+     "name": "Find",
+     "description": "They get what they wanted."
+    },
+    {
+     "id": "take",
+     "name": "Take",
+     "description": "They pay a heavy price for it."
+    },
+    {
+     "id": "return",
+     "name": "Return",
+     "description": "They go back to the familiar place."
+    },
+    {
+     "id": "change",
+     "name": "Change",
+     "description": "They are changed by the trip."
+    }
+   ]
+  },
+  {
+   "id": "kishotenketsu",
+   "name": "Kishotenketsu",
+   "description": "East Asian four-part form built on a twist rather than on conflict.",
+   "source_urls": [
+    "https://en.wikipedia.org/wiki/Kish%C5%8Dtenketsu"
+   ],
+   "project_types": [
+    "short-film",
+    "long-film",
+    "youtube-video",
+    "short"
+   ],
+   "slots": [
+    {
+     "id": "ki",
+     "name": "Ki: Introduction",
+     "description": "Present characters and setting."
+    },
+    {
+     "id": "sho",
+     "name": "Sho: Development",
+     "description": "Follow the situation forward with no big change."
+    },
+    {
+     "id": "ten",
+     "name": "Ten: Twist",
+     "description": "Turn to something unexpected that recasts what came before."
+    },
+    {
+     "id": "ketsu",
+     "name": "Ketsu: Conclusion",
+     "description": "Bring the pieces together and close."
+    }
+   ]
+  },
+  {
+   "id": "youtube-hook-segments-cta",
+   "name": "Hook, segments, CTA",
+   "description": "A standard explainer or commentary video: win the first seconds, deliver in chunks, end with a clear next step.",
+   "source_urls": [
+    "https://support.google.com/youtube/answer/9314415"
+   ],
+   "project_types": [
+    "youtube-video"
+   ],
+   "slots": [
+    {
+     "id": "hook",
+     "name": "Hook",
+     "description": "Prove the title's promise right away.",
+     "proportion": 0.07
+    },
+    {
+     "id": "intro",
+     "name": "Context and roadmap",
+     "description": "Say why it matters and what is coming.",
+     "proportion": 0.08
+    },
+    {
+     "id": "segments",
+     "name": "Segments",
+     "description": "The main content in distinct chunks, with the strongest early.",
+     "proportion": 0.75
+    },
+    {
+     "id": "cta",
+     "name": "Call to action",
+     "description": "Point to one next step such as another video.",
+     "proportion": 0.1
+    }
+   ]
+  },
+  {
+   "id": "youtube-story-arc",
+   "name": "Story-driven video",
+   "description": "A narrative or vlog arc: open on a stake, build to a turn, land the outcome.",
+   "source_urls": [
+    "https://support.google.com/youtube/answer/9314415",
+    "https://en.wikipedia.org/wiki/Three-act_structure"
+   ],
+   "project_types": [
+    "youtube-video"
+   ],
+   "slots": [
+    {
+     "id": "cold-open",
+     "name": "Cold open",
+     "description": "A striking moment or question from the story.",
+     "proportion": 0.05
+    },
+    {
+     "id": "setup",
+     "name": "Setup",
+     "description": "Who, where and what is at stake.",
+     "proportion": 0.15
+    },
+    {
+     "id": "journey",
+     "name": "Journey",
+     "description": "Attempts, obstacles and surprises.",
+     "proportion": 0.5
+    },
+    {
+     "id": "payoff",
+     "name": "Payoff",
+     "description": "The outcome and the turn.",
+     "proportion": 0.2
+    },
+    {
+     "id": "outro",
+     "name": "Outro",
+     "description": "Reflection and next step.",
+     "proportion": 0.1
+    }
+   ]
+  },
+  {
+   "id": "youtube-listicle",
+   "name": "Listicle or countdown",
+   "description": "A numbered list video: a short hook, then parallel items, then a wrap-up.",
+   "source_urls": [
+    "https://support.google.com/youtube/answer/9314415"
+   ],
+   "project_types": [
+    "youtube-video"
+   ],
+   "slots": [
+    {
+     "id": "hook",
+     "name": "Hook",
+     "description": "Tease the list and its best item.",
+     "proportion": 0.08
+    },
+    {
+     "id": "items",
+     "name": "Items",
+     "description": "Each item in a repeatable mini-format.",
+     "proportion": 0.82
+    },
+    {
+     "id": "wrap-up",
+     "name": "Wrap-up",
+     "description": "Recap and next step.",
+     "proportion": 0.1
+    }
+   ]
+  },
+  {
+   "id": "shorts-hook-build-payoff",
+   "name": "Hook, build, payoff",
+   "description": "The default vertical short: grab attention at once, build tension or value, then pay off.",
+   "source_urls": [
+    "https://support.google.com/youtube/answer/10059070",
+    "https://support.google.com/youtube/answer/9314415"
+   ],
+   "project_types": [
+    "short"
+   ],
+   "slots": [
+    {
+     "id": "hook",
+     "name": "Hook",
+     "description": "An immediate visual or line that stops the scroll.",
+     "proportion": 0.1
+    },
+    {
+     "id": "build",
+     "name": "Build",
+     "description": "Escalate with the steps, tension or setup.",
+     "proportion": 0.65
+    },
+    {
+     "id": "payoff",
+     "name": "Payoff",
+     "description": "The reveal, result or punchline.",
+     "proportion": 0.25
+    }
+   ]
+  },
+  {
+   "id": "shorts-loop",
+   "name": "Loop",
+   "description": "A short whose ending flows back into its opening so replays feel seamless.",
+   "source_urls": [
+    "https://support.google.com/youtube/answer/10059070"
+   ],
+   "project_types": [
+    "short"
+   ],
+   "slots": [
+    {
+     "id": "opening",
+     "name": "Opening",
+     "description": "A hook that also works as the follow-on of the ending.",
+     "proportion": 0.15
+    },
+    {
+     "id": "body",
+     "name": "Body",
+     "description": "The main action or point.",
+     "proportion": 0.7
+    },
+    {
+     "id": "loop-back",
+     "name": "Loop-back",
+     "description": "A final beat that leads straight into the start.",
+     "proportion": 0.15
+    }
+   ]
+  },
+  {
+   "id": "shorts-problem-solution",
+   "name": "Problem, solution, result",
+   "description": "A quick how-to or tip: state the problem, show the fix, show the result.",
+   "source_urls": [
+    "https://support.google.com/youtube/answer/10059070",
+    "https://support.google.com/youtube/answer/9314415"
+   ],
+   "project_types": [
+    "short"
+   ],
+   "slots": [
+    {
+     "id": "problem",
+     "name": "Problem",
+     "description": "Name the pain in one line.",
+     "proportion": 0.2
+    },
+    {
+     "id": "solution",
+     "name": "Solution",
+     "description": "Show the fix.",
+     "proportion": 0.55
+    },
+    {
+     "id": "result",
+     "name": "Result",
+     "description": "Show the outcome.",
+     "proportion": 0.25
+    }
+   ]
+  }
+ ]
+}

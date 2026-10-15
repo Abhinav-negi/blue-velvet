@@ -1,0 +1,491 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "scene-heading-element",
+   "category": "element",
+   "name": "Scene heading",
+   "description": "Slug line opening each scene: INT. or EXT., the place, and the time of day, all capitals. Indents are measured from the left page edge on US Letter.",
+   "rules": {
+    "left_indent_in": 1.5,
+    "right_indent_in": 1.0,
+    "uppercase": true,
+    "blank_lines_before": 2,
+    "alignment": "left",
+    "blank_lines_after": 1,
+    "scene_number_position": "optional, both margins in shooting scripts"
+   },
+   "examples": [
+    "INT. KITCHEN - NIGHT",
+    "EXT. PLAYGROUND - DAY"
+   ],
+   "sources": [
+    "https://filmdaft.com/screenplay-margins/",
+    "https://screenplay.com/pages/basic-screenplay-format"
+   ]
+  },
+  {
+   "id": "action-element",
+   "category": "element",
+   "name": "Action",
+   "description": "Description of what is seen and heard, written in present tense, full text width, sentence case, single spaced.",
+   "rules": {
+    "left_indent_in": 1.5,
+    "right_indent_in": 1.0,
+    "uppercase": false,
+    "blank_lines_before": 1,
+    "alignment": "left",
+    "blank_lines_after": 0
+   },
+   "examples": [
+    "Two kids run across the empty playground."
+   ],
+   "sources": [
+    "https://filmdaft.com/screenplay-margins/",
+    "https://screenplay.com/pages/basic-screenplay-format",
+    "https://en.wikipedia.org/wiki/Screenplay"
+   ]
+  },
+  {
+   "id": "character-element",
+   "category": "element",
+   "name": "Character",
+   "description": "Speaker's name in capitals above their dialogue, with extensions such as V.O., O.S. and CONT'D in brackets after it.",
+   "rules": {
+    "left_indent_in": 3.7,
+    "right_indent_in": 1.0,
+    "uppercase": true,
+    "blank_lines_before": 1,
+    "alignment": "left",
+    "blank_lines_after": 0
+   },
+   "examples": [
+    "MAYA",
+    "MAYA (V.O.)",
+    "MAYA (O.S.)"
+   ],
+   "sources": [
+    "https://filmdaft.com/screenplay-margins/",
+    "https://screenplay.com/pages/basic-screenplay-format"
+   ]
+  },
+  {
+   "id": "dialogue-element",
+   "category": "element",
+   "name": "Dialogue",
+   "description": "Spoken words directly under the character name, sentence case, in a narrower centred column about 3.5 in wide.",
+   "rules": {
+    "left_indent_in": 2.5,
+    "right_indent_in": 2.5,
+    "uppercase": false,
+    "blank_lines_before": 0,
+    "alignment": "left"
+   },
+   "examples": [
+    "I told you we shouldn't come here."
+   ],
+   "sources": [
+    "https://filmdaft.com/screenplay-margins/",
+    "https://screenplay.com/pages/basic-screenplay-format"
+   ]
+  },
+  {
+   "id": "parenthetical-element",
+   "category": "element",
+   "name": "Parenthetical",
+   "description": "Short direction in brackets on its own line between character and dialogue, lower case, used sparingly.",
+   "rules": {
+    "left_indent_in": 3.1,
+    "right_indent_in": 3.0,
+    "uppercase": false,
+    "blank_lines_before": 0,
+    "alignment": "left",
+    "wrapped_lines_hanging_indent": true
+   },
+   "examples": [
+    "(whispering)"
+   ],
+   "sources": [
+    "https://filmdaft.com/screenplay-margins/",
+    "https://screenplay.com/pages/basic-screenplay-format"
+   ]
+  },
+  {
+   "id": "shot-element",
+   "category": "element",
+   "name": "Shot",
+   "description": "Optional line naming a camera shot or angle, capitals, full width, set like a scene heading but within a scene. Not a Fountain element; written as a forced scene heading or action line.",
+   "rules": {
+    "left_indent_in": 1.5,
+    "right_indent_in": 1.0,
+    "uppercase": true,
+    "blank_lines_before": 1,
+    "alignment": "left"
+   },
+   "examples": [
+    "ANGLE ON THE SWING",
+    "CLOSE ON MAYA'S HANDS"
+   ],
+   "sources": [
+    "https://screenplay.com/pages/basic-screenplay-format",
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "transition-element",
+   "category": "element",
+   "name": "Transition",
+   "description": "Instruction for moving between scenes, capitals, aligned to the right side of the text area, followed by a colon except for a few such as FADE OUT.",
+   "rules": {
+    "left_indent_in": 6.0,
+    "right_indent_in": 1.0,
+    "uppercase": true,
+    "blank_lines_before": 1,
+    "blank_lines_after": 1,
+    "alignment": "right"
+   },
+   "examples": [
+    "CUT TO:",
+    "FADE OUT."
+   ],
+   "sources": [
+    "https://filmdaft.com/screenplay-margins/",
+    "https://screenplay.com/pages/basic-screenplay-format"
+   ]
+  },
+  {
+   "id": "centered-element",
+   "category": "element",
+   "name": "Centered text",
+   "description": "Text centred between the margins, in capitals, typically for titles such as THE END.",
+   "rules": {
+    "left_indent_in": 1.5,
+    "right_indent_in": 1.0,
+    "uppercase": true,
+    "blank_lines_before": 1,
+    "alignment": "center"
+   },
+   "examples": [
+    "THE END"
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "capitalisation-rules",
+   "category": "capitalisation",
+   "name": "Capitalisation rules",
+   "description": "Which parts are written in capitals: scene headings entirely, character names every time, transitions and shot lines entirely; a character's first appearance in action is also capitalised. Dialogue, parentheticals and normal action stay in sentence case. Sound cues may also be capitalised in action.",
+   "rules": {
+    "scene_heading": "uppercase",
+    "character_cue": "uppercase",
+    "transition": "uppercase",
+    "shot": "uppercase",
+    "dialogue": "sentence case",
+    "parenthetical": "lowercase",
+    "action": "sentence case; character name uppercase on first introduction",
+    "extension_format": "(V.O.) (O.S.) (CONT'D) uppercase in brackets after the name"
+   },
+   "examples": [
+    "MAYA (30s, sharp-eyed) steps inside."
+   ],
+   "sources": [
+    "https://screenplay.com/pages/basic-screenplay-format",
+    "https://filmdaft.com/screenplay-margins/"
+   ]
+  },
+  {
+   "id": "transitions-list",
+   "category": "transition",
+   "name": "Common transitions",
+   "description": "Frequently used transitions. Modern specs use them sparingly, since editing choices usually belong to the director.",
+   "rules": {
+    "line_ending": "colon, except FADE OUT. and FADE IN: which follow their own punctuation",
+    "case": "uppercase"
+   },
+   "values": [
+    "CUT TO:",
+    "SMASH CUT TO:",
+    "MATCH CUT TO:",
+    "JUMP CUT TO:",
+    "DISSOLVE TO:",
+    "FADE TO:",
+    "FADE IN:",
+    "FADE OUT.",
+    "WIPE TO:",
+    "IRIS IN:",
+    "CUT TO BLACK.",
+    "INTERCUT WITH:"
+   ],
+   "examples": [
+    "CUT TO:"
+   ],
+   "sources": [
+    "https://screenplay.com/pages/basic-screenplay-format",
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "page-us-letter",
+   "category": "page",
+   "name": "US Letter page",
+   "description": "US Letter page setup: Courier 12 pt (10 characters per inch), 6 lines per inch, one-inch top and bottom margins, wide left margin for binding. About one page per minute of screen time.",
+   "rules": {
+    "page_width_in": 8.5,
+    "page_height_in": 11.0,
+    "margin_top_in": 1.0,
+    "margin_bottom_in": 1.0,
+    "margin_left_in": 1.5,
+    "margin_right_in": 1.0,
+    "font": "Courier",
+    "font_size_pt": 12,
+    "characters_per_inch": 10,
+    "lines_per_inch": 6,
+    "lines_per_page": 55,
+    "line_spacing": "single",
+    "page_number_position": "top right, about 0.5 in from top, followed by a period",
+    "first_page_number_shown": false,
+    "minutes_per_page": 1
+   },
+   "sources": [
+    "https://filmdaft.com/screenplay-margins/",
+    "https://screenplay.com/pages/basic-screenplay-format",
+    "https://en.wikipedia.org/wiki/Screenplay"
+   ]
+  },
+  {
+   "id": "page-a4",
+   "category": "page",
+   "name": "A4 page",
+   "description": "A4 variant for UK and international use. Same font and margins as Letter; the page is narrower and taller, so the text block is about 5.77 in wide and holds more lines. Derived by applying the Letter margins to A4 dimensions (6 lines per inch over 9.69 in); no single authority publishes A4 margins.",
+   "rules": {
+    "page_width_in": 8.27,
+    "page_height_in": 11.69,
+    "margin_top_in": 1.0,
+    "margin_bottom_in": 1.0,
+    "margin_left_in": 1.5,
+    "margin_right_in": 1.0,
+    "font": "Courier",
+    "font_size_pt": 12,
+    "characters_per_inch": 10,
+    "lines_per_inch": 6,
+    "lines_per_page": 58,
+    "line_spacing": "single",
+    "note": "element indents stay as on Letter; lines_per_page derived"
+   },
+   "sources": [
+    "https://en.wikipedia.org/wiki/Screenplay",
+    "https://filmdaft.com/screenplay-margins/"
+   ]
+  },
+  {
+   "id": "page-more-contd",
+   "category": "page",
+   "name": "MORE and CONT'D",
+   "description": "When dialogue is split across pages, end the page with (MORE) in the dialogue column and repeat the character name with (CONT'D) at the top of the next. (CONT'D) is also added when the same character speaks again after an action line. Never leave a scene heading alone at the page bottom, and avoid splitting a short action paragraph or a single dialogue line.",
+   "rules": {
+    "more_text": "(MORE)",
+    "more_indent_in": 3.1,
+    "contd_text": "(CONT'D)",
+    "contd_after_action_interruption": true,
+    "contd_after_page_break": true,
+    "orphan_scene_heading_allowed": false
+   },
+   "sources": [
+    "https://screenplay.com/pages/basic-screenplay-format",
+    "https://filmdaft.com/screenplay-margins/"
+   ]
+  },
+  {
+   "id": "page-scene-numbers",
+   "category": "page",
+   "name": "Scene numbers",
+   "description": "Optional. Numbers appear in shooting scripts or when requested, on both left and right of the scene heading, and are locked once drafts circulate; inserted scenes take letters (12A). Spec scripts omit them.",
+   "rules": {
+    "optional": true,
+    "default": false,
+    "left_position_in": 0.9,
+    "right_position_in": 7.6,
+    "insert_format": "12A"
+   },
+   "examples": [
+    "12 INT. KITCHEN - NIGHT 12"
+   ],
+   "sources": [
+    "https://fountain.io/syntax",
+    "https://screenplay.com/pages/basic-screenplay-format"
+   ]
+  },
+  {
+   "id": "page-title-page",
+   "category": "page",
+   "name": "Title page",
+   "description": "Title page is unnumbered and holds the title centred about a third down the page, a by-line and contact details bottom left. Page 1 of the script follows and is not numbered visibly.",
+   "rules": {
+    "title_position": "centred, upper third",
+    "contact_position": "bottom left",
+    "script_starts_on_page": 1
+   },
+   "sources": [
+    "https://screenplay.com/pages/basic-screenplay-format",
+    "https://en.wikipedia.org/wiki/Screenplay"
+   ]
+  },
+  {
+   "id": "fountain-scene-heading",
+   "category": "fountain",
+   "name": "Fountain: scene heading",
+   "description": "A line starting with INT, EXT, EST, INT./EXT, INT/EXT or I/E is read as a scene heading. A leading period forces one. A scene number goes in hashes at the end.",
+   "rules": {
+    "prefix": "INT|EXT|EST|INT./EXT|INT/EXT|I/E",
+    "force": ".",
+    "scene_number": "#12A#"
+   },
+   "examples": [
+    "INT. KITCHEN - NIGHT #12A#",
+    ".SNIPER SCOPE POV"
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-action",
+   "category": "fountain",
+   "name": "Fountain: action",
+   "description": "Any paragraph that fits no other element. A leading exclamation mark forces action; tabs and spaces are kept.",
+   "rules": {
+    "force": "!"
+   },
+   "examples": [
+    "!SCANNING THE AISLES..."
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-character",
+   "category": "fountain",
+   "name": "Fountain: character",
+   "description": "A line in capitals with a blank line above and text below. Extensions go in brackets. An at-sign forces a mixed-case name. A caret after the second name makes dual dialogue.",
+   "rules": {
+    "force": "@",
+    "dual_dialogue": "^ after second name"
+   },
+   "examples": [
+    "MOM (O.S.)",
+    "@McCLANE",
+    "STEEL ^"
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-dialogue",
+   "category": "fountain",
+   "name": "Fountain: dialogue",
+   "description": "Text directly following a character or parenthetical line, with no blank line between.",
+   "rules": {
+    "blank_line_before": false
+   },
+   "examples": [
+    "BRICK\nLet's go."
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-parenthetical",
+   "category": "fountain",
+   "name": "Fountain: parenthetical",
+   "description": "A line wrapped in brackets between character and dialogue.",
+   "rules": {
+    "wrapped_in": "( )"
+   },
+   "examples": [
+    "STEEL\n(starting the engine)\nHere we go."
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-transition",
+   "category": "fountain",
+   "name": "Fountain: transition",
+   "description": "A capitals line ending in TO: with blank lines around it. A leading > forces any transition.",
+   "rules": {
+    "force": ">",
+    "auto_detect_suffix": "TO:"
+   },
+   "examples": [
+    "CUT TO:",
+    ">Burn to white."
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-centered",
+   "category": "fountain",
+   "name": "Fountain: centered text",
+   "description": "Text wrapped in > and <, spaces optional.",
+   "rules": {
+    "wrapped_in": "> <"
+   },
+   "examples": [
+    ">THE END<"
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-extras",
+   "category": "fountain",
+   "name": "Fountain: other markup",
+   "description": "Page break is three or more equals signs alone; sections start with #; synopses with =; lyrics with ~; notes sit in double square brackets; boneyard (omitted text) in slash-star. Emphasis: *italic*, **bold**, ***both***, _underline_.",
+   "rules": {
+    "page_break": "===",
+    "section": "#",
+    "synopsis": "=",
+    "lyrics": "~",
+    "note": "[[ ]]",
+    "boneyard": "/* */",
+    "italic": "*x*",
+    "bold": "**x**",
+    "underline": "_x_"
+   },
+   "examples": [
+    "===",
+    "# ACT I",
+    "= Brick and Steel reunite.",
+    "~First line of the lyric",
+    "[[Check this line.]]"
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  },
+  {
+   "id": "fountain-title-page",
+   "category": "fountain",
+   "name": "Fountain: title page",
+   "description": "Key: value pairs at the top of the file, ended by a blank line.",
+   "rules": {
+    "keys": "Title, Credit, Author, Source, Draft date, Contact"
+   },
+   "examples": [
+    "Title: Playground\nCredit: Written by\nAuthor: A. Writer\nDraft date: 2026-10-15"
+   ],
+   "sources": [
+    "https://fountain.io/syntax"
+   ]
+  }
+ ]
+}

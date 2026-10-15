@@ -1,0 +1,629 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "rule-of-thirds",
+   "name": "Rule of thirds",
+   "category": "composition",
+   "description": "Divide the frame into a three-by-three grid and place the subject or key features, such as the eyes or the horizon, on the lines or where they cross.",
+   "when_to_use": "Default framing for portraits, landscapes and most coverage when you want a natural, balanced image without centring.",
+   "effect": "Feels natural and easy on the eye; leaves room for the subject to look or move into and keeps attention on the subject.",
+   "tags": [
+    "grid",
+    "balance",
+    "framing"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/composition/rule-of-thirds-in-film/",
+    "https://www.studiobinder.com/blog/what-is-the-rule-of-thirds/",
+    "https://en.wikipedia.org/wiki/Rule_of_thirds"
+   ],
+   "images": []
+  },
+  {
+   "id": "leading-lines",
+   "name": "Leading lines",
+   "category": "composition",
+   "description": "Use real or implied lines in the scene, such as roads, corridors, fences or gazes, to pull the eye towards the subject or a point of interest.",
+   "when_to_use": "When you need to steer attention, add depth to a flat frame, or point towards a destination, threat or character.",
+   "effect": "Creates direction, momentum and depth; can suggest journey, inevitability or being drawn towards something.",
+   "tags": [
+    "lines",
+    "depth",
+    "attention"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-are-leading-lines-definition/",
+    "https://en.wikipedia.org/wiki/Leading_lines"
+   ],
+   "images": []
+  },
+  {
+   "id": "symmetry-central-framing",
+   "name": "Symmetry and central framing",
+   "category": "composition",
+   "description": "Place the subject on the centre axis with both halves of the frame mirroring each other, or close to it.",
+   "when_to_use": "For formal, stylised or ritual moments, institutions, confrontations and strong stand-alone portraits.",
+   "effect": "Reads as order, control, stillness or unease; deliberate symmetry feels designed and can be authoritative, comic or eerie.",
+   "tags": [
+    "symmetry",
+    "centred",
+    "style"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/composition/",
+    "https://www.studiobinder.com/blog/robert-yeoman-cinematography/",
+    "https://en.wikipedia.org/wiki/Symmetry"
+   ],
+   "images": []
+  },
+  {
+   "id": "frame-within-a-frame",
+   "name": "Frame within a frame",
+   "category": "composition",
+   "description": "Shoot the subject through a doorway, window, arch or other foreground shape so a second frame sits inside the picture frame.",
+   "when_to_use": "To focus the eye, show confinement or observation, or add layers to a simple location.",
+   "effect": "Isolation, entrapment, voyeurism or privileged view; draws attention and adds depth.",
+   "tags": [
+    "framing",
+    "depth",
+    "foreground"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-is-a-frame-within-a-frame-definition/",
+    "https://www.studiobinder.com/blog/foreground-elements-in-photography/"
+   ],
+   "images": []
+  },
+  {
+   "id": "negative-space",
+   "name": "Negative space",
+   "category": "composition",
+   "description": "Leave a large, mostly empty area around a small subject so the emptiness becomes part of the composition.",
+   "when_to_use": "To show loneliness, scale, tension before an arrival, or to make a conversation feel awkward by how people sit in the frame.",
+   "effect": "Isolation, vulnerability, calm or unease; the empty area asks the viewer to wonder what is missing or what will enter.",
+   "tags": [
+    "empty",
+    "isolation",
+    "minimal"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-is-negative-space-definition/",
+    "https://en.wikipedia.org/wiki/Negative_space"
+   ],
+   "images": []
+  },
+  {
+   "id": "depth-layering",
+   "name": "Depth and foreground layering",
+   "category": "composition",
+   "description": "Arrange elements in foreground, middle ground and background so the 2D image reads as a deep space.",
+   "when_to_use": "Establishing shots, busy locations, and any time a flat frame needs dimension; foreground objects can also half-hide the subject.",
+   "effect": "Immersion and realism; layers can add voyeurism (looking past something) or show relationships between planes of action.",
+   "tags": [
+    "depth",
+    "foreground",
+    "layers"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/foreground-elements-in-photography/",
+    "https://www.studiobinder.com/camera-shots/composition/",
+    "https://en.wikipedia.org/wiki/Composition_(visual_arts)"
+   ],
+   "images": []
+  },
+  {
+   "id": "looking-room",
+   "name": "Looking room and short siding",
+   "category": "composition",
+   "description": "Leave more empty space in the direction a character looks or moves (looking room); the opposite, putting them close to the edge they face, is short siding.",
+   "when_to_use": "Looking room for natural dialogue and anticipation; short siding for claustrophobia, threat or a character who feels cornered.",
+   "effect": "Looking room gives openness and anticipation; short siding gives tension, entrapment or something looming off-screen.",
+   "tags": [
+    "eyeline",
+    "dialogue",
+    "tension"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-is-the-rule-of-thirds/",
+    "https://www.studiobinder.com/camera-shots/composition/rule-of-thirds-in-film/"
+   ],
+   "images": []
+  },
+  {
+   "id": "headroom",
+   "name": "Headroom",
+   "category": "composition",
+   "description": "The amount of space between the top of a subject's head and the top of the frame; normally small but not zero, and varied by shot size.",
+   "when_to_use": "Set it for every figure shot; trim it for intimacy and give extra when you want the character to seem small or exposed.",
+   "effect": "Tight headroom feels intense, intimate or oppressive; generous headroom feels relaxed, exposed or dwarfed by surroundings.",
+   "tags": [
+    "framing",
+    "figure",
+    "safe-area"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-is-composition-in-art-definition/",
+    "https://en.wikipedia.org/wiki/Composition_(visual_arts)"
+   ],
+   "images": []
+  },
+  {
+   "id": "balance",
+   "name": "Balance and visual weight",
+   "category": "composition",
+   "description": "Distribute visual weight (size, brightness, colour, faces) so the frame feels stable, or deliberately unbalance it.",
+   "when_to_use": "Balanced frames for stability; lopsided frames to hint at conflict, a missing element or a power gap between characters.",
+   "effect": "Balance reads as harmony and rest; imbalance creates tension and a sense that something must change.",
+   "tags": [
+    "weight",
+    "harmony",
+    "tension"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/composition/",
+    "https://www.studiobinder.com/blog/what-is-composition-in-art-definition/",
+    "https://en.wikipedia.org/wiki/Composition_(visual_arts)"
+   ],
+   "images": []
+  },
+  {
+   "id": "triangle-composition",
+   "name": "Triangle composition",
+   "category": "composition",
+   "description": "Arrange three subjects or points of interest so they form a triangle, a stable shape that also suggests relationships and hierarchy.",
+   "when_to_use": "Group scenes and three-handers; a point at the top can show dominance, a wide base stability.",
+   "effect": "Stability and clear hierarchy; can express alliances, rivalry or a love triangle in the staging itself.",
+   "tags": [
+    "shape",
+    "groups",
+    "staging"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/composition/shape-in-film/",
+    "https://en.wikipedia.org/wiki/Composition_(visual_arts)"
+   ],
+   "images": []
+  },
+  {
+   "id": "golden-ratio",
+   "name": "Golden ratio and spiral",
+   "category": "composition",
+   "description": "Divide the frame in the proportion of roughly 1 to 1.618, or follow the spiral derived from it, to place the main interest off-centre in a more organic way than thirds.",
+   "when_to_use": "As a refinement of thirds when planning a still, a hero shot or a carefully designed frame with a clear focal point.",
+   "effect": "A flowing, harmonious pull of the eye towards the focal point, felt as natural rather than rigid.",
+   "tags": [
+    "ratio",
+    "spiral",
+    "grid"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-is-the-golden-ratio-definition/",
+    "https://en.wikipedia.org/wiki/Golden_ratio"
+   ],
+   "images": []
+  },
+  {
+   "id": "ultra-wide-lens",
+   "name": "Ultra-wide lens",
+   "category": "lens",
+   "description": "A very short focal length (roughly 18 mm and under on a full-frame sensor) that takes in a huge field of view and exaggerates perspective.",
+   "when_to_use": "Cramped interiors, sweeping landscapes, action seen from close, or stylised distortion of a face or space.",
+   "effect": "Disorientation, spectacle or intimacy with distortion; objects near the lens loom and distances stretch.",
+   "tags": [
+    "wide",
+    "distortion",
+    "perspective"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-lenses/ultra-wide-angle-lens/",
+    "https://en.wikipedia.org/wiki/Wide-angle_lens",
+    "https://en.wikipedia.org/wiki/Fisheye_lens"
+   ],
+   "images": []
+  },
+  {
+   "id": "wide-angle-lens",
+   "name": "Wide-angle lens",
+   "category": "lens",
+   "description": "A short focal length (roughly 24-35 mm full-frame) with a wide view and strong sense of depth, with less distortion than an ultra-wide.",
+   "when_to_use": "Establishing shots, walk-and-talk, group scenes, and showing a character within their environment.",
+   "effect": "Openness, context and immersion; moving close to the subject adds energy and presence.",
+   "tags": [
+    "wide",
+    "environment",
+    "depth"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-lenses/",
+    "https://www.studiobinder.com/blog/focal-length-camera-lenses-explained/",
+    "https://en.wikipedia.org/wiki/Wide-angle_lens"
+   ],
+   "images": []
+  },
+  {
+   "id": "normal-lens-50mm",
+   "name": "Normal lens (around 50 mm)",
+   "category": "lens",
+   "description": "A focal length close to the natural look of human vision, with little perspective distortion.",
+   "when_to_use": "Neutral coverage, dialogue and naturalistic scenes where the lens should not call attention to itself.",
+   "effect": "Honest, grounded, observational; feels like the viewer is simply standing in the scene.",
+   "tags": [
+    "normal",
+    "natural",
+    "neutral"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/different-types-camera-lenses-explained/",
+    "https://www.studiobinder.com/blog/focal-length-camera-lenses-explained/",
+    "https://en.wikipedia.org/wiki/Normal_lens"
+   ],
+   "images": []
+  },
+  {
+   "id": "telephoto-lens",
+   "name": "Telephoto lens",
+   "category": "lens",
+   "description": "A long focal length (roughly 70 mm and up) that narrows the view, magnifies distant subjects and compresses the apparent distance between planes.",
+   "when_to_use": "Surveillance feel, tight close-ups from a distance, isolating a subject against a blurred background, or stacking crowds and traffic.",
+   "effect": "Voyeurism, pressure and isolation; compression can make a character feel trapped in a crowd or the background crowd in on them.",
+   "tags": [
+    "tele",
+    "compression",
+    "isolation"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-lenses/telephoto-lens-shot/",
+    "https://en.wikipedia.org/wiki/Long-focus_lens"
+   ],
+   "images": []
+  },
+  {
+   "id": "macro-lens",
+   "name": "Macro lens",
+   "category": "lens",
+   "description": "A lens that focuses very close, reproducing tiny subjects at about life size or larger.",
+   "when_to_use": "Insert shots of small objects, eyes, textures, insects and fine detail the viewer should notice.",
+   "effect": "Heightened attention and intimacy; turns small things into significant ones and can feel tense or wondrous.",
+   "tags": [
+    "macro",
+    "detail",
+    "insert"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-lenses/macro-lens-shot/",
+    "https://en.wikipedia.org/wiki/Macro_photography"
+   ],
+   "images": []
+  },
+  {
+   "id": "shallow-depth-of-field",
+   "name": "Shallow depth of field",
+   "category": "lens",
+   "description": "Only a thin slice of the scene is sharp, usually via a wide aperture, long lens or close subject, so the background and foreground blur.",
+   "when_to_use": "To single out one character, separate them from a busy background, or give a soft, dreamy or intimate look.",
+   "effect": "Focus and intimacy, subjective attention; the blurred world can feel distant or ethereal.",
+   "tags": [
+    "focus",
+    "bokeh",
+    "isolation"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/focus/",
+    "https://en.wikipedia.org/wiki/Depth_of_field"
+   ],
+   "images": []
+  },
+  {
+   "id": "deep-focus",
+   "name": "Deep focus (deep depth of field)",
+   "category": "lens",
+   "description": "Foreground, middle ground and background are all sharp, typically from a small aperture, wide lens and plenty of light.",
+   "when_to_use": "Staging in depth, group dynamics, or when the setting matters as much as the actor and the viewer should choose where to look.",
+   "effect": "Realism and a sense of an observable world; lets multiple story layers play inside one shot.",
+   "tags": [
+    "focus",
+    "depth",
+    "staging"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/focus/",
+    "https://en.wikipedia.org/wiki/Deep_focus",
+    "https://en.wikipedia.org/wiki/Depth_of_field"
+   ],
+   "images": []
+  },
+  {
+   "id": "rack-focus",
+   "name": "Rack focus",
+   "category": "lens",
+   "description": "Shift the focus during a shot from one subject or distance to another so the sharp plane changes in view.",
+   "when_to_use": "To redirect attention, reveal something in the background, or connect two characters or objects within one take.",
+   "effect": "Directs the audience's attention and shows a change of awareness or a reveal, as if the camera shifts its gaze.",
+   "tags": [
+    "focus",
+    "reveal",
+    "technique"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/focus/",
+    "https://en.wikipedia.org/wiki/Rack_focus"
+   ],
+   "images": []
+  },
+  {
+   "id": "split-diopter",
+   "name": "Split diopter",
+   "category": "lens",
+   "description": "A half-lens filter in front of the camera lets near and far subjects be sharp together, with a soft line where the halves meet.",
+   "when_to_use": "When two actions at very different distances matter at once and you want one continuous shot rather than cutting.",
+   "effect": "Unease and tension between planes; a distinctive, slightly uncanny look in which foreground and background compete.",
+   "tags": [
+    "focus",
+    "depth",
+    "technique"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/focus/split-diopter-shot/",
+    "https://en.wikipedia.org/wiki/Split_diopter"
+   ],
+   "images": []
+  },
+  {
+   "id": "anamorphic-lens",
+   "name": "Anamorphic lens",
+   "category": "lens",
+   "description": "A lens that squeezes a wide image onto the sensor, then is de-squeezed in post, giving a widescreen frame, oval bokeh and horizontal flares.",
+   "when_to_use": "For a cinematic widescreen look, epic landscapes, or when you want flares and characteristic out-of-focus shapes.",
+   "effect": "Grand, filmic scale and a dreamy texture; associated with big-screen cinema.",
+   "tags": [
+    "widescreen",
+    "flare",
+    "cinematic"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-lenses/",
+    "https://en.wikipedia.org/wiki/Anamorphic_format"
+   ],
+   "images": []
+  },
+  {
+   "id": "tilt-shift-lens",
+   "name": "Tilt-shift lens",
+   "category": "lens",
+   "description": "A lens whose optics can tilt or shift to change the plane of focus and correct perspective, so a thin strip is sharp at an angle.",
+   "when_to_use": "Miniature-effect shots of cities, dreamlike sequences, and selective focus across an angled plane.",
+   "effect": "Toy-like or surreal feeling, or a sense of detachment from the scene; rare and therefore very noticeable.",
+   "tags": [
+    "tilt-shift",
+    "miniature",
+    "selective-focus"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-lenses/",
+    "https://en.wikipedia.org/wiki/Tilt%E2%80%93shift_photography"
+   ],
+   "images": []
+  },
+  {
+   "id": "three-point-lighting",
+   "name": "Three-point lighting",
+   "category": "lighting",
+   "description": "A standard set-up with a key light as the main source, a fill to soften shadows and a backlight to separate the subject from the background.",
+   "when_to_use": "Interviews, dialogue, and as a baseline to adjust: more fill for a gentle look, less for drama.",
+   "effect": "Clean, readable and flattering; the subject looks dimensional and separate from the background.",
+   "tags": [
+    "setup",
+    "key",
+    "fill",
+    "backlight"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/film-lighting/",
+    "https://en.wikipedia.org/wiki/Three-point_lighting"
+   ],
+   "images": []
+  },
+  {
+   "id": "high-key-lighting",
+   "name": "High-key lighting",
+   "category": "lighting",
+   "description": "Bright, low-contrast lighting with plenty of fill so shadows are light and the overall picture is airy.",
+   "when_to_use": "Comedies, commercials, musicals, cheerful or clinical scenes.",
+   "effect": "Optimism, openness, cleanliness; can feel cheerful or, pushed too far, sterile or falsely perfect.",
+   "tags": [
+    "bright",
+    "low-contrast",
+    "mood"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-is-high-key-lighting-definition/",
+    "https://en.wikipedia.org/wiki/High-key_lighting"
+   ],
+   "images": []
+  },
+  {
+   "id": "low-key-lighting",
+   "name": "Low-key lighting",
+   "category": "lighting",
+   "description": "Mostly dark frame with strong contrast, little fill and defined pools of light.",
+   "when_to_use": "Thrillers, noir, horror, and any scene of secrecy or danger.",
+   "effect": "Mystery, tension, moral ambiguity and menace; hides information and makes the viewer lean in.",
+   "tags": [
+    "dark",
+    "high-contrast",
+    "noir"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/lighting/",
+    "https://en.wikipedia.org/wiki/Low-key_lighting"
+   ],
+   "images": []
+  },
+  {
+   "id": "chiaroscuro",
+   "name": "Chiaroscuro",
+   "category": "lighting",
+   "description": "Strong contrast of light and deep shadow to model form, borrowed from painting, with parts of the subject falling into darkness.",
+   "when_to_use": "Dramatic portraits, period pieces, interrogation or confession scenes, anything with an inner conflict.",
+   "effect": "Drama, depth and moral conflict; light and dark mirror the character's duality.",
+   "tags": [
+    "contrast",
+    "drama",
+    "painterly"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/film-lighting-techniques/",
+    "https://en.wikipedia.org/wiki/Chiaroscuro"
+   ],
+   "images": []
+  },
+  {
+   "id": "rembrandt-lighting",
+   "name": "Rembrandt lighting",
+   "category": "lighting",
+   "description": "A key light placed about 45 degrees to the side and above the face so a small triangle of light shows on the shadowed cheek.",
+   "when_to_use": "Portraits and close-ups when you want a classic, moody and sculpted face.",
+   "effect": "Serious, painterly and dignified; gives depth and mystery to a face.",
+   "tags": [
+    "portrait",
+    "key-light",
+    "triangle"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/film-lighting-techniques/",
+    "https://en.wikipedia.org/wiki/Rembrandt_lighting"
+   ],
+   "images": []
+  },
+  {
+   "id": "silhouette",
+   "name": "Silhouette",
+   "category": "lighting",
+   "description": "Light the background and keep the subject unlit or backlit so the subject reads as a flat dark shape.",
+   "when_to_use": "Mysterious introductions, striking shapes against sunsets or windows, and hiding identity or emotion.",
+   "effect": "Anonymity, mystery, menace or iconic stillness; the shape speaks while detail is withheld.",
+   "tags": [
+    "backlit",
+    "shape",
+    "mystery"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/film-lighting-terms/",
+    "https://en.wikipedia.org/wiki/Silhouette"
+   ],
+   "images": []
+  },
+  {
+   "id": "backlight-rim-light",
+   "name": "Backlight and rim light",
+   "category": "lighting",
+   "description": "A light behind the subject, aimed toward the camera, which traces a bright edge on hair and shoulders and separates them from the background.",
+   "when_to_use": "To lift subjects from dark backgrounds, add glow to hair or smoke, or give a character a heroic or ethereal outline.",
+   "effect": "Separation and glow; can read as angelic, heroic, dreamy or eerie.",
+   "tags": [
+    "rim",
+    "separation",
+    "back"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/film-lighting-terms/",
+    "https://www.studiobinder.com/blog/film-lighting/",
+    "https://en.wikipedia.org/wiki/Three-point_lighting"
+   ],
+   "images": []
+  },
+  {
+   "id": "practical-lighting",
+   "name": "Practical lighting",
+   "category": "lighting",
+   "description": "Use lights that appear in the shot, such as lamps, candles, neon signs and screens, as the actual sources or to carry the look.",
+   "when_to_use": "Realistic interiors and night scenes, or when you want the visible fixtures to define the mood.",
+   "effect": "Authenticity and intimacy; the world seems to be lit by itself, with pools of warm or coloured light.",
+   "tags": [
+    "practicals",
+    "naturalistic",
+    "sets"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/lighting/",
+    "https://www.studiobinder.com/blog/film-lighting-terms/"
+   ],
+   "images": []
+  },
+  {
+   "id": "motivated-lighting",
+   "name": "Motivated lighting",
+   "category": "lighting",
+   "description": "Lighting that imitates a believable in-world source, such as a window or lamp, even when the real lights are elsewhere.",
+   "when_to_use": "Whenever the audience should accept the light as natural while you shape it for the shot.",
+   "effect": "Naturalism; the light feels like it belongs to the place and time, not the film crew.",
+   "tags": [
+    "naturalistic",
+    "source",
+    "realism"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/lighting/",
+    "https://www.studiobinder.com/blog/film-lighting-terms/"
+   ],
+   "images": []
+  },
+  {
+   "id": "hard-vs-soft-light",
+   "name": "Hard light vs soft light",
+   "category": "lighting",
+   "description": "Hard light comes from a small or distant source and makes crisp shadows; soft light is diffused through a large source and wraps gently with soft shadow edges.",
+   "when_to_use": "Hard for drama, texture and harsh conditions; soft for flattering faces, tenderness and gentle mood.",
+   "effect": "Hard feels stark, tense or gritty; soft feels gentle, romantic or flattering.",
+   "tags": [
+    "quality",
+    "shadows",
+    "diffusion"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/what-is-hard-light-photography/",
+    "https://www.studiobinder.com/blog/film-lighting/",
+    "https://en.wikipedia.org/wiki/Diffuse_reflection"
+   ],
+   "images": []
+  },
+  {
+   "id": "golden-hour",
+   "name": "Golden hour",
+   "category": "lighting",
+   "description": "Shoot shortly after sunrise or before sunset when the sun is low and its light is warm, directional and softer.",
+   "when_to_use": "Romantic, nostalgic or hopeful exteriors; a limited time window so plan the schedule around it.",
+   "effect": "Warmth, nostalgia, romance, reflection or an ending; long shadows and a glowing tone.",
+   "tags": [
+    "natural-light",
+    "warm",
+    "exterior"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Golden_hour_(photography)",
+    "https://www.studiobinder.com/camera-shots/lighting/"
+   ],
+   "images": []
+  },
+  {
+   "id": "colour-contrast-teal-orange",
+   "name": "Colour contrast (teal and orange)",
+   "category": "lighting",
+   "description": "Push warm skin tones towards orange and cool the surroundings to teal, using complementary colours so each stands out.",
+   "when_to_use": "For blockbuster-style grading or any scene where a character must pop against a cool environment.",
+   "effect": "Visual punch and separation; warm vs cool can signal human warmth against a cold world.",
+   "tags": [
+    "colour",
+    "grading",
+    "complementary"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Orange_and_teal",
+    "https://en.wikipedia.org/wiki/Complementary_colors",
+    "https://www.studiobinder.com/camera-shots/lighting/"
+   ],
+   "images": []
+  }
+ ]
+}

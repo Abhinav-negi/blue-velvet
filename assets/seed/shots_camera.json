@@ -1,0 +1,802 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "extreme-close-up",
+   "name": "Extreme close-up",
+   "category": "shot_size",
+   "description": "Frames a tiny part of the subject, such as the eyes, lips or a small object, filling the whole frame.",
+   "when_to_use": "Moments of intense emotion, a crucial clue, or a detail the audience must not miss.",
+   "effect": "Intimacy, tension and heightened intensity; can feel intrusive or abstract.",
+   "tags": [
+    "detail",
+    "emotion",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://en.wikipedia.org/wiki/Close-up"
+   ],
+   "images": []
+  },
+  {
+   "id": "close-up",
+   "name": "Close-up",
+   "category": "shot_size",
+   "description": "Fills the frame with a face or a single object, cutting off everything below the chin or shoulders.",
+   "when_to_use": "Reactions, emotional beats, key decisions and revealing what a character thinks or feels.",
+   "effect": "Closeness and empathy; the viewer reads the character's inner state.",
+   "tags": [
+    "face",
+    "emotion",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://en.wikipedia.org/wiki/Close-up"
+   ],
+   "images": []
+  },
+  {
+   "id": "medium-close-up",
+   "name": "Medium close-up",
+   "category": "shot_size",
+   "description": "Frames a person from roughly the chest or shoulders up, a step looser than a full close-up.",
+   "when_to_use": "Conversations and interviews where you want intimacy without the intensity of a tight close-up.",
+   "effect": "Comfortable closeness; keeps attention on expression while showing a little posture.",
+   "tags": [
+    "dialogue",
+    "face",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "medium-shot",
+   "name": "Medium shot",
+   "category": "shot_size",
+   "description": "Shows a person from about the waist up, balancing face, gesture and a bit of surroundings.",
+   "when_to_use": "General dialogue and action coverage; the everyday workhorse framing.",
+   "effect": "Neutral, natural and conversational; feels like standing near someone.",
+   "tags": [
+    "dialogue",
+    "coverage",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://en.wikipedia.org/wiki/Medium_shot"
+   ],
+   "images": []
+  },
+  {
+   "id": "cowboy-shot",
+   "name": "Cowboy / American shot",
+   "category": "shot_size",
+   "description": "Frames a person from about mid-thigh up, leaving room to see a holstered gun or hands at the hips.",
+   "when_to_use": "Standoffs, confrontations and introductions of a confident or dangerous character.",
+   "effect": "Posture and readiness to act; a sense of threat or swagger.",
+   "tags": [
+    "western",
+    "confrontation",
+    "size"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cowboy_shot",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "medium-long-shot",
+   "name": "Medium long shot",
+   "category": "shot_size",
+   "description": "Frames the subject from about the knees up, showing more body and some environment.",
+   "when_to_use": "Walking-and-talking, moving action, and showing a character in their surroundings.",
+   "effect": "Moderate distance with presence; body language begins to dominate over facial detail.",
+   "tags": [
+    "action",
+    "body",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "full-shot",
+   "name": "Full shot",
+   "category": "shot_size",
+   "description": "Shows a person head to toe with little space above and below.",
+   "when_to_use": "Introducing a character's costume and posture, dance, fights and physical action.",
+   "effect": "Presence and physicality; the character is whole but still the focus.",
+   "tags": [
+    "costume",
+    "action",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://en.wikipedia.org/wiki/Long_shot"
+   ],
+   "images": []
+  },
+  {
+   "id": "wide-shot",
+   "name": "Wide shot",
+   "category": "shot_size",
+   "description": "Shows the subject small within a larger setting so location and relationships are clear.",
+   "when_to_use": "Orienting the audience, group staging and showing how a character relates to a place.",
+   "effect": "Context, scale and sometimes isolation or vulnerability.",
+   "tags": [
+    "location",
+    "context",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://en.wikipedia.org/wiki/Long_shot"
+   ],
+   "images": []
+  },
+  {
+   "id": "extreme-wide-shot",
+   "name": "Extreme wide shot",
+   "category": "shot_size",
+   "description": "The subject is tiny or barely visible against a vast landscape or space.",
+   "when_to_use": "Epic scenery, openings and endings, and emphasising how small a person is.",
+   "effect": "Awe, loneliness or insignificance; strong sense of place.",
+   "tags": [
+    "landscape",
+    "epic",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "establishing-shot",
+   "name": "Establishing shot",
+   "category": "shot_size",
+   "description": "A wide framing, often at the start of a scene, that shows where and when the action takes place.",
+   "when_to_use": "Opening a scene or sequence, and moving to a new location or time.",
+   "effect": "Orients the viewer and sets mood before characters take over.",
+   "tags": [
+    "location",
+    "scene-opening",
+    "size"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Establishing_shot",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "two-shot",
+   "name": "Two-shot",
+   "category": "shot_size",
+   "description": "Frames two people together in one composition.",
+   "when_to_use": "Showing a relationship, a shared reaction or a conversation without cutting.",
+   "effect": "Connection or distance between characters, depending on how they are placed.",
+   "tags": [
+    "dialogue",
+    "relationship",
+    "size"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Two_shot",
+    "https://www.studiobinder.com/blog/two-shot-camera-angle-movement/"
+   ],
+   "images": []
+  },
+  {
+   "id": "group-shot",
+   "name": "Group shot",
+   "category": "shot_size",
+   "description": "Frames three or more people in one composition.",
+   "when_to_use": "Ensemble scenes, meetings, family and team dynamics.",
+   "effect": "Group dynamics, hierarchy and belonging or exclusion.",
+   "tags": [
+    "ensemble",
+    "relationship",
+    "size"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/",
+    "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/"
+   ],
+   "images": []
+  },
+  {
+   "id": "over-the-shoulder",
+   "name": "Over-the-shoulder",
+   "category": "shot_size",
+   "description": "Camera sits behind one person, with their shoulder and head in the foreground, and frames the other person.",
+   "when_to_use": "Dialogue, usually alternating between the two speakers.",
+   "effect": "Connection and shared point of view; places the viewer in the conversation.",
+   "tags": [
+    "dialogue",
+    "coverage",
+    "size"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Over_the_shoulder_shot",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "insert-shot",
+   "name": "Insert shot",
+   "category": "shot_size",
+   "description": "A close view of an object or detail that matters to the scene, such as a letter, phone or hand.",
+   "when_to_use": "Showing information, props and actions the audience must read.",
+   "effect": "Emphasis and clarity; directs attention and can build suspense.",
+   "tags": [
+    "detail",
+    "prop",
+    "size"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Insert_(filmmaking)",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "master-shot",
+   "name": "Master shot",
+   "category": "shot_size",
+   "description": "A single, usually wide take that covers the whole scene's action from start to end.",
+   "when_to_use": "Coverage plan baseline; the shot the editor can fall back on for orientation.",
+   "effect": "Clear geography and continuity of space and time.",
+   "tags": [
+    "coverage",
+    "scene",
+    "size"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Master_shot",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "eye-level",
+   "name": "Eye level",
+   "category": "angle",
+   "description": "Camera is placed at the height of the subject's eyes, pointing straight ahead.",
+   "when_to_use": "Default for natural dialogue and scenes that should feel neutral.",
+   "effect": "Neutral, honest and relatable; the viewer sits on equal footing with the character.",
+   "tags": [
+    "neutral",
+    "default"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://en.wikipedia.org/wiki/Camera_angle"
+   ],
+   "images": []
+  },
+  {
+   "id": "high-angle",
+   "name": "High angle",
+   "category": "angle",
+   "description": "Camera looks down on the subject from above eye level.",
+   "when_to_use": "Making a character look small, weak or trapped, or showing the layout of a scene.",
+   "effect": "Vulnerability, diminished status or being watched.",
+   "tags": [
+    "power",
+    "vulnerability"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://en.wikipedia.org/wiki/Camera_angle"
+   ],
+   "images": []
+  },
+  {
+   "id": "low-angle",
+   "name": "Low angle",
+   "category": "angle",
+   "description": "Camera sits below the subject and looks up.",
+   "when_to_use": "Heroes, villains, authority figures and anything that should feel imposing.",
+   "effect": "Power, dominance, threat or heroism.",
+   "tags": [
+    "power",
+    "heroic"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://en.wikipedia.org/wiki/Camera_angle"
+   ],
+   "images": []
+  },
+  {
+   "id": "birds-eye-view",
+   "name": "Bird's-eye view / overhead",
+   "category": "angle",
+   "description": "Camera points straight down from directly above the scene.",
+   "when_to_use": "Showing patterns and geography, choreography, or detaching from the action.",
+   "effect": "Detachment, fate and a god-like or map-like view.",
+   "tags": [
+    "overhead",
+    "geography"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://en.wikipedia.org/wiki/Aerial_shot"
+   ],
+   "images": []
+  },
+  {
+   "id": "worms-eye-view",
+   "name": "Worm's-eye view",
+   "category": "angle",
+   "description": "Camera is at ground level or lower and points sharply up.",
+   "when_to_use": "Making towering structures or people loom, or dramatic stylised moments.",
+   "effect": "Extreme scale, awe or menace; disorienting.",
+   "tags": [
+    "ground",
+    "dramatic"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://en.wikipedia.org/wiki/Camera_angle"
+   ],
+   "images": []
+  },
+  {
+   "id": "dutch-angle",
+   "name": "Dutch angle / canted frame",
+   "category": "angle",
+   "description": "Camera is tilted sideways so the horizon is not level.",
+   "when_to_use": "Disorientation, madness, danger, or a world that has gone wrong.",
+   "effect": "Unease, instability and psychological tension.",
+   "tags": [
+    "tension",
+    "unease"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Dutch_angle",
+    "https://www.studiobinder.com/camera-shots/camera-angles/"
+   ],
+   "images": []
+  },
+  {
+   "id": "shoulder-level",
+   "name": "Shoulder level",
+   "category": "angle",
+   "description": "Camera is at about shoulder height, a little lower than eye level.",
+   "when_to_use": "Casual, observational coverage and walking scenes.",
+   "effect": "Slightly informal and grounded; still reads as natural.",
+   "tags": [
+    "neutral",
+    "casual"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "hip-level",
+   "name": "Hip level",
+   "category": "angle",
+   "description": "Camera sits at about waist height, aimed forward or slightly up.",
+   "when_to_use": "Showing hands, gestures or a holstered weapon, and giving a grounded look.",
+   "effect": "Understated power and attention to physical action.",
+   "tags": [
+    "action",
+    "hands"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "knee-level",
+   "name": "Knee level",
+   "category": "angle",
+   "description": "Camera is placed near knee height, looking at the subject from low down.",
+   "when_to_use": "Emphasising movement of legs and feet, or children's perspective.",
+   "effect": "Tension from a slightly low viewpoint; adds a sense of motion.",
+   "tags": [
+    "motion",
+    "low"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "ground-level",
+   "name": "Ground level",
+   "category": "angle",
+   "description": "Camera rests on the ground, level with the floor.",
+   "when_to_use": "Feet, vehicles and tracks passing, or a tiny creature's view.",
+   "effect": "Immersion in the environment and low-down tension.",
+   "tags": [
+    "ground",
+    "environment"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "pov-shot",
+   "name": "Point-of-view (POV) shot",
+   "category": "angle",
+   "description": "The camera shows exactly what a character sees, as if through their eyes.",
+   "when_to_use": "Discovery, fear, subjective experience and inviting the audience to identify.",
+   "effect": "Identification and immersion; sharing the character's perception.",
+   "tags": [
+    "subjective",
+    "immersion"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Point-of-view_shot",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "aerial-view",
+   "name": "Aerial view",
+   "category": "angle",
+   "description": "Camera is high above the ground, often from a drone, helicopter or plane.",
+   "when_to_use": "Vast landscapes, chases and establishing location.",
+   "effect": "Scale, freedom and an all-seeing perspective.",
+   "tags": [
+    "aerial",
+    "landscape"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aerial_shot",
+    "https://www.studiobinder.com/blog/aerial-shot-camera-movement-angle/"
+   ],
+   "images": []
+  },
+  {
+   "id": "profile-angle",
+   "name": "Profile angle",
+   "category": "angle",
+   "description": "Camera sees the subject from the side, so the face is in profile.",
+   "when_to_use": "Showing contemplation, interaction between two facing characters, or silhouette-like drama.",
+   "effect": "Detachment, reflection or an observational feel.",
+   "tags": [
+    "side",
+    "observational"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-angles/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "static-shot",
+   "name": "Static shot",
+   "category": "movement",
+   "description": "The camera is locked off and does not move; action moves within the frame.",
+   "when_to_use": "Calm scenes, precise compositions and letting performance play out.",
+   "effect": "Stability, observation and tension through stillness.",
+   "tags": [
+    "still",
+    "locked-off"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-movements/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "pan",
+   "name": "Pan",
+   "category": "movement",
+   "description": "Camera rotates horizontally left or right from a fixed position.",
+   "when_to_use": "Following a subject, surveying a space or linking two things in the scene.",
+   "effect": "Reveals space gradually; connects subjects and guides attention.",
+   "tags": [
+    "rotation",
+    "reveal"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Panning_(camera)",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "tilt",
+   "name": "Tilt",
+   "category": "movement",
+   "description": "Camera rotates vertically up or down from a fixed position.",
+   "when_to_use": "Revealing the height of a person or building, or following vertical movement.",
+   "effect": "Reveals scale and creates a sense of awe or discovery.",
+   "tags": [
+    "rotation",
+    "reveal"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tilt_(cinematography)",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "whip-pan",
+   "name": "Whip pan",
+   "category": "movement",
+   "description": "A very fast pan that blurs the image between two points.",
+   "when_to_use": "Sudden attention shifts, transitions and comic or frantic energy.",
+   "effect": "Urgency, surprise and kinetic energy.",
+   "tags": [
+    "fast",
+    "transition"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Whip_pan",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "dolly-in",
+   "name": "Dolly in / push in",
+   "category": "movement",
+   "description": "Camera physically moves forward toward the subject on a dolly or similar support.",
+   "when_to_use": "Building tension, emphasising a realisation or drawing the audience into a character.",
+   "effect": "Growing intimacy, focus and rising emotion.",
+   "tags": [
+    "dolly",
+    "intensity"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Camera_dolly",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "dolly-out",
+   "name": "Dolly out / pull out",
+   "category": "movement",
+   "description": "Camera moves backward away from the subject.",
+   "when_to_use": "Revealing context, ending a scene, or showing isolation.",
+   "effect": "Distance, release, revelation or loneliness.",
+   "tags": [
+    "dolly",
+    "reveal"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Camera_dolly",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "truck",
+   "name": "Truck",
+   "category": "movement",
+   "description": "Camera moves sideways, left or right, parallel to the subject.",
+   "when_to_use": "Following walking characters or moving along a row of objects or people.",
+   "effect": "Smooth lateral flow and a sense of accompanying the character.",
+   "tags": [
+    "lateral",
+    "follow"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-movements/",
+    "https://en.wikipedia.org/wiki/Camera_dolly"
+   ],
+   "images": []
+  },
+  {
+   "id": "pedestal",
+   "name": "Pedestal",
+   "category": "movement",
+   "description": "Camera moves straight up or down while staying level and pointed the same way.",
+   "when_to_use": "Revealing something above or below, or shifting height without tilting.",
+   "effect": "Subtle reveal and change of perspective without changing the view direction.",
+   "tags": [
+    "vertical",
+    "reveal"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-movements/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "crane-jib",
+   "name": "Crane / jib shot",
+   "category": "movement",
+   "description": "Camera is mounted on an arm that swings and raises or lowers it through space.",
+   "when_to_use": "Grand openings and closings, rising away from a scene, or sweeping reveals.",
+   "effect": "Scale, grandeur and a sense of looking over the world.",
+   "tags": [
+    "crane",
+    "epic"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Crane_shot",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "handheld",
+   "name": "Handheld",
+   "category": "movement",
+   "description": "Camera is held by the operator without a stabiliser, producing natural shake.",
+   "when_to_use": "Documentary realism, chaotic action and raw, immediate scenes.",
+   "effect": "Urgency, realism and anxiety; viewer feels present in the scene.",
+   "tags": [
+    "realism",
+    "raw"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Handheld_camera",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "steadicam-gimbal",
+   "name": "Steadicam / gimbal",
+   "category": "movement",
+   "description": "A stabilised rig lets the operator move smoothly through a space with a floating look.",
+   "when_to_use": "Long walking takes, following characters through corridors and complex spaces.",
+   "effect": "Fluid, immersive and dreamlike motion that lets viewers glide with the action.",
+   "tags": [
+    "stabilised",
+    "follow"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Steadicam",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "zoom",
+   "name": "Zoom",
+   "category": "movement",
+   "description": "Lens focal length changes to make the subject appear closer or farther without moving the camera.",
+   "when_to_use": "Quick emphasis, surveillance looks, retro styles and documentary feel.",
+   "effect": "Sudden attention or voyeurism; flatter than a dolly move.",
+   "tags": [
+    "lens",
+    "emphasis"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Zoom_lens",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "dolly-zoom",
+   "name": "Dolly zoom / vertigo effect",
+   "category": "movement",
+   "description": "Camera dollies one way while the lens zooms the opposite way, so the subject stays the same size but the background stretches or compresses.",
+   "when_to_use": "Moments of shock, realisation, dread or a world warping around a character.",
+   "effect": "Disorientation and psychological vertigo.",
+   "tags": [
+    "effect",
+    "disorientation"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Dolly_zoom",
+    "https://www.studiobinder.com/blog/different-types-of-camera-movements-in-film/"
+   ],
+   "images": []
+  },
+  {
+   "id": "arc-shot",
+   "name": "Arc shot",
+   "category": "movement",
+   "description": "Camera circles around the subject along a curved path.",
+   "when_to_use": "Dramatic reveals, romantic moments and showing a character from many sides.",
+   "effect": "Energy, intensity and importance; the subject feels the centre of the world.",
+   "tags": [
+    "circular",
+    "dramatic"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-movements/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "tracking-shot",
+   "name": "Tracking shot",
+   "category": "movement",
+   "description": "Camera travels alongside, ahead of or behind a moving subject on tracks, dolly or rig.",
+   "when_to_use": "Following a character through a space, chases and long takes.",
+   "effect": "Momentum and immersion; keeps the viewer with the subject.",
+   "tags": [
+    "follow",
+    "motion"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tracking_shot",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "aerial-drone",
+   "name": "Aerial / drone move",
+   "category": "movement",
+   "description": "Camera flies through the air on a drone, helicopter or similar platform.",
+   "when_to_use": "Sweeping landscapes, high-speed chases and large-scale reveals.",
+   "effect": "Freedom, scale and spectacle.",
+   "tags": [
+    "aerial",
+    "epic"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aerial_shot",
+    "https://www.studiobinder.com/camera-shots/camera-movements/"
+   ],
+   "images": []
+  },
+  {
+   "id": "reveal-move",
+   "name": "Reveal move (push-through)",
+   "category": "movement",
+   "description": "A camera move that passes an obstacle or turns a corner to uncover a new subject.",
+   "when_to_use": "Surprise reveals and spatial transitions within one take.",
+   "effect": "Surprise and a sense of discovery.",
+   "tags": [
+    "reveal",
+    "single-take"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-movements/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  },
+  {
+   "id": "snorricam",
+   "name": "Snorricam",
+   "category": "movement",
+   "description": "Camera is strapped to the actor's body, so the face stays fixed while the world moves.",
+   "when_to_use": "Intoxication, panic or psychological breakdown.",
+   "effect": "Disorientation seen from inside the character's body.",
+   "tags": [
+    "subjective",
+    "effect"
+   ],
+   "sources": [
+    "https://www.studiobinder.com/camera-shots/camera-movements/",
+    "https://www.studiobinder.com/camera-shots/"
+   ],
+   "images": []
+  }
+ ]
+}

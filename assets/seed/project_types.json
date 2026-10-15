@@ -1,0 +1,129 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "short-film",
+   "name": "Short film",
+   "length_min_seconds": 120,
+   "length_max_seconds": 2400,
+   "default_template": "five-point",
+   "writing_section": "screenplay",
+   "default_aspect_ratio": "16-9",
+   "has_storyboard": true,
+   "characters": "yes",
+   "extra_fields": [],
+   "sources": [
+    "https://www.oscars.org/sites/oscars/files/96_live_action_short_rules.pdf",
+    "https://www.sundance.org/wp-content/uploads/2025/04/2026_Submissions_FAQ.pdf"
+   ],
+   "template_options": [
+    "five-point",
+    "three-act",
+    "save-the-cat",
+    "kishotenketsu"
+   ]
+  },
+  {
+   "id": "long-film",
+   "name": "Long film",
+   "length_min_seconds": 3000,
+   "default_template": "eight-sequence",
+   "writing_section": "screenplay",
+   "default_aspect_ratio": "2-39-1",
+   "has_storyboard": true,
+   "characters": "yes",
+   "extra_fields": [],
+   "sources": [
+    "https://www.oscars.org/sites/oscars/files/2024-04/97_general_entry_rules.pdf",
+    "https://oscars.org/sites/oscars/files/2025-04/98th_aa_complete_rules.pdf",
+    "https://www.sundance.org/wp-content/uploads/2025/04/2026_Submissions_FAQ.pdf",
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ],
+   "template_options": [
+    "eight-sequence",
+    "three-act",
+    "save-the-cat",
+    "heros-journey"
+   ]
+  },
+  {
+   "id": "youtube-video",
+   "name": "YouTube video",
+   "length_min_seconds": 300,
+   "length_max_seconds": 1800,
+   "default_template": "youtube-hook-segments-cta",
+   "writing_section": "script",
+   "default_aspect_ratio": "16-9",
+   "has_storyboard": true,
+   "characters": "optional",
+   "extra_fields": [
+    {
+     "id": "a-roll",
+     "name": "A-roll",
+     "description": "Per segment: the main footage, usually the presenter speaking to camera."
+    },
+    {
+     "id": "b-roll",
+     "name": "B-roll",
+     "description": "Per segment: cutaway footage, screen captures or graphics that cover the A-roll."
+    },
+    {
+     "id": "title-ideas",
+     "name": "Title ideas",
+     "description": "Candidate video titles to compare before publishing."
+    },
+    {
+     "id": "thumbnail-ideas",
+     "name": "Thumbnail ideas",
+     "description": "Candidate thumbnail concepts: image, face or object, and short text."
+    }
+   ],
+   "sources": [
+    "https://support.google.com/youtube/answer/10059070",
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ],
+   "template_options": [
+    "youtube-hook-segments-cta",
+    "youtube-story-arc",
+    "youtube-listicle"
+   ]
+  },
+  {
+   "id": "short",
+   "name": "Short",
+   "length_min_seconds": 15,
+   "length_max_seconds": 180,
+   "default_template": "shorts-hook-build-payoff",
+   "writing_section": "script",
+   "default_aspect_ratio": "9-16",
+   "has_storyboard": true,
+   "characters": "optional",
+   "extra_fields": [
+    {
+     "id": "hook-text",
+     "name": "Hook text",
+     "description": "What is said or shown in the first ~2 seconds to stop the scroll."
+    },
+    {
+     "id": "caption",
+     "name": "Caption",
+     "description": "Post caption or description, including any hashtags."
+    },
+    {
+     "id": "on-screen-text",
+     "name": "On-screen text",
+     "description": "Text overlays, with when each one appears."
+    }
+   ],
+   "sources": [
+    "https://support.google.com/youtube/answer/10059070",
+    "https://en.wikipedia.org/wiki/Aspect_ratio_(image)"
+   ],
+   "template_options": [
+    "shorts-hook-build-payoff",
+    "shorts-loop",
+    "shorts-problem-solution"
+   ]
+  }
+ ]
+}
