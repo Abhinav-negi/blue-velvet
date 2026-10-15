@@ -82,6 +82,26 @@ class AiClient {
     return _parse(res.body);
   }
 
+  /// Plain GET of a source page or public API (no Gemini key is sent).
+  /// Throws [AiHttpError] / [AiNetworkError]; never echoes the exception.
+  Future<String> getText(Uri uri,
+      {Map<String, String> headers = const {}}) async {
+    http.Response res;
+    try {
+      res = await _client.get(uri, headers: {
+        'user-agent': 'LynchApp/1.0 (personal, non-commercial story app)',
+        ...headers,
+      }).timeout(const Duration(seconds: 30));
+    } on Exception {
+      throw const AiNetworkError('Network request failed');
+    }
+    if (res.statusCode != 200) {
+      throw AiHttpError(
+          res.statusCode, 'Source returned HTTP ${res.statusCode}');
+    }
+    return res.body;
+  }
+
   Future<http.Response> _send(String key, String body) async {
     final uri = Uri.parse('$_endpoint/$geminiModel:generateContent');
     for (var attempt = 1;; attempt++) {
