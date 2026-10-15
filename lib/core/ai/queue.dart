@@ -43,6 +43,7 @@ class AiQueueRunner {
   Timer? _timer;
   bool _isOnline = false;
   Future<void>? _draining;
+  bool _again = false;
 
   /// Starts listening. Rows left `processing` by a killed app go back to waiting.
   Future<void> start() async {
@@ -61,10 +62,22 @@ class AiQueueRunner {
     await _draining;
   }
 
-  /// Runs every due job once. Concurrent calls share one pass.
-  Future<void> drain() => _draining ??= _drain().whenComplete(() {
-        _draining = null;
-      });
+  /// Runs every due job. A call during a pass triggers one more pass, so a
+  /// job enqueued mid-drain is not left waiting for the next timer.
+  Future<void> drain() {
+    if (_draining != null) {
+      _again = true;
+      return _draining!;
+    }
+    return _draining = _drainLoop().whenComplete(() => _draining = null);
+  }
+
+  Future<void> _drainLoop() async {
+    do {
+      _again = false;
+      await _drain();
+    } while (_again);
+  }
 
   Future<void> _drain() async {
     if (!_isOnline) return;
