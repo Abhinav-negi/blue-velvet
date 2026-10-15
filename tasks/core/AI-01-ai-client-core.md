@@ -23,4 +23,10 @@ Must not: lib/features/ · lib/core/data/db.dart · pubspec.yaml
 No other file in the app may import `package:http`. Model ID comes from one constant.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- API: `AiClient.generateJson(prompt, schema, extraParts, gate, permissions)` returns the decoded JSON object. `gate` + project `ai_permissions` map -> `AiPermissionDenied` before any I/O (missing key = false). Ungated ops omit `gate`.
+- Key: injected `readStoredKey` (default FlutterSecureStorage key `gemini_api_key`), then `--dart-define GEMINI_API_KEY`, else `AiNoKey`. Key only in `x-goog-api-key` header; error messages are fixed strings (network exceptions are not echoed).
+- Retry 429/503, 4 tries, delay = `retryStep` (5 s) x attempt; tests use Duration.zero. Timeout 5 min per request. Timeouts/socket errors -> `AiNetworkError`, not retried.
+- Model constant `geminiModel = 'gemini-3.5-flash'` in ai_client.dart; 404 message mentions it.
+- Gotcha: private named param `this._dartDefineKey` is used (Dart 3.12 private named params), so the public arg name is `dartDefineKey`.
+- Results: flutter analyze -> No issues found; flutter test -> 28 pass (8 new in test/core/ai/client_test.dart); check_boundaries exit 0; `grep -rln package:http lib` -> only ai_client.dart.
+- Left: no thinking-level config, no Files API (>20 MB audio); add in AI-04 if needed.
