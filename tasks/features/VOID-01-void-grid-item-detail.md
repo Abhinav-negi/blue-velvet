@@ -24,4 +24,8 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Decisions: masonry = two Columns, each card to the shorter column by summary length (proxy, not measured). Route `void-item` = /void/:id (child of `void`). Detail splits summary with the AI_CONTRACT 2.1 splitter; tapping sentence i lights spans with sentence_index i via shared TranscriptHighlight (sentence turns teal). Structure view is generic (dialogue lines, lyric sections, else non-empty fields). Own Drift providers in lib/features/void/void_providers.dart.
+- Gotchas: drift streams in testWidgets need `t.runAsync` for seeding/waiting and an unmount + pump(Duration.zero) at test end (else pending-timer failure/hang). Detail golden's back arrow shows a box (MaterialIcons font not loaded in tests); test artefact only.
+- Results: flutter analyze: No issues; flutter test: all 36 pass; check_boundaries exit 0; Color(0x grep: empty.
+- Screenshots: test/features/void/goldens/grid.png, detail.png (viewed, correct).
+- Left: filters/search, long-press move, edit, type change (other tasks).
