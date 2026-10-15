@@ -17,7 +17,14 @@
     "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
     "https://en.wikipedia.org/wiki/Close-up"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "extreme-close-up.jpg",
+     "license": "CC0",
+     "author": "Tomas Fernando Camargo",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Extreme_close-up_shot_of_the_eye_of_Cuban_news_anchor_Armando_Ramirez_Diaz.jpg"
+    }
+   ]
   },
   {
    "id": "close-up",
@@ -35,7 +42,14 @@
     "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
     "https://en.wikipedia.org/wiki/Close-up"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "close-up.jpg",
+     "license": "CC-BY",
+     "author": "Pedro Ribeiro Simões from Lisboa, Portugal",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Girl_close-up_face_portrait_(49749906893).jpg"
+    }
+   ]
   },
   {
    "id": "medium-close-up",
@@ -125,7 +139,14 @@
     "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/",
     "https://en.wikipedia.org/wiki/Long_shot"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "full-shot.jpg",
+     "license": "CC-BY",
+     "author": "Collins, Tudor Washington, 1898-1970, photographer",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Full_body_portrait_of_a_woman_standing_in_front_of_a_tree_with_light_coloured_flowers_(AM_76050-1).jpg"
+    }
+   ]
   },
   {
    "id": "wide-shot",
@@ -197,7 +218,14 @@
     "https://en.wikipedia.org/wiki/Two_shot",
     "https://www.studiobinder.com/blog/two-shot-camera-angle-movement/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "two-shot.jpg",
+     "license": "PD",
+     "author": "John Collier",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Two_women_in_conversation_on_High_Street_by_Holyoke_City_Hall_(1941).jpg"
+    }
+   ]
   },
   {
    "id": "group-shot",
@@ -215,7 +243,14 @@
     "https://www.studiobinder.com/camera-shots/",
     "https://www.studiobinder.com/blog/types-of-camera-shots-sizes-in-film/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "group-shot.jpg",
+     "license": "CC-BY-SA",
+     "author": "Fquasie",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Group_photograph.jpg"
+    }
+   ]
   },
   {
    "id": "over-the-shoulder",
@@ -320,7 +355,14 @@
     "https://www.studiobinder.com/camera-shots/camera-angles/",
     "https://en.wikipedia.org/wiki/Camera_angle"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "low-angle.jpg",
+     "license": "CC-BY",
+     "author": "PinchyCC",
+     "source_url": "https://commons.wikimedia.org/wiki/File:U.S._Bank_Centre_looking_up_from_outside.jpg"
+    }
+   ]
   },
   {
    "id": "birds-eye-view",
@@ -337,7 +379,14 @@
     "https://www.studiobinder.com/camera-shots/camera-angles/",
     "https://en.wikipedia.org/wiki/Aerial_shot"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "birds-eye-view.jpg",
+     "license": "CC-BY-SA",
+     "author": "Benlisquare",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Overhead_drone_shot_of_Showa-dori_Avenue_at_night.jpg"
+    }
+   ]
   },
   {
    "id": "worms-eye-view",
@@ -354,7 +403,14 @@
     "https://www.studiobinder.com/camera-shots/camera-angles/",
     "https://en.wikipedia.org/wiki/Camera_angle"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "worms-eye-view.jpg",
+     "license": "CC-BY-SA",
+     "author": "The wub",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Looking_up_from_Lime_Street,_City_of_London.jpg"
+    }
+   ]
   },
   {
    "id": "dutch-angle",
@@ -473,7 +529,14 @@
     "https://en.wikipedia.org/wiki/Aerial_shot",
     "https://www.studiobinder.com/blog/aerial-shot-camera-movement-angle/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "aerial-view.jpg",
+     "license": "CC-BY-SA",
+     "author": "Syrio",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Cavedine_by_drone_01.jpg"
+    }
+   ]
   },
   {
    "id": "profile-angle",
@@ -490,7 +553,14 @@
     "https://www.studiobinder.com/camera-shots/camera-angles/",
     "https://www.studiobinder.com/camera-shots/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "profile-angle.jpg",
+     "license": "CC-BY-SA",
+     "author": "Erik Giusti",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Ferras_Side_Profile_Shot.png"
+    }
+   ]
   },
   {
    "id": "static-shot",
@@ -524,7 +594,14 @@
     "https://en.wikipedia.org/wiki/Panning_(camera)",
     "https://www.studiobinder.com/camera-shots/camera-movements/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "pan.png",
+     "license": "CC-BY-SA",
+     "author": "Nathan W. Fullerton",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Camera_Movement_-_Pan.png"
+    }
+   ]
   },
   {
    "id": "tilt",
@@ -541,7 +618,14 @@
     "https://en.wikipedia.org/wiki/Tilt_(cinematography)",
     "https://www.studiobinder.com/camera-shots/camera-movements/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "tilt.png",
+     "license": "CC-BY-SA",
+     "author": "Nathan W. Fullerton",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Camera_Movement_-_Tilt.png"
+    }
+   ]
   },
   {
    "id": "whip-pan",
@@ -575,7 +659,14 @@
     "https://en.wikipedia.org/wiki/Camera_dolly",
     "https://www.studiobinder.com/camera-shots/camera-movements/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "dolly-in.png",
+     "license": "CC-BY-SA",
+     "author": "Nathan W. Fullerton",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Camera_Movement_-_Dolly.png"
+    }
+   ]
   },
   {
    "id": "dolly-out",
@@ -609,7 +700,14 @@
     "https://www.studiobinder.com/camera-shots/camera-movements/",
     "https://en.wikipedia.org/wiki/Camera_dolly"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "truck.png",
+     "license": "CC-BY-SA",
+     "author": "Nathan W. Fullerton",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Camera_Movement_-_Truck.png"
+    }
+   ]
   },
   {
    "id": "pedestal",
@@ -626,7 +724,14 @@
     "https://www.studiobinder.com/camera-shots/camera-movements/",
     "https://www.studiobinder.com/camera-shots/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "pedestal.png",
+     "license": "CC-BY-SA",
+     "author": "Nathan W. Fullerton",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Camera_Movement_-_Pedestal_-_Elevate.png"
+    }
+   ]
   },
   {
    "id": "crane-jib",
@@ -643,7 +748,14 @@
     "https://en.wikipedia.org/wiki/Crane_shot",
     "https://www.studiobinder.com/camera-shots/camera-movements/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "crane-jib.jpg",
+     "license": "CC-BY-SA",
+     "author": "Manuguf",
+     "source_url": "https://commons.wikimedia.org/wiki/File:ABC-Crane-Paleo01.jpg"
+    }
+   ]
   },
   {
    "id": "handheld",
@@ -677,7 +789,14 @@
     "https://en.wikipedia.org/wiki/Steadicam",
     "https://www.studiobinder.com/camera-shots/camera-movements/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "steadicam-gimbal.jpg",
+     "license": "PD",
+     "author": "Mike1024",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Steadicam_and_operator_in_front_of_crowd.jpg"
+    }
+   ]
   },
   {
    "id": "zoom",
@@ -694,7 +813,14 @@
     "https://en.wikipedia.org/wiki/Zoom_lens",
     "https://www.studiobinder.com/camera-shots/camera-movements/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "zoom.jpg",
+     "license": "CC-BY-SA",
+     "author": "Daniil Moerman (= user B166ER)",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Zoom_effect.jpg"
+    }
+   ]
   },
   {
    "id": "dolly-zoom",
@@ -711,7 +837,20 @@
     "https://en.wikipedia.org/wiki/Dolly_zoom",
     "https://www.studiobinder.com/blog/different-types-of-camera-movements-in-film/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "dolly-zoom.png",
+     "license": "PD",
+     "author": "GDallimore",
+     "source_url": "https://commons.wikimedia.org/wiki/File:DollyZoomWide4.png"
+    },
+    {
+     "file": "dolly-zoom-2.png",
+     "license": "PD",
+     "author": "GDallimore",
+     "source_url": "https://commons.wikimedia.org/wiki/File:DollyZoomWide30.png"
+    }
+   ]
   },
   {
    "id": "arc-shot",
@@ -728,7 +867,14 @@
     "https://www.studiobinder.com/camera-shots/camera-movements/",
     "https://www.studiobinder.com/camera-shots/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "arc-shot.png",
+     "license": "CC-BY-SA",
+     "author": "Nathan W. Fullerton",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Camera_Movement_-_Arc.png"
+    }
+   ]
   },
   {
    "id": "tracking-shot",

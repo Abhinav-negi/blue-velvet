@@ -18,7 +18,14 @@
     "https://www.studiobinder.com/blog/what-is-the-rule-of-thirds/",
     "https://en.wikipedia.org/wiki/Rule_of_thirds"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "rule-of-thirds.jpg",
+     "license": "PD",
+     "author": "Max Nonnenbruch",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Rule_of_thirds_applied_on_M%C3%A4dchen_am_Strand.jpg"
+    }
+   ]
   },
   {
    "id": "leading-lines",
@@ -36,7 +43,14 @@
     "https://www.studiobinder.com/blog/what-are-leading-lines-definition/",
     "https://en.wikipedia.org/wiki/Leading_lines"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "leading-lines.jpg",
+     "license": "CC-BY-SA",
+     "author": "Shagil Muzhappilangad",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Leading_lines_composition_in_Photography_by_Shagil_Muzhappilangad.jpeg"
+    }
+   ]
   },
   {
    "id": "symmetry-central-framing",
@@ -55,7 +69,14 @@
     "https://www.studiobinder.com/blog/robert-yeoman-cinematography/",
     "https://en.wikipedia.org/wiki/Symmetry"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "symmetry-central-framing.jpg",
+     "license": "CC-BY-SA",
+     "author": "Wee Hong",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Mersing_monument_(symmetrical_composition).jpg"
+    }
+   ]
   },
   {
    "id": "frame-within-a-frame",
@@ -183,7 +204,14 @@
     "https://www.studiobinder.com/camera-shots/composition/shape-in-film/",
     "https://en.wikipedia.org/wiki/Composition_(visual_arts)"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "triangle-composition.jpg",
+     "license": "CC0",
+     "author": "Frans Snyders",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Snyders_Dogs_fighting_demonstrating_Golden_Triangle_composition_method.jpg"
+    }
+   ]
   },
   {
    "id": "golden-ratio",
@@ -220,7 +248,14 @@
     "https://en.wikipedia.org/wiki/Wide-angle_lens",
     "https://en.wikipedia.org/wiki/Fisheye_lens"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "ultra-wide-lens.jpg",
+     "license": "CC-BY-SA",
+     "author": "Takashi Hososhima from Tokyo, Japan",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Skyscrapers_(12345755385).jpg"
+    }
+   ]
   },
   {
    "id": "wide-angle-lens",
@@ -276,7 +311,14 @@
     "https://www.studiobinder.com/camera-shots/camera-lenses/telephoto-lens-shot/",
     "https://en.wikipedia.org/wiki/Long-focus_lens"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "telephoto-lens.png",
+     "license": "CC-BY-SA",
+     "author": "JeanBizHertzberg",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Lens_compression_diagram.png"
+    }
+   ]
   },
   {
    "id": "macro-lens",
@@ -294,7 +336,14 @@
     "https://www.studiobinder.com/camera-shots/camera-lenses/macro-lens-shot/",
     "https://en.wikipedia.org/wiki/Macro_photography"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "macro-lens.jpg",
+     "license": "CC0",
+     "author": "Watts",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Fly_insect_macro.jpg"
+    }
+   ]
   },
   {
    "id": "shallow-depth-of-field",
@@ -312,7 +361,14 @@
     "https://www.studiobinder.com/camera-shots/focus/",
     "https://en.wikipedia.org/wiki/Depth_of_field"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "shallow-depth-of-field.jpg",
+     "license": "CC-BY",
+     "author": "Chokity",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Shallow_Depth_of_Field_with_Bokeh.jpg"
+    }
+   ]
   },
   {
    "id": "deep-focus",
@@ -385,7 +441,14 @@
     "https://www.studiobinder.com/camera-shots/camera-lenses/",
     "https://en.wikipedia.org/wiki/Anamorphic_format"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "anamorphic-lens.jpg",
+     "license": "CC-BY",
+     "author": "Chad Kainz from Monterey, CA, USA",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Lake_Point_Tower_Flare_(Anamorphic)_(14929131291).jpg"
+    }
+   ]
   },
   {
    "id": "tilt-shift-lens",
@@ -403,7 +466,14 @@
     "https://www.studiobinder.com/camera-shots/camera-lenses/",
     "https://en.wikipedia.org/wiki/Tilt%E2%80%93shift_photography"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "tilt-shift-lens.jpg",
+     "license": "CC-BY-SA",
+     "author": "Harald Hoyer from Schwerin, Germany",
+     "source_url": "https://commons.wikimedia.org/wiki/File:People_-_Tilt-shift_Miniature_Fake_(3211610297).jpg"
+    }
+   ]
   },
   {
    "id": "three-point-lighting",
@@ -422,7 +492,14 @@
     "https://www.studiobinder.com/blog/film-lighting/",
     "https://en.wikipedia.org/wiki/Three-point_lighting"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "three-point-lighting.png",
+     "license": "CC0",
+     "author": "Theonlysilentbob, converted to SVG by tiZom, edited by Belbury",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Three-point_lighting_diagram.svg"
+    }
+   ]
   },
   {
    "id": "high-key-lighting",
@@ -440,7 +517,14 @@
     "https://www.studiobinder.com/blog/what-is-high-key-lighting-definition/",
     "https://en.wikipedia.org/wiki/High-key_lighting"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "high-key-lighting.jpg",
+     "license": "CC-BY-SA",
+     "author": "Sagadeev Vladimir ( lik13vvs)",
+     "source_url": "https://commons.wikimedia.org/wiki/File:High_Key_portrait.jpg"
+    }
+   ]
   },
   {
    "id": "low-key-lighting",
@@ -476,7 +560,14 @@
     "https://www.studiobinder.com/blog/film-lighting-techniques/",
     "https://en.wikipedia.org/wiki/Chiaroscuro"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "chiaroscuro.jpg",
+     "license": "PD",
+     "author": "Caravaggio",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_Boy_Bitten_by_a_Lizard.jpg"
+    }
+   ]
   },
   {
    "id": "rembrandt-lighting",
@@ -494,7 +585,14 @@
     "https://www.studiobinder.com/blog/film-lighting-techniques/",
     "https://en.wikipedia.org/wiki/Rembrandt_lighting"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "rembrandt-lighting.jpg",
+     "license": "CC-BY-SA",
+     "author": "Jacopo188",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Rembrandt_Lighting.JPG"
+    }
+   ]
   },
   {
    "id": "silhouette",
@@ -512,7 +610,14 @@
     "https://www.studiobinder.com/blog/film-lighting-terms/",
     "https://en.wikipedia.org/wiki/Silhouette"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "silhouette.jpg",
+     "license": "CC-BY-SA",
+     "author": "Basile Morin",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Silhouette_of_a_fisherman_standing_on_his_pirogue_at_sunset_with_orange_clouds_in_Don_Det_Si_Phan_Don_Laos.jpg"
+    }
+   ]
   },
   {
    "id": "backlight-rim-light",
@@ -604,7 +709,14 @@
     "https://en.wikipedia.org/wiki/Golden_hour_(photography)",
     "https://www.studiobinder.com/camera-shots/lighting/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "golden-hour.jpg",
+     "license": "CC-BY-SA",
+     "author": "Basile Morin",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Mekong_bank_with_stilt_dwellings_and_clouds_at_golden_hour_in_Don_Det_Laos.jpg"
+    }
+   ]
   },
   {
    "id": "colour-contrast-teal-orange",
@@ -623,7 +735,14 @@
     "https://en.wikipedia.org/wiki/Complementary_colors",
     "https://www.studiobinder.com/camera-shots/lighting/"
    ],
-   "images": []
+   "images": [
+    {
+     "file": "colour-contrast-teal-orange.jpg",
+     "license": "CC-BY-SA",
+     "author": "AshokVijaya",
+     "source_url": "https://commons.wikimedia.org/wiki/File:Teal_and_orange_city.jpg"
+    }
+   ]
   }
  ]
 }
