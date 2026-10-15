@@ -25,4 +25,8 @@ Must not: lib/features/ · other lib/core/ai files · pubspec.yaml
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Decisions: lib/core/ai/fetch.dart = FetchConvert (gather: Wikipedia+Commons action API always, Brave only with key, pasted URLs via AiClient.getText; one Gemini call; parseFetchResult validates, drops sources not fetched, cannot_convert / no cited source -> CannotConvert), saveFetchDraft (builds seed-shaped map, reuses mapSeedTemplate/mapSeedShot, then flips builtin=false, seed_id=null, overrides project_types/sources with DATA_MODEL values; no lib/core/data change), shotOptions (LibraryShot list; fetched drafts are passed in as extra LibraryShot with temp ids; wants_fetch only when internet_fetch on). Prompts in lib/core/ai/prompts/fetch_prompts.dart (SHARED_RULES copied verbatim). AiClient got only `getText(Uri, {headers})` (descriptive User-Agent).
+Gotchas: draft images are not downloaded/saved (spec: after approval; image_candidates kept on ShotDraft). Image candidate URLs must come from Commons imageinfo URLs. Do not run `dart format` on ai_client.dart (reformats existing code).
+Commands: flutter analyze -> No issues found; flutter test -> All tests passed (42); check_boundaries.sh -> exit 0; grep -rln package:http lib -> only ai_client.dart.
+Live smoke (1 Gemini call, `dart run tool/ai_smoke_fetch.dart`, exit 0): PASS. Kishotenketsu TEMPLATE with 4 slots (Introduction (ki), Development (sho), Twist (ten), Conclusion (ketsu)), sources [Kishotenketsu -> https://en.wikipedia.org/wiki/Kish%C5%8Dtenketsu]. runtime_proportion null; project_types came back [] (the smoke passed no PROJECT_TYPES hint; the UI should ask the user to pick).
+Left: UI wiring, image download on approval, Brave key storage.
