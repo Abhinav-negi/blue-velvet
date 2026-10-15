@@ -23,4 +23,7 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 shots/ folder: not in parallel with SHOT-03.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Added `lib/features/shots/fetch_screen.dart` (FetchScreen): request, optional pasted URL, kind chips (Either/template/shot), project-type chips (the user's pick overrides the model's project_types on a template at save). Fetch -> preview (name, description, slots/shot fields, sources) -> Save (core `saveFetchDraft`, user row with source URLs) or Cancel (nothing written). CannotConvert shows the reason. Fetch disabled and no request when internet_fetch off. Route `shot-fetch` (/shots/fetch) in routes.dart; icon button in the shots library app bar.
+- Tests: test/features/shots/fetch_screen_test.dart (MockClient fake AI): sources + Save, Cancel, cannotConvert, fetch off. SHOT-03 suggestion tiles are unchanged (no Save there).
+- Results: flutter analyze clean; flutter test 151 pass, 2 expected shell failures (app_shell_test 400/800); check_boundaries exit 0; Color(0x grep empty. No new packages.
+- Section note: template library (beats) should link to `goNamed('shot-fetch')` for fetching templates; I did not edit beats. Templates fetched here save via `saveFetchDraft`.

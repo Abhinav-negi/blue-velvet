@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
+import 'fetch_screen.dart';
 import 'shot_options.dart';
 import 'shot_providers.dart';
 
@@ -20,6 +21,13 @@ class ShotsScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Shot library'),
         actions: [
+          IconButton(
+            tooltip: 'Fetch from the web',
+            icon: const Icon(Icons.cloud_download_outlined),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const FetchScreen()),
+            ),
+          ),
           IconButton(
             tooltip: 'Ask for shot options',
             icon: const Icon(Icons.auto_awesome),
