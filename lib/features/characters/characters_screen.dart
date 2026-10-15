@@ -19,6 +19,7 @@ class CharactersScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(AppSize.sideMargin),
         children: [
+          Text('Characters', style: AppType.title),
           ListTile(
             leading: const Icon(LucideIcons.users),
             title: const Text('Character pool'),
