@@ -23,4 +23,14 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 proposals/ folder: PROP-02 and PROP-03 run after this one, not alongside each other.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Decisions:
+- /proposals = inbox (pending, oldest first, all projects); child route `proposal` (/proposals/:id) = review screen. Only routes.dart in the folder changed; router.dart untouched.
+- Per-change accept = checkbox; flags are held locally and written to proposals.changes (`accepted`) just before `ProposalEngine.approve`, which is the only thing that touches project data (D-17). Button reads "Approve all" or "Approve N of M".
+- Reject sheet: Discard or Send to the Void (void item type `other`, status ready, summary + raw transcript + spans copied; proposals.rejected_to_void_item_id set). Defer = pop, no write.
+- Approve then `HapticFeedback.mediumImpact`; engine soft-fail notes show as SnackBars. Engine does not check permission gates; none checked here (AI_CONTRACT: Approve is the authority).
+- "Edit text" edits the proposal summary only (not individual op fields). "Show what I said" lights all stored spans (per-sentence tap S4 not built; splitSentences lives in features/void, off-limits).
+- Diff lines: editBeat and setSummary show before/after from the DB; editCharacter shows new fields only (ponytail note in code).
+Gotchas: reading `.value` of the FutureProvider/StreamProvider in tests needs a real-async delay inside runAsync before pump. No Undo bar (PROP-03), no ask-for-changes (PROP-02).
+Commands: flutter pub get ok; flutter analyze -> No issues; flutter test -> 127 pass (3 new in test/features/proposals/proposals_test.dart); check_boundaries.sh exit 0; Color(0x grep empty.
+Packages needed: none.
+Section note: PROP-02/03 can reuse `ProposalActions` + providers in lib/features/proposals/proposals_providers.dart; the review screen is proposal_screen.dart. Inbox icon badge count not built here (home owns it).
