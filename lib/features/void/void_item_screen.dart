@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:lynch/core/widgets/transcript_highlight.dart';
 
+import 'void_item_menu.dart';
 import 'void_providers.dart';
 
 // AI_CONTRACT 2.1 sentence splitter.
@@ -34,7 +35,10 @@ class _VoidItemScreenState extends ConsumerState<VoidItemScreen> {
           HighlightRange(s['start'] as int, s['end'] as int),
     ];
     return Scaffold(
-      appBar: AppBar(title: Text(item.type.label)),
+      appBar: AppBar(
+        title: Text(item.type.label),
+        actions: [VoidItemMenu(item)],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(AppSize.sideMargin),
         children: [
