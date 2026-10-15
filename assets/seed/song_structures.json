@@ -1,0 +1,249 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "intro",
+   "kind": "section",
+   "name": "Intro",
+   "description": "Opening passage before the first vocal. Sets key, tempo, mood and often previews a riff or melody that returns later.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Introduction_(music)"
+   ]
+  },
+  {
+   "id": "verse",
+   "kind": "section",
+   "name": "Verse",
+   "description": "Section that repeats its music with new lyrics each time. Carries the story, detail and scene-setting that the chorus then sums up.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Verse%E2%80%93chorus_form"
+   ]
+  },
+  {
+   "id": "pre-chorus",
+   "kind": "section",
+   "name": "Pre-chorus",
+   "description": "Short link between verse and chorus that builds tension, often by rising melody or changed harmony, so the chorus lands as a release.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Pre-chorus"
+   ]
+  },
+  {
+   "id": "chorus",
+   "kind": "section",
+   "name": "Chorus",
+   "description": "Main refrain: the same music and (mostly) the same words every time. The emotional centre and the part listeners sing back; usually carries the title.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Refrain"
+   ]
+  },
+  {
+   "id": "post-chorus",
+   "kind": "section",
+   "name": "Post-chorus",
+   "description": "Short extra section right after a chorus that keeps its energy going, often a chant, riff or repeated tag line.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Song_structure"
+   ]
+  },
+  {
+   "id": "bridge",
+   "kind": "section",
+   "name": "Bridge",
+   "description": "Contrasting section, usually once, placed late. Changes melody, chords or lyric angle to break repetition before a final return to the chorus.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Bridge_(music)"
+   ]
+  },
+  {
+   "id": "hook",
+   "kind": "section",
+   "name": "Hook",
+   "description": "Short, catchy musical or lyrical idea built to stick in memory. It can be a riff, a phrase or a title line, and may live inside any section.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hook_(music)"
+   ]
+  },
+  {
+   "id": "interlude",
+   "kind": "section",
+   "name": "Interlude",
+   "description": "Brief instrumental or spoken passage between sections that gives a breather or a change of scene.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Song_structure"
+   ]
+  },
+  {
+   "id": "instrumental-break",
+   "kind": "section",
+   "name": "Instrumental break",
+   "description": "Section where an instrument takes the lead in place of the vocal, such as a solo, usually over verse or chorus chords.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Song_structure"
+   ]
+  },
+  {
+   "id": "breakdown",
+   "kind": "section",
+   "name": "Breakdown",
+   "description": "Stripped-back section where most layers drop out, often before a build-up and final chorus or drop.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Drop_(music)"
+   ]
+  },
+  {
+   "id": "outro",
+   "kind": "section",
+   "name": "Outro",
+   "description": "Closing passage that winds the song down, by fading, repeating a motif, or a clean ending. Also called coda.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Outro_(music)"
+   ]
+  },
+  {
+   "id": "verse-chorus",
+   "kind": "arrangement",
+   "name": "Verse-chorus",
+   "description": "Most common pop and rock form: verses tell the story, repeated choruses carry the main message, one bridge adds contrast.",
+   "sequence": [
+    "intro",
+    "verse",
+    "chorus",
+    "verse",
+    "chorus",
+    "bridge",
+    "chorus",
+    "outro"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Verse%E2%80%93chorus_form"
+   ]
+  },
+  {
+   "id": "verse-prechorus-chorus",
+   "kind": "arrangement",
+   "name": "Verse-pre-chorus-chorus",
+   "description": "Verse-chorus form with a pre-chorus ramp into every chorus for a stronger lift.",
+   "sequence": [
+    "intro",
+    "verse",
+    "pre-chorus",
+    "chorus",
+    "verse",
+    "pre-chorus",
+    "chorus",
+    "bridge",
+    "chorus",
+    "outro"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Pre-chorus"
+   ]
+  },
+  {
+   "id": "aaba-32-bar",
+   "kind": "arrangement",
+   "name": "AABA (32-bar)",
+   "description": "Classic Tin Pan Alley and jazz standard form: two matching 8-bar A sections, a contrasting 8-bar bridge, then A again. The title usually sits in the A sections.",
+   "sequence": [
+    "verse",
+    "verse",
+    "bridge",
+    "verse"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Thirty-two-bar_form"
+   ]
+  },
+  {
+   "id": "strophic",
+   "kind": "arrangement",
+   "name": "Strophic",
+   "description": "Every verse reuses the same music with new words, with no chorus. Typical of folk songs, ballads and hymns.",
+   "sequence": [
+    "verse",
+    "verse",
+    "verse",
+    "verse"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Strophic_form"
+   ]
+  },
+  {
+   "id": "twelve-bar-blues",
+   "kind": "arrangement",
+   "name": "12-bar blues",
+   "description": "Blues form built on one 12-bar chord cycle repeated for each verse. Lyrics often state a line, repeat it, then answer it.",
+   "sequence": [
+    "verse",
+    "verse",
+    "verse",
+    "instrumental-break",
+    "verse",
+    "outro"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Twelve-bar_blues"
+   ]
+  },
+  {
+   "id": "verse-refrain",
+   "kind": "arrangement",
+   "name": "Verse with refrain",
+   "description": "Verses that each end on a repeated title line (a refrain) instead of a separate chorus section.",
+   "sequence": [
+    "intro",
+    "verse",
+    "verse",
+    "bridge",
+    "verse",
+    "outro"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Refrain"
+   ]
+  },
+  {
+   "id": "through-composed",
+   "kind": "arrangement",
+   "name": "Through-composed",
+   "description": "Music keeps changing with the text and does not repeat sections. Fits narrative or dramatic songs.",
+   "sequence": [
+    "intro",
+    "verse",
+    "interlude",
+    "verse",
+    "bridge",
+    "verse",
+    "outro"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Through-composed"
+   ]
+  },
+  {
+   "id": "modern-pop-hook-first",
+   "kind": "arrangement",
+   "name": "Modern pop (hook-first)",
+   "description": "Streaming-era shape: a hook or chorus teaser up front, short intro, pre-chorus lifts and a post-chorus tag, compact length.",
+   "sequence": [
+    "hook",
+    "verse",
+    "pre-chorus",
+    "chorus",
+    "post-chorus",
+    "verse",
+    "pre-chorus",
+    "chorus",
+    "post-chorus",
+    "bridge",
+    "chorus",
+    "outro"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Song_structure"
+   ]
+  }
+ ]
+}

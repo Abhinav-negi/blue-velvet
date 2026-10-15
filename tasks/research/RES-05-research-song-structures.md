@@ -23,4 +23,7 @@ Must not: lib/ · pubspec.yaml · docs/ · other seed files
 Write descriptions in your own words; never paste paragraphs from sources (copyright). Prefer primary, reputable sources (books, film-school or industry references). Data only, no app code. 
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Decisions: 11 sections (7 required + post-chorus, interlude, instrumental-break, breakdown) and 8 arrangements. Sources are Wikipedia only (reference trust; studiobinder/masterclass 403). Arrangement `sequence` uses section ids only; AABA maps A=verse, B=bridge; 12-bar blues uses verse + instrumental-break.
+- Gotchas: the Wikipedia Chorus page 404s; used Refrain. Verse-chorus URL contains an en dash, stored percent-encoded.
+- Commands: `dart tool/validate_seed.dart assets/seed/song_structures.json` -> OK, 19 items, exit 0; every JSON URL grep-verified in sources md.
+- Left: nothing. Source md notes are generic; could add a book source (e.g. Berklee songwriting texts) later.
