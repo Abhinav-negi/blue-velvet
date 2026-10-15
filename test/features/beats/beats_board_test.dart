@@ -9,7 +9,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/data/seed_loader.dart';
-import 'package:lynch/core/data/tables.dart';
 import 'package:lynch/core/theme/app_theme.dart';
 import 'package:lynch/features/beats/beats_screen.dart';
 

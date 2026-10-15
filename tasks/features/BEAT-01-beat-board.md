@@ -29,6 +29,6 @@ None beyond the orchestrator brief.
 - Add (FAB / slot +) and edit (tap card) use a bottom sheet (title + description).
 - Not done (scope): long-press drag reorder, split/merge, characters/links on beats. Move-to-slot is not in the editor yet.
 - Screenshot: test/features/beats/goldens/board.png (checked visually).
-- Commands: flutter analyze, flutter test, bash tool/check_boundaries.sh, hex grep: see final run below.
+- Commands (final): flutter analyze -> No issues found; flutter test -> 127 pass; check_boundaries exit 0; hex grep empty. Gotcha: test/core/shell/app_shell_test.dart expects the tab title text twice, so the board has a "Beats" heading.
 - Dependencies needed: none.
 - Section note: BEAT-01 added `projectBeatsProvider`, `projectTemplateProvider`, `saveBeat` in beats_providers.dart; reorder/split/merge/move-to-slot still open.

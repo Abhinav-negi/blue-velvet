@@ -65,16 +65,18 @@ class BeatsScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(AppSize.sideMargin),
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton.icon(
-              onPressed: () => context.goNamed(
-                'templates',
-                pathParameters: {'projectId': projectId},
+          Row(
+            children: [
+              Expanded(child: Text('Beats', style: AppType.title)),
+              TextButton.icon(
+                onPressed: () => context.goNamed(
+                  'templates',
+                  pathParameters: {'projectId': projectId},
+                ),
+                icon: const Icon(LucideIcons.layoutTemplate),
+                label: const Text('Templates'),
               ),
-              icon: const Icon(LucideIcons.layoutTemplate),
-              label: const Text('Templates'),
-            ),
+            ],
           ),
           ...children,
         ],
