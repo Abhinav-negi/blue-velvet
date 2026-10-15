@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
+import 'package:lynch/features/home/sample_project.dart';
 import 'package:lynch/main.dart';
 import 'package:lynch/router.dart';
 
@@ -73,7 +74,10 @@ void main() {
     router.go('/project/p/overview');
     await tester.pumpWidget(
       ProviderScope(
-        overrides: [dbProvider.overrideWithValue(db)],
+        overrides: [
+          dbProvider.overrideWithValue(db),
+          sampleInitProvider.overrideWith((ref) async {}),
+        ],
         child: const LynchApp(),
       ),
     );
