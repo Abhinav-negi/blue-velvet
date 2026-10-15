@@ -24,4 +24,13 @@ Must not: lib/core/theme/ · lib/core/data/ · pubspec.yaml
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Decisions:
+- No `project` feature folder, so the shell is lib/core/widgets/app_shell.dart (pure UI: takes tabs + callbacks, core never imports features). router.dart wraps the 6 tab routes in a `ShellRoute` and picks the selected tab from `state.topRoute.name`.
+- Route names: home, void, proposals, overview, characters, beats, script, board, settings. Project tabs live at /project/:projectId/<tab>. Overview is in features/home (`overviewRoutes`, besides `homeRoutes`). capture, character_map, shots, export export empty route lists (no screens yet).
+- Home is a placeholder with an "Open a project" button using projectId `new` (no data layer yet). Inbox icon pushes `proposals` outside the shell.
+- Mic slot is a 64 dp amber button, semantics label "Record idea", empty onTap; CAP-01 replaces it (AppShell has an `onMic` param).
+- Tabs row is SingleChildScrollView+Row (not ListView) so off-screen tabs stay findable in tests.
+Gotchas: flutter_test renders Ahem boxes; the shell test loads Inter/Literata/Lucide fonts by hand (Lucide path from ~/.pub-cache, brittle if lucide version changes). debugShowCheckedModeBanner is off in main.dart.
+Commands: flutter analyze -> No issues found; flutter test -> 9 pass; bash tool/check_boundaries.sh -> exit 0.
+Screenshots: test/core/shell/goldens/shell_phone_400.png, shell_tablet_800.png (regenerate: flutter test --update-goldens test/core/shell).
+Left: project title in top bar (needs data), real mic dock (CAP-01), inbox badge.
