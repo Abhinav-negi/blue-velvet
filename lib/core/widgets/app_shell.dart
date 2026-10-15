@@ -54,6 +54,10 @@ class AppShell extends StatelessWidget {
                     selectedIndex: selectedIndex,
                     onDestinationSelected: onTab,
                     labelType: NavigationRailLabelType.all,
+                    // Teal = "where you are" (design.md §5.3); amber is reserved for the mic.
+                    indicatorColor: scheme.surfaceContainerHighest,
+                    selectedIconTheme: IconThemeData(color: scheme.secondary),
+                    selectedLabelTextStyle: AppType.label.copyWith(color: scheme.secondary),
                     destinations: [
                       for (final t in tabs)
                         NavigationRailDestination(
@@ -123,7 +127,7 @@ class _TabRow extends StatelessWidget {
                           bottom: BorderSide(
                             width: 2,
                             color: i == selectedIndex
-                                ? scheme.primary
+                                ? scheme.secondary
                                 : Colors.transparent,
                           ),
                         ),
@@ -132,7 +136,7 @@ class _TabRow extends StatelessWidget {
                         tabs[i].label,
                         style: AppType.label.copyWith(
                           color: i == selectedIndex
-                              ? scheme.primary
+                              ? scheme.secondary
                               : scheme.onSurfaceVariant,
                         ),
                       ),
