@@ -37,3 +37,13 @@ Decisions:
 Gotchas: Drift data classes compare lists by identity, so tests compare frames via toJson().toString().
 Commands: flutter analyze -> No issues found; flutter test -> all 35 pass; bash tool/check_boundaries.sh -> exit 0.
 Left: nothing for DB-03. Callers (UI) must call approve/undo only; nothing wired into features yet.
+
+### Fix round (after independent review)
+- mergeBeats rejects duplicate ids. approve rethrows any non-ProposalException (bad casts) as ProposalException after rollback. Only `accepted == true` ops run. `_slot` checks the slot belongs to the project's template. addScaffold checks project type (screenplay=blocks, Say/Show=rows) and required text/show. Unused `_charRefs` removed.
+- restore: first inserts a `manual` snapshot "Before restore", then upserts beats (no delete-all), never touches existing frame rows, re-inserts only missing snapshot frames, keeps beats absent from the snapshot that own frames (moved to end of their slot; frameless extras are deleted). A linked project_character whose global character is gone is restored as `forked` with the snapshot's `resolved` sheet.
+- Consequence (by design, Done-when 5): undoing a mergeBeats leaves the re-parented frames on the survivor beat; the merged-away beat comes back empty. Tests adjusted accordingly (merge removed from the restore==snapshot equality test; frames test asserts only beat_id changes).
+- undoLastApprove: latest approve = resolved_at, then snapshot created_at, then snapshot id. Throws if a restore taken after that approve went back to a snapshot older than it (checked in `_restoredSince` by rowid order); undo chains (undo of newer approve restores a newer snapshot) are not blocked.
+- Global `characters` behaviour unchanged (pending user decision): linked editCharacter edits the global row, undo does not revert it, addCharacter leaves a global row. Isolated in `_editCharacter`/`_addCharacter` (engine) and `SnapshotService._restoreCharacters`.
+- Strengthened stroke test: new test adds a frame (own stroke file) and edits another after approve, undoes, asserts frame rows and all stroke file bytes unchanged.
+Commands: flutter analyze -> No issues found; flutter test -> all 48 pass; bash tool/check_boundaries.sh -> exit 0.
+Section note: none.
