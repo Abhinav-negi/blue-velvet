@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
+import 'shot_options.dart';
 import 'shot_providers.dart';
 
 /// Shot library: search, category chips, list of entries.
@@ -16,7 +17,20 @@ class ShotsScreen extends ConsumerWidget {
     final cat = ref.watch(shotCategoryFilter);
     final scheme = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Shot library')),
+      appBar: AppBar(
+        title: const Text('Shot library'),
+        actions: [
+          IconButton(
+            tooltip: 'Ask for shot options',
+            icon: const Icon(Icons.auto_awesome),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const ShotOptionsScreen(),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Padding(
