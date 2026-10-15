@@ -22,4 +22,8 @@ Must not: everything else
 Token names follow design.md (e.g. AppSpace.s2 = 16). No widgets other than a debug token-preview screen.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Files: lib/core/theme/{tokens,app_theme,token_preview}.dart, test/core/theme/theme_test.dart.
+Decisions: tokens.dart holds AppSpace/AppSize/AppRadius/AppMotion/AppColors/AppType (single hex home). AppTheme.dark/light built by one _build(); ThemeExtensions PaperColors, DiffColors, MicColors (fixed in both themes). AppMotion.of(context, d) returns Duration.zero when disableAnimations. Not wired into main.dart (left untouched); TokenPreviewScreen is not routed anywhere yet.
+Gotchas: (1) design.md gives no light surfaceRaised; derived 0xFFE6DFD0. (2) design.md says light-frame accent text shades are "to be measured"; for now light theme uses tealFill/emberFill as secondary/error and keeps amber/sage unchanged. Re-measure contrast later. (3) Flutter's Color lacks const-map keys; test uses a record list.
+Commands: flutter analyze, flutter test, tool/check_boundaries.sh, grep Color(0x outside theme: all clean.
+Left: apply AppTheme in app shell (not in my scope), route TokenPreviewScreen in debug, light-theme contrast measurement.
