@@ -3,21 +3,62 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lynch/core/data/db.dart';
+import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/main.dart';
 import 'package:lynch/router.dart';
 
-Future<void> pumpApp(WidgetTester tester, Size size) async {
+/// Home with one project ('Alpha') in an in-memory DB.
+Future<AppDatabase> pumpApp(WidgetTester tester, Size size) async {
   tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
+  final db = AppDatabase(NativeDatabase.memory());
+  await tester.runAsync(
+    () => db.projectsDao.upsert(
+      ProjectsCompanion.insert(
+        id: 'a',
+        title: 'Alpha',
+        type: ProjectType.shortFilm,
+        summary: '',
+        aspectRatio: '16:9',
+        typeFields: const {},
+        aiPermissions: const {},
+        createdAt: 1,
+        updatedAt: 1,
+      ),
+    ),
+  );
   router.go('/');
-  await tester.pumpWidget(const ProviderScope(child: LynchApp()));
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [dbProvider.overrideWithValue(db)],
+      child: const LynchApp(),
+    ),
+  );
+  await settle(tester);
+  return db;
+}
+
+/// Drift does real async work; let it finish, then rebuild.
+Future<void> settle(WidgetTester tester) async {
+  await tester.runAsync(
+    () => Future<void>.delayed(const Duration(milliseconds: 100)),
+  );
   await tester.pumpAndSettle();
 }
 
+/// Unmount (drift schedules a zero timer on stream cancel), then close the DB.
+Future<void> finish(WidgetTester tester, AppDatabase db) async {
+  await tester.pumpWidget(const SizedBox());
+  await tester.pump(const Duration(milliseconds: 1));
+  await tester.runAsync(db.close);
+}
+
 Future<void> openProject(WidgetTester tester) async {
-  await tester.tap(find.text('Open a project'));
+  await tester.tap(find.text('Alpha'));
   await tester.pumpAndSettle();
 }
 
@@ -52,7 +93,7 @@ void main() {
   ];
 
   testWidgets('from Home open a project and visit all 6 tabs', (tester) async {
-    await pumpApp(tester, const Size(400, 800));
+    final db = await pumpApp(tester, const Size(400, 800));
     await openProject(tester);
     for (final t in tabs) {
       final tab = find.descendant(
@@ -67,11 +108,13 @@ void main() {
     }
     await tester.tap(find.byTooltip('Home'));
     await tester.pumpAndSettle();
+    await settle(tester);
     expect(find.text('Projects'), findsOneWidget);
+    await finish(tester, db);
   });
 
   testWidgets('400 dp: tabs on top, 64 dp bottom bar and mic', (tester) async {
-    await pumpApp(tester, const Size(400, 800));
+    final db = await pumpApp(tester, const Size(400, 800));
     await openProject(tester);
     expect(find.byKey(const Key('shell-tabs')), findsOneWidget);
     expect(find.byKey(const Key('shell-rail')), findsNothing);
@@ -87,10 +130,11 @@ void main() {
       find.byType(MaterialApp),
       matchesGoldenFile('goldens/shell_phone_400.png'),
     );
+    await finish(tester, db);
   });
 
   testWidgets('800 dp: left rail, 64 dp bottom bar and mic', (tester) async {
-    await pumpApp(tester, const Size(800, 600));
+    final db = await pumpApp(tester, const Size(800, 600));
     await openProject(tester);
     expect(find.byKey(const Key('shell-rail')), findsOneWidget);
     expect(find.byKey(const Key('shell-tabs')), findsNothing);
@@ -106,5 +150,6 @@ void main() {
       find.byType(MaterialApp),
       matchesGoldenFile('goldens/shell_tablet_800.png'),
     );
+    await finish(tester, db);
   });
 }
