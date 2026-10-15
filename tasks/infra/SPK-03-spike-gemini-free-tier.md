@@ -21,4 +21,8 @@ Must not: lib/ · pubspec.yaml (root) · plan/
 Needs the user's Gemini API key in `.env.json` (gitignored). Never print or commit the key.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Done 2026-10-15. Full findings: docs/spikes/SPK-03-gemini.md.
+- Decisions: model gemini-3.5-flash (stable, free). Sample made with Gemini TTS (gemini-2.5-flash-preview-tts, voice Kore) then ffmpeg -> spikes/gemini/samples/idea.m4a (no espeak installed). Synthetic: does not prove Indian-accent accuracy.
+- Gotchas: 3.x flash models often 503 (retry works); gemini-2.5-flash 404 for new users; Search grounding gives 429 on free tier (paid only, 5,000/month); vague start/end schema fields yield fake timestamps, prompt must say character offsets; wall time is slow (thinking tokens), run takes 1-3 min.
+- Commands: `cd spikes/gemini && dart run bin/smoke.dart gemini-3.5-flash` -> transcript OK, schema JSON OK with valid offset spans, grounded = 429. Only dependency: http in spikes/gemini.
+- Left: exact free RPM/RPD (only visible in AI Studio, needs user login); real-voice accent check (CAP-02).

@@ -1,0 +1,7 @@
+name: lynch_gemini_spike
+description: SPK-03 standalone spike, not part of the app.
+publish_to: none
+environment:
+  sdk: ^3.0.0
+dependencies:
+  http: ^1.6.0
