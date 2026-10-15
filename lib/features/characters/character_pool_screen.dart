@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:lynch/core/data/db.dart';
+import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
 import 'characters_providers.dart';
@@ -25,6 +26,15 @@ class CharacterPoolScreen extends ConsumerWidget {
               leading: const Icon(LucideIcons.user),
               title: Text(c.name),
               subtitle: Text(c.role),
+              trailing: IconButton(
+                key: Key('import-${c.id}'),
+                tooltip: 'Import (linked)',
+                icon: const Icon(LucideIcons.download),
+                onPressed: () async {
+                  await importCharacter(ref.read(dbProvider), pid, c.id);
+                  if (context.mounted) context.pop();
+                },
+              ),
               onTap: () => context.pushNamed(
                 'pool-character',
                 pathParameters: {'projectId': pid, 'id': c.id},
