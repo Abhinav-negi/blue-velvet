@@ -22,4 +22,8 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Files: lib/features/beats/{template_library_screen,template_detail_screen,template_edit_screen,template_providers}.dart; route `templates` = /project/:projectId/beats/templates (child of `beats` in routes.dart); test/features/beats/template_library_test.dart.
+- Decisions: no templates DAO exists and lib/core is frozen, so providers query db.templates/db.slots directly. Detail/edit open via Navigator.push (one route only). Saving a built-in sets template.user_edited; slots are updated by id and only changed ones get user_edited; removed slots deleted; new slots builtin=false. Delete only for non-builtin. Reorder via up/down buttons.
+- Gotchas: shell highlights Overview tab on the templates route (router matches section by top route name; router.dart frozen). Tests: ListView is lazy so use a tall view; seed with SeedLoader(read: File) inside runAsync (rootBundle not used).
+- Results: analyze clean, flutter test 83 pass, check_boundaries exit 0, token grep empty.
+- Left: nothing for this task. Nothing links to the `templates` route yet (BEAT-01 board should).
