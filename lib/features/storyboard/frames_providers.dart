@@ -179,3 +179,8 @@ Future<void> saveFrameDetails(
 
 @visibleForTesting
 void resetFrameSeq() => _seq = 0;
+
+/// Beats of a project in board order (storyboard keeps its own read; features can't import each other).
+final boardBeatsProvider = StreamProvider.family<List<Beat>, String>(
+  (ref, projectId) => ref.watch(dbProvider).beatsDao.watchForProject(projectId),
+);

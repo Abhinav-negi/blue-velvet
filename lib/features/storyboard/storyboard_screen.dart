@@ -8,7 +8,6 @@ import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:path/path.dart' as p;
 
-import '../beats/beats_providers.dart';
 import 'frame_editor.dart';
 import 'frames_providers.dart';
 
@@ -25,7 +24,7 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final beats = ref.watch(projectBeatsProvider(widget.projectId)).value ?? [];
+    final beats = ref.watch(boardBeatsProvider(widget.projectId)).value ?? [];
     final beat =
         beats.where((b) => b.id == _beatId).firstOrNull ?? beats.firstOrNull;
     final text = Theme.of(context).textTheme;
