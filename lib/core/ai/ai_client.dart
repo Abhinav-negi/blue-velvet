@@ -89,8 +89,7 @@ class AiClient {
     http.Response res;
     try {
       res = await _client.get(uri, headers: {
-        'user-agent': 'LynchApp/1.0 (personal film-planning app; '
-            'contact: abhinav77negi@gmail.com)',
+        'user-agent': 'LynchApp/1.0 (personal, non-commercial story app)',
         ...headers,
       }).timeout(const Duration(seconds: 30));
     } on Exception {
