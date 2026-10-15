@@ -1,4 +1,12 @@
 import 'package:go_router/go_router.dart';
 
-/// No routes yet; the owning task adds them here.
-final characterMapRoutes = <RouteBase>[];
+import 'map_screen.dart';
+
+final characterMapRoutes = <RouteBase>[
+  GoRoute(
+    path: '/project/:projectId/map',
+    name: 'character-map',
+    builder: (context, state) =>
+        MapScreen(projectId: state.pathParameters['projectId']!),
+  ),
+];
