@@ -1,0 +1,590 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "parent-of",
+   "name": "Parent of",
+   "group": "family",
+   "inverse": "child-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "child-of",
+   "name": "Child of",
+   "group": "family",
+   "inverse": "parent-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "grandparent-of",
+   "name": "Grandparent of",
+   "group": "family",
+   "inverse": "grandchild-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "grandchild-of",
+   "name": "Grandchild of",
+   "group": "family",
+   "inverse": "grandparent-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "aunt-or-uncle-of",
+   "name": "Aunt or uncle of",
+   "group": "family",
+   "inverse": "niece-or-nephew-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "niece-or-nephew-of",
+   "name": "Niece or nephew of",
+   "group": "family",
+   "inverse": "aunt-or-uncle-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "guardian-of",
+   "name": "Guardian of",
+   "group": "family",
+   "inverse": "ward-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "ward-of",
+   "name": "Ward of",
+   "group": "family",
+   "inverse": "guardian-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "adoptive-parent-of",
+   "name": "Adoptive parent of",
+   "group": "family",
+   "inverse": "adopted-child-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "adopted-child-of",
+   "name": "Adopted child of",
+   "group": "family",
+   "inverse": "adoptive-parent-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "sibling-of",
+   "name": "Sibling of",
+   "group": "family",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "cousin-of",
+   "name": "Cousin of",
+   "group": "family",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "half-sibling-of",
+   "name": "Half-sibling of",
+   "group": "family",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "twin-of",
+   "name": "Twin of",
+   "group": "family",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "married-to",
+   "name": "Married to",
+   "group": "family",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kinship_terminology"
+   ]
+  },
+  {
+   "id": "friend-of",
+   "name": "Friend of",
+   "group": "social",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "best-friend-of",
+   "name": "Best friend of",
+   "group": "social",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "neighbor-of",
+   "name": "Neighbor of",
+   "group": "social",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "acquaintance-of",
+   "name": "Acquaintance of",
+   "group": "social",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "childhood-friend-of",
+   "name": "Childhood friend of",
+   "group": "social",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "roommate-of",
+   "name": "Roommate of",
+   "group": "social",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "fan-of",
+   "name": "Fan of",
+   "group": "social",
+   "inverse": "idol-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "idol-of",
+   "name": "Idol of",
+   "group": "social",
+   "inverse": "fan-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Friendship"
+   ]
+  },
+  {
+   "id": "pursues",
+   "name": "Pursues",
+   "group": "romantic",
+   "inverse": "pursued-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Romance_(love)"
+   ]
+  },
+  {
+   "id": "pursued-by",
+   "name": "Pursued by",
+   "group": "romantic",
+   "inverse": "pursues",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Romance_(love)"
+   ]
+  },
+  {
+   "id": "dating",
+   "name": "Dating",
+   "group": "romantic",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Romance_(love)"
+   ]
+  },
+  {
+   "id": "engaged-to",
+   "name": "Engaged to",
+   "group": "romantic",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Romance_(love)"
+   ]
+  },
+  {
+   "id": "ex-of",
+   "name": "Ex of",
+   "group": "romantic",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Romance_(love)"
+   ]
+  },
+  {
+   "id": "secret-lover-of",
+   "name": "Secret lover of",
+   "group": "romantic",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Romance_(love)"
+   ]
+  },
+  {
+   "id": "unrequited-crush-on",
+   "name": "Unrequited crush on",
+   "group": "romantic",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Interpersonal_relationship",
+    "https://en.wikipedia.org/wiki/Romance_(love)"
+   ]
+  },
+  {
+   "id": "boss-of",
+   "name": "Boss of",
+   "group": "professional",
+   "inverse": "works-for",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "works-for",
+   "name": "Works for",
+   "group": "professional",
+   "inverse": "boss-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "mentor-of",
+   "name": "Mentor of",
+   "group": "professional",
+   "inverse": "mentee-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "mentee-of",
+   "name": "Mentee of",
+   "group": "professional",
+   "inverse": "mentor-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "employer-of",
+   "name": "Employer of",
+   "group": "professional",
+   "inverse": "employee-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "employee-of",
+   "name": "Employee of",
+   "group": "professional",
+   "inverse": "employer-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "client-of",
+   "name": "Client of",
+   "group": "professional",
+   "inverse": "service-provider-to",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "service-provider-to",
+   "name": "Service provider to",
+   "group": "professional",
+   "inverse": "client-of",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "colleague-of",
+   "name": "Colleague of",
+   "group": "professional",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "business-partner-of",
+   "name": "Business partner of",
+   "group": "professional",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mentorship",
+    "https://en.wikipedia.org/wiki/Employment"
+   ]
+  },
+  {
+   "id": "hunts",
+   "name": "Hunts",
+   "group": "conflict",
+   "inverse": "hunted-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "hunted-by",
+   "name": "Hunted by",
+   "group": "conflict",
+   "inverse": "hunts",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "betrayed",
+   "name": "Betrayed",
+   "group": "conflict",
+   "inverse": "betrayed-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "betrayed-by",
+   "name": "Betrayed by",
+   "group": "conflict",
+   "inverse": "betrayed",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "rival-of",
+   "name": "Rival of",
+   "group": "conflict",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "enemy-of",
+   "name": "Enemy of",
+   "group": "conflict",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "foil-to",
+   "name": "Foil to",
+   "group": "conflict",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "estranged-from",
+   "name": "Estranged from",
+   "group": "conflict",
+   "symmetric": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "blackmails",
+   "name": "Blackmails",
+   "group": "conflict",
+   "inverse": "blackmailed-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "blackmailed-by",
+   "name": "Blackmailed by",
+   "group": "conflict",
+   "inverse": "blackmails",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Antagonist",
+    "https://en.wikipedia.org/wiki/Foil_(literature)",
+    "https://en.wikipedia.org/wiki/Rivalry"
+   ]
+  },
+  {
+   "id": "owes-money-to",
+   "name": "Owes money to",
+   "group": "debt_obligation",
+   "inverse": "is-owed-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "is-owed-by",
+   "name": "Is owed by",
+   "group": "debt_obligation",
+   "inverse": "owes-money-to",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "owes-a-favor-to",
+   "name": "Owes a favor to",
+   "group": "debt_obligation",
+   "inverse": "is-owed-a-favor-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "is-owed-a-favor-by",
+   "name": "Is owed a favor by",
+   "group": "debt_obligation",
+   "inverse": "owes-a-favor-to",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "protects",
+   "name": "Protects",
+   "group": "debt_obligation",
+   "inverse": "protected-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "protected-by",
+   "name": "Protected by",
+   "group": "debt_obligation",
+   "inverse": "protects",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "cares-for",
+   "name": "Cares for",
+   "group": "debt_obligation",
+   "inverse": "cared-for-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "cared-for-by",
+   "name": "Cared for by",
+   "group": "debt_obligation",
+   "inverse": "cares-for",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "sworn-to-serve",
+   "name": "Sworn to serve",
+   "group": "debt_obligation",
+   "inverse": "served-by",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  },
+  {
+   "id": "served-by",
+   "name": "Served by",
+   "group": "debt_obligation",
+   "inverse": "sworn-to-serve",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Debt"
+   ]
+  }
+ ]
+}

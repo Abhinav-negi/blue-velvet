@@ -23,4 +23,8 @@ Must not: lib/ · pubspec.yaml · docs/ · other seed files
 Write descriptions in your own words; never paste paragraphs from sources (copyright). Prefer primary, reputable sources (books, film-school or industry references). Data only, no app code. 
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Wrote 60 labels: family 15, social 8, romantic 7, professional 10, conflict 10, debt_obligation 10. Directional ones come in inverse pairs (parent-of/child-of, owes-money-to/is-owed-by); symmetric ones carry `symmetric: true`.
+- Each item has a `sources` list (optional in validator, required by Done-when 4); every URL is in sources/relationship_labels.md.
+- Gotcha: no authoritative taxonomy exists, so sources are Wikipedia reference pages per group (studiobinder/masterclass 403). Schema has no description field, so none added.
+- Ran: `dart tool/validate_seed.dart assets/seed/relationship_labels.json` -> OK 60 items, exit 0.
+- Left: nothing.
