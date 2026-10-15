@@ -1,0 +1,36 @@
+import 'tables.dart';
+
+-- Indexes (DATA_MODEL per-table "Index" lines) that @TableIndex can't express.
+CREATE INDEX void_items_created ON void_items (created_at DESC);
+CREATE INDEX void_items_type ON void_items (type);
+CREATE INDEX void_items_status ON void_items (status);
+CREATE INDEX slots_template_pos ON slots (template_id, position);
+CREATE INDEX beats_project_slot_pos ON beats (project_id, slot_id, position);
+CREATE INDEX frames_beat_pos ON frames (beat_id, position);
+CREATE INDEX proposals_project_status ON proposals (project_id, status, created_at);
+CREATE INDEX snapshots_project_created ON snapshots (project_id, created_at DESC);
+CREATE INDEX ai_queue_status_retry ON ai_queue (status, next_retry_at);
+CREATE UNIQUE INDEX project_characters_linked
+  ON project_characters (project_id, character_id) WHERE mode = 'linked';
+
+-- FTS5 external-content table over void_items (DATA_MODEL 1.3).
+CREATE VIRTUAL TABLE void_items_fts USING fts5(
+  summary, raw_transcript,
+  content='void_items', content_rowid='rowid',
+  tokenize='unicode61 remove_diacritics 2'
+);
+
+CREATE TRIGGER void_items_ai AFTER INSERT ON void_items BEGIN
+  INSERT INTO void_items_fts(rowid, summary, raw_transcript)
+  VALUES (new.rowid, new.summary, new.raw_transcript);
+END;
+CREATE TRIGGER void_items_ad AFTER DELETE ON void_items BEGIN
+  INSERT INTO void_items_fts(void_items_fts, rowid, summary, raw_transcript)
+  VALUES ('delete', old.rowid, old.summary, old.raw_transcript);
+END;
+CREATE TRIGGER void_items_au AFTER UPDATE ON void_items BEGIN
+  INSERT INTO void_items_fts(void_items_fts, rowid, summary, raw_transcript)
+  VALUES ('delete', old.rowid, old.summary, old.raw_transcript);
+  INSERT INTO void_items_fts(rowid, summary, raw_transcript)
+  VALUES (new.rowid, new.summary, new.raw_transcript);
+END;
