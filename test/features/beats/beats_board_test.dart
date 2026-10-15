@@ -51,7 +51,11 @@ void main() {
         ),
       );
 
-  Future<void> pump(WidgetTester t, {required bool template}) async {
+  Future<void> pump(
+    WidgetTester t, {
+    required bool template,
+    bool still = false,
+  }) async {
     t.view.physicalSize = const Size(400, 900);
     t.view.devicePixelRatio = 1;
     addTearDown(t.view.reset);
@@ -95,6 +99,12 @@ void main() {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.dark,
+          builder: still
+              ? (c, w) => MediaQuery(
+                  data: MediaQuery.of(c).copyWith(disableAnimations: true),
+                  child: w!,
+                )
+              : null,
           home: const BeatsScreen(projectId: 'p'),
         ),
       ),
@@ -158,6 +168,54 @@ void main() {
     );
     await t.pumpAndSettle();
     expect(find.text('Fresh beat'), findsOneWidget);
+    await finish(t);
+  });
+
+  Future<void> drag(WidgetTester t, String from, Finder to) async {
+    final g = await t.startGesture(t.getCenter(find.text(from)));
+    await t.pump(const Duration(milliseconds: 600));
+    await g.moveTo(t.getCenter(to));
+    await t.pump();
+    await g.up();
+  }
+
+  Future<List<Beat>> rows(WidgetTester t) async => (await t.runAsync(
+    () => (db.select(
+      db.beats,
+    )..orderBy([(b) => OrderingTerm.asc(b.position)])).get(),
+  ))!;
+
+  testWidgets('dragging a beat to another slot updates slot and order', (
+    t,
+  ) async {
+    await pump(t, template: true);
+    // Drop "The turn" (slot 2) onto "Opening image" (slot 0, index 0).
+    await drag(t, 'The turn', find.text('Opening image'));
+    await t.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 100)),
+    );
+    await t.pumpAndSettle();
+    final r = await rows(t);
+    expect([for (final b in r) b.id], ['b2', 'b1', 'b3', 'b4']);
+    expect([for (final b in r) b.position], [0, 1, 2, 3]);
+    expect(r.first.slotId, slots[0].id);
+    await finish(t);
+  });
+
+  testWidgets('disableAnimations: reorder completes in one frame', (t) async {
+    await pump(t, template: false, still: true);
+    await drag(t, 'Loose idea', find.text('Opening image'));
+    for (var i = 0; i < 3; i++) {
+      await t.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 50)),
+      );
+      await t.pump();
+    }
+    expect(t.hasRunningAnimations, isFalse);
+    expect(
+      t.getTopLeft(find.text('Loose idea')).dy,
+      lessThan(t.getTopLeft(find.text('Opening image')).dy),
+    );
     await finish(t);
   });
 }

@@ -7,6 +7,7 @@ import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/app_theme.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
+import 'beat_ops.dart';
 import 'beats_providers.dart';
 import 'template_providers.dart';
 
@@ -26,16 +27,39 @@ class BeatsScreen extends ConsumerWidget {
     final withFrames = ref.watch(beatsWithFramesProvider).value ?? const {};
     final slotIds = {for (final s in slots) s.id};
 
-    Widget card(Beat b, {Color? band}) => _BeatCard(
-      beat: b,
-      band: band,
-      hasFrames: withFrames.contains(b.id),
-      onTap: () => _edit(context, ref, b),
-    );
+    final db = ref.read(dbProvider);
+    // One slot's cards, each a drop target (insert before) plus an end zone.
+    List<Widget> group(
+      String? slotId,
+      List<Beat> items,
+      Color? band, {
+      bool flat = false,
+    }) => [
+      for (var i = 0; i < items.length; i++)
+        _Drop(
+          onDrop: (id) =>
+              moveBeat(db, id, slotId: slotId, index: i, flat: flat),
+          child: _BeatCard(
+            beat: items[i],
+            band: band,
+            hasFrames: withFrames.contains(items[i].id),
+            onTap: () => _edit(context, ref, items[i]),
+            onSplit: () => _split(context, db, items[i]),
+            onMerge: i + 1 < items.length
+                ? () => mergeBeats(db, [items[i].id, items[i + 1].id])
+                : null,
+          ),
+        ),
+      _Drop(
+        onDrop: (id) =>
+            moveBeat(db, id, slotId: slotId, index: items.length, flat: flat),
+        child: const SizedBox(height: AppSpace.s1, width: double.infinity),
+      ),
+    ];
 
     final children = <Widget>[];
     if (tplId == null) {
-      children.addAll(beats.map(card));
+      children.addAll(group(null, beats, null, flat: true));
     } else {
       final loose = [
         for (final b in beats)
@@ -43,16 +67,24 @@ class BeatsScreen extends ConsumerWidget {
       ];
       for (final s in slots) {
         children.add(
-          _SlotHeader(slot: s, onAdd: () => _edit(context, ref, null, s.id)),
+          _Drop(
+            onDrop: (id) => moveBeat(db, id, slotId: s.id, index: 0),
+            child: _SlotHeader(
+              slot: s,
+              onAdd: () => _edit(context, ref, null, s.id),
+            ),
+          ),
         );
-        children.addAll([
-          for (final b in beats)
-            if (b.slotId == s.id) card(b, band: AppColors.tealFill),
-        ]);
+        children.addAll(
+          group(s.id, [
+            for (final b in beats)
+              if (b.slotId == s.id) b,
+          ], AppColors.tealFill),
+        );
       }
       if (loose.isNotEmpty) {
         children.add(const _SlotHeader(slot: null));
-        children.addAll(loose.map(card));
+        children.addAll(group(null, loose, null));
       }
     }
 
@@ -82,6 +114,35 @@ class BeatsScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _split(BuildContext context, AppDatabase db, Beat beat) async {
+    final c = TextEditingController(text: beat.description);
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Split beat'),
+        content: TextField(
+          controller: c,
+          maxLines: 4,
+          decoration: const InputDecoration(
+            helperText: 'Put the cursor where the beat should split.',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Split at cursor'),
+          ),
+        ],
+      ),
+    );
+    final at = c.selection.baseOffset;
+    if (ok == true && at > 0) await splitBeat(db, beat.id, at: at);
   }
 
   Future<void> _edit(
@@ -140,6 +201,19 @@ class BeatsScreen extends ConsumerWidget {
   }
 }
 
+/// Accepts a dragged beat id.
+class _Drop extends StatelessWidget {
+  const _Drop({required this.child, required this.onDrop});
+  final Widget child;
+  final void Function(String beatId) onDrop;
+
+  @override
+  Widget build(BuildContext context) => DragTarget<String>(
+    onAcceptWithDetails: (d) => onDrop(d.data),
+    builder: (_, _, _) => child,
+  );
+}
+
 class _SlotHeader extends StatelessWidget {
   const _SlotHeader({required this.slot, this.onAdd});
   final Slot? slot;
@@ -176,18 +250,22 @@ class _BeatCard extends StatelessWidget {
     required this.beat,
     required this.hasFrames,
     required this.onTap,
+    required this.onSplit,
+    this.onMerge,
     this.band,
   });
   final Beat beat;
   final bool hasFrames;
   final VoidCallback onTap;
+  final VoidCallback onSplit;
+  final VoidCallback? onMerge;
   final Color? band;
 
   @override
   Widget build(BuildContext context) {
     final paper = Theme.of(context).extension<PaperColors>()!;
     final hasScript = (beat.blocks ?? const []).isNotEmpty;
-    return Padding(
+    final card = Padding(
       padding: const EdgeInsets.only(bottom: AppSpace.s1),
       child: Material(
         color: paper.surface,
@@ -243,6 +321,26 @@ class _BeatCard extends StatelessWidget {
                           color: paper.inkSecondary,
                         ),
                       ),
+                    PopupMenuButton<VoidCallback>(
+                      tooltip: 'Beat actions',
+                      icon: Icon(
+                        LucideIcons.ellipsisVertical,
+                        size: AppSize.iconInline,
+                        color: paper.inkSecondary,
+                      ),
+                      onSelected: (f) => f(),
+                      itemBuilder: (_) => [
+                        PopupMenuItem(
+                          value: onSplit,
+                          child: const Text('Split'),
+                        ),
+                        if (onMerge != null)
+                          PopupMenuItem(
+                            value: onMerge,
+                            child: const Text('Merge with next'),
+                          ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -250,6 +348,15 @@ class _BeatCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+    return LongPressDraggable<String>(
+      data: beat.id,
+      feedback: SizedBox(
+        width: MediaQuery.sizeOf(context).width - 2 * AppSize.sideMargin,
+        child: Opacity(opacity: 0.9, child: card),
+      ),
+      childWhenDragging: Opacity(opacity: 0.4, child: card),
+      child: card,
     );
   }
 }
