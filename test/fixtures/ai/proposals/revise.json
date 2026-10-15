@@ -1,0 +1,19 @@
+{
+  "proposal": {
+    "raw_transcript": "The kid finds a rusty key in the sandbox. Also there is a dog.",
+    "summary_sentences": ["The kid finds a rusty key in the sandbox.", "There is a dog."],
+    "changes": [
+      {"id": "op-beat", "op": "addBeat", "accepted": true, "ref": "b1", "title": "The key", "description": "The kid finds a rusty key in the sandbox.", "character_names": ["Kid"]},
+      {"id": "op-dog", "op": "addCharacter", "accepted": true, "name": "Dog", "fields": {}},
+      {"id": "op-sum", "op": "setSummary", "accepted": false, "text": "A kid finds a rusty key in the sandbox."}
+    ]
+  },
+  "instruction": "drop the part about the dog",
+  "response": {
+    "summary_sentences": [{"text": "The kid finds a rusty key in the sandbox.", "source_quotes": ["The kid finds a rusty key in the sandbox."]}],
+    "changes": [
+      {"id": "op-beat", "op": "addBeat", "ref": "b1", "title": "The key", "description": "The kid finds a rusty key in the sandbox.", "character_names": ["Kid"]},
+      {"id": "op-sum", "op": "setSummary", "text": "A kid finds a rusty key in the sandbox."}
+    ]
+  }
+}

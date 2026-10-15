@@ -1,0 +1,12 @@
+{
+  "projects": [
+    {"id": "3f0c1d2e-0000-4000-8000-0000000000aa", "title": "The Key", "summary_first_200_chars": "A kid finds a rusty key in a sandbox.", "character_names": ["Kid", "Watchman"]},
+    {"id": "3f0c1d2e-0000-4000-8000-0000000000bb", "title": "Night Bus", "summary_first_200_chars": "A driver on the last route.", "character_names": ["Driver"]}
+  ],
+  "cases": [
+    {"name": "matches by story", "raw": "Continue the playground story, the kid hides the key.", "response": {"project_id": "3f0c1d2e-0000-4000-8000-0000000000aa", "confidence": 0.86, "matched_phrase": "the kid hides the key"}, "expect": "3f0c1d2e-0000-4000-8000-0000000000aa"},
+    {"name": "no match", "raw": "A song about rain.", "response": {"project_id": null, "confidence": 0.1, "matched_phrase": null}, "expect": null},
+    {"name": "low confidence", "raw": "Maybe the bus thing?", "response": {"project_id": "3f0c1d2e-0000-4000-8000-0000000000bb", "confidence": 0.4, "matched_phrase": "the bus"}, "expect": null},
+    {"name": "id not in list", "raw": "Add to the lighthouse story.", "response": {"project_id": "ffffffff-0000-4000-8000-000000000000", "confidence": 0.9, "matched_phrase": "lighthouse story"}, "expect": null}
+  ]
+}
