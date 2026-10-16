@@ -16,16 +16,16 @@ Future<void> main() async {
   );
 }
 
-class LynchApp extends StatelessWidget {
+class LynchApp extends ConsumerWidget {
   const LynchApp({super.key});
 
   @override
-  Widget build(BuildContext context) => MaterialApp.router(
+  Widget build(BuildContext context, WidgetRef ref) => MaterialApp.router(
     title: 'Lynch',
     debugShowCheckedModeBanner: false,
-    theme: AppTheme.dark,
+    theme: AppTheme.light,
     darkTheme: AppTheme.dark,
-    themeMode: ThemeMode.dark,
+    themeMode: ref.watch(themeModeProvider).value ?? ThemeMode.dark,
     routerConfig: router,
   );
 }

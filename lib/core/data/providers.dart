@@ -1,4 +1,5 @@
 import 'package:drift_flutter/drift_flutter.dart';
+import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'db.dart';
@@ -17,3 +18,11 @@ Future<AppDatabase> openAppDatabase() async {
   await SeedLoader(db).load();
   return db;
 }
+
+/// App frame theme from `settings.theme` (`dark` | `light`, default dark).
+/// Paper surfaces don't follow it (design.md).
+final themeModeProvider = StreamProvider<ThemeMode>((ref) => ref
+    .watch(dbProvider)
+    .settingsDao
+    .watch('theme')
+    .map((v) => v == 'light' ? ThemeMode.light : ThemeMode.dark));

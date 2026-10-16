@@ -103,6 +103,10 @@ class SettingsDao extends DatabaseAccessor<AppDatabase>
             ..where((t) => t.key.equals(key)))
           .getSingleOrNull())
       ?.value;
+  Stream<String?> watch(String key) => (select(settings)
+        ..where((t) => t.key.equals(key)))
+      .watchSingleOrNull()
+      .map((row) => row?.value);
   Future<void> put(String key, String value, int nowMs) =>
       into(settings).insertOnConflictUpdate(SettingsCompanion.insert(
           key: key, value: value, updatedAt: nowMs));
