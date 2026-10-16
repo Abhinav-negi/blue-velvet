@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/native.dart';
@@ -7,6 +8,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+import 'package:lynch/core/ai/ai_client.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/proposal_engine.dart';
 import 'package:lynch/core/data/providers.dart';
@@ -21,6 +26,42 @@ Future<void> loadFont(String family, String path) async {
 }
 
 const raw = 'A kid finds a key. The watchman sees him.';
+
+/// AiClient on a MockClient that answers every call with [reply] as Gemini JSON.
+AiClient fakeAi(Map<String, dynamic> reply) => AiClient(
+  readStoredKey: () async => 'k',
+  client: MockClient(
+    (r) async => http.Response(
+      jsonEncode({
+        'candidates': [
+          {
+            'content': {
+              'parts': [
+                {'text': jsonEncode(reply)},
+              ],
+            },
+          },
+        ],
+      }),
+      200,
+      headers: {'content-type': 'application/json'},
+    ),
+  ),
+);
+
+/// Text of every highlighted (background-filled) run under [t].
+List<String> lit(WidgetTester t) {
+  final out = <String>[];
+  for (final w in t.widgetList<RichText>(find.byType(RichText))) {
+    w.text.visitChildren((s) {
+      if (s is TextSpan && s.style?.backgroundColor != null) {
+        out.add(s.text ?? '');
+      }
+      return true;
+    });
+  }
+  return out;
+}
 
 Map<String, dynamic> addBeat(String title) => {
   'op': 'addBeat',
@@ -50,7 +91,7 @@ void main() {
         summary: '',
         aspectRatio: '16:9',
         typeFields: const {},
-        aiPermissions: const {},
+        aiPermissions: const {'beat_generation': true},
         createdAt: 1,
         updatedAt: 1,
       ),
@@ -62,10 +103,11 @@ void main() {
             id: 'pr',
             projectId: 'p',
             status: ProposalStatus.pending,
-            summary: 'A kid finds a key.',
+            summary: 'A kid finds a key. The watchman sees him.',
             rawTranscript: raw,
             summarySpans: [
               {'sentence_index': 0, 'start': 0, 'end': 18},
+              {'sentence_index': 1, 'start': 19, 'end': 41},
             ],
             changes: [addBeat('One'), addBeat('Two'), addBeat('Three')],
             createdAt: 1,
@@ -74,7 +116,11 @@ void main() {
         );
   }
 
-  Future<void> open(WidgetTester t, {String at = '/proposals/pr'}) async {
+  Future<void> open(
+    WidgetTester t, {
+    String at = '/proposals/pr',
+    AiClient? ai,
+  }) async {
     t.view.physicalSize = const Size(400, 1400);
     t.view.devicePixelRatio = 1;
     addTearDown(t.view.reset);
@@ -95,7 +141,10 @@ void main() {
     await t.runAsync(seed);
     await t.pumpWidget(
       ProviderScope(
-        overrides: [dbProvider.overrideWithValue(db)],
+        overrides: [
+          dbProvider.overrideWithValue(db),
+          if (ai != null) aiClientProvider.overrideWithValue(ai),
+        ],
         child: MaterialApp.router(
           theme: AppTheme.dark,
           routerConfig: GoRouter(initialLocation: at, routes: proposalsRoutes),
@@ -247,6 +296,52 @@ void main() {
     expect(find.textContaining('shared sheets'), findsOneWidget);
     await t.tap(find.text('Cancel'));
     await t.pumpAndSettle();
+    await finish(t);
+  });
+
+  testWidgets('Ask for changes replaces the ops with the revised ones', (
+    t,
+  ) async {
+    await open(
+      t,
+      ai: fakeAi({
+        'summary_sentences': [
+          {
+            'text': 'A kid finds a key.',
+            'source_quotes': ['A kid finds a key'],
+          },
+        ],
+        'changes': [
+          {...addBeat('One'), 'id': 'One'},
+        ],
+      }),
+    );
+    expect(find.text('Approve all'), findsOneWidget);
+    await t.tap(find.text('Ask for changes'));
+    await t.pumpAndSettle();
+    await t.enterText(find.byType(TextField), 'keep only the kid');
+    await t.tap(find.text('Send'));
+    await t.pump();
+    await t.runAsync(() => Future.delayed(const Duration(milliseconds: 300)));
+    await t.pumpAndSettle();
+    final p = (await t.runAsync(() => db.select(db.proposals).getSingle()))!;
+    expect([for (final c in p.changes) (c as Map)['id']], ['One']);
+    expect(p.summary, 'A kid finds a key.');
+    expect(p.status, ProposalStatus.pending);
+    expect(await t.runAsync(beatCount), 0); // AI never writes project data
+    expect(find.byKey(const ValueKey('accept-1')), findsNothing);
+    await finish(t);
+  });
+
+  testWidgets('tapping a sentence highlights its transcript span', (t) async {
+    await open(t);
+    expect(lit(t), isEmpty);
+    await t.tap(find.byKey(const ValueKey('sentence-1')));
+    await t.pump();
+    expect(lit(t), ['The watchman sees him.']);
+    await t.tap(find.byKey(const ValueKey('sentence-0')));
+    await t.pump();
+    expect(lit(t), ['A kid finds a key.']);
     await finish(t);
   });
 }

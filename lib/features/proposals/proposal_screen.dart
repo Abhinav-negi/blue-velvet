@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
+import 'package:lynch/core/ai/errors.dart';
+import 'package:lynch/core/ai/organize.dart' show splitSentences;
 import 'package:lynch/core/data/proposal_engine.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:lynch/core/widgets/diff_view.dart';
@@ -25,6 +28,7 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
   List<bool>? _accepted; // per change; starts from the stored flags
   bool _showSaid = false;
   bool _busy = false;
+  int? _sentence; // tapped summary sentence; null = show all spans
 
   Future<void> _approve(List<bool> accepted, String projectId) async {
     setState(() => _busy = true);
@@ -88,6 +92,61 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
     if (mounted) context.pop();
   }
 
+  Future<void> _revise() async {
+    final ctl = TextEditingController();
+    final text = await showDialog<String>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: const Text('Ask for changes'),
+        content: TextField(
+          controller: ctl,
+          maxLines: null,
+          autofocus: true,
+          decoration: const InputDecoration(
+            hintText: 'e.g. drop the part about the dog',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(c),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(c, ctl.text.trim()),
+            child: const Text('Send'),
+          ),
+        ],
+      ),
+    );
+    // Not disposed: the dialog's exit animation still reads it.
+    if (text == null || text.isEmpty || !mounted) return;
+    setState(() => _busy = true);
+    final m = ScaffoldMessenger.of(context);
+    try {
+      final notes = await ref
+          .read(proposalActionsProvider)
+          .revise(widget.id, text, ref.read(aiClientProvider));
+      if (!mounted) return;
+      for (final n in notes) {
+        m.showSnackBar(SnackBar(content: Text(n)));
+      }
+      ref.invalidate(changeLinesProvider(widget.id));
+      setState(() {
+        _accepted = null; // re-read the new flags
+        _sentence = null;
+        _busy = false;
+      });
+    } on AiException catch (e) {
+      if (!mounted) return;
+      setState(() => _busy = false);
+      m.showSnackBar(SnackBar(content: Text(e.message)));
+    } on ProposalException catch (e) {
+      if (!mounted) return;
+      setState(() => _busy = false);
+      m.showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
+
   Future<void> _edit(String current) async {
     final ctl = TextEditingController(text: current);
     final text = await showDialog<String>(
@@ -117,7 +176,10 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
   Widget build(BuildContext context) {
     final p = ref.watch(proposalProvider(widget.id)).value;
     final lines = ref.watch(changeLinesProvider(widget.id)).value;
-    if (p == null || lines == null) return const Scaffold();
+    // lines lag one frame behind p after a revision
+    if (p == null || lines == null || lines.length != p.changes.length) {
+      return const Scaffold();
+    }
     final accepted = _accepted ??= [
       for (final c in p.changes.cast<Map>()) c['accepted'] != false,
     ];
@@ -147,17 +209,39 @@ class _ProposalScreenState extends ConsumerState<ProposalScreen> {
         children: [
           Text(touchHeader(p.changes), style: AppType.label),
           const SizedBox(height: AppSpace.s1),
-          SuggestedText(p.summary),
-          TextButton(
-            onPressed: () => setState(() => _showSaid = !_showSaid),
-            child: Text(_showSaid ? 'Hide what I said' : 'Show what I said'),
+          for (final (i, s) in splitSentences(p.summary).indexed)
+            InkWell(
+              key: ValueKey('sentence-$i'),
+              onTap: () => setState(() {
+                _sentence = i;
+                _showSaid = true;
+              }),
+              child: SuggestedText(s),
+            ),
+          Row(
+            children: [
+              TextButton(
+                onPressed: () => setState(() {
+                  _showSaid = !_showSaid;
+                  _sentence = null;
+                }),
+                child: Text(
+                  _showSaid ? 'Hide what I said' : 'Show what I said',
+                ),
+              ),
+              TextButton(
+                onPressed: _busy ? null : _revise,
+                child: const Text('Ask for changes'),
+              ),
+            ],
           ),
           if (_showSaid)
             TranscriptHighlight(
               transcript: p.rawTranscript,
               spans: [
                 for (final s in p.summarySpans.cast<Map>())
-                  HighlightRange(s['start'] as int, s['end'] as int),
+                  if (_sentence == null || s['sentence_index'] == _sentence)
+                    HighlightRange(s['start'] as int, s['end'] as int),
               ],
             ),
           const SizedBox(height: AppSpace.s2),
