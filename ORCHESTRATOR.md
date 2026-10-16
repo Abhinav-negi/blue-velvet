@@ -61,6 +61,8 @@ Gotchas (permanent):
 - Replacing a project tab body changes `test/core/shell/goldens/*`: the orchestrator regenerates them (`flutter test test/core/shell --update-goldens`) and looks at them.
 - Data-safety guards must be real checks, not `assert` (stripped in release builds).
 - Gemini free tier can 429 for a long stretch: live smokes may need a later retry; don't block code merges on them (mark the task BLOCKED with the command).
+- Gemini free tier is ~20 requests/day **per model** (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier); a long 429 usually means the daily bucket is spent, not a rate spike. Each model has its own bucket; the error body says the reset time. `gemini-3.5-flash` currently resolves to `gemini-3.6-flash` server-side.
+- Drift `.watch().first` hangs inside `testWidgets` (fake zone): one-shot reads in feature code use `.get()`.
 
 Toolchain verified 2026-10-15: Flutter 3.47.7 stable, Dart 3.13, Android SDK 36/37, debug APK builds. The project path contains a space ("blue velvet"): always quote paths.
 
