@@ -21,4 +21,7 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 Not in parallel with PROP-03.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Decisions: `ProposalActions.revise(id, instruction, ai)` builds PROJECT_CONTEXT (project, beats, characters; `template: null`, so revisions cannot re-place beats into slots - ponytail), calls core `reviseProposal`, then overwrites only the proposal row (summary, summary_spans, changes). Real guard: throws ProposalException unless status is pending. AI never touches project data (test asserts 0 beats). Screen: "Ask for changes" button (dialog), summary split with `splitSentences` into tappable `sentence-N` InkWells; tap shows transcript with only that sentence's spans lit; "Show what I said" still lights all.
+- Gotchas: after a revision the changeLines future lags one frame behind the proposal stream, so build returns an empty Scaffold while lengths differ (else RangeError). `_accepted` reset to null after revise. Dialog TextEditingController is not disposed (exit animation reads it; "used after dispose" otherwise). Seed test project now has `beat_generation: true` and a 2-sentence summary. Test uses `AiClient(client: MockClient)` via `aiClientProvider` override.
+- Not done: AiException messages shown as snackbar only; no test for the error path; template slots not sent to the AI.
+- Commands: flutter analyze, flutter test, tool/check_boundaries.sh, Color(0x grep - see final report.

@@ -1,5 +1,8 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lynch/core/ai/ai_client.dart';
+import 'package:lynch/core/ai/organize.dart' show splitSentences;
+import 'package:lynch/core/ai/proposals.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/proposal_engine.dart';
 import 'package:lynch/core/data/providers.dart';
@@ -184,6 +187,102 @@ class ProposalActions {
       ),
     );
     return engine.approve(id);
+  }
+
+  /// "Ask for changes": the AI returns a full replacement for a pending
+  /// proposal's summary, spans and ops. Only the proposal row changes (D-17).
+  /// Returns the AI's drop notes.
+  /// ponytail: no template slots in the context, so revisions can't place beats
+  /// into slots; add the template block when placement edits matter.
+  Future<List<String>> revise(
+    String id,
+    String instruction,
+    AiClient ai,
+  ) async {
+    final p = await (db.select(
+      db.proposals,
+    )..where((t) => t.id.equals(id))).getSingle();
+    if (p.status != ProposalStatus.pending) {
+      throw ProposalException('Only a pending proposal can be revised.');
+    }
+    final proj = await (db.select(
+      db.projects,
+    )..where((t) => t.id.equals(p.projectId))).getSingle();
+    final beats =
+        await (db.select(db.beats)
+              ..where((t) => t.projectId.equals(p.projectId))
+              ..orderBy([(t) => OrderingTerm.asc(t.position)]))
+            .get();
+    final pcs = await (db.select(
+      db.projectCharacters,
+    )..where((t) => t.projectId.equals(p.projectId))).get();
+    final chars = {
+      for (final c in await db.select(db.characters).get()) c.id: c,
+    };
+    final names = <String, String>{};
+    final characters = <Map<String, dynamic>>[];
+    for (final pc in pcs) {
+      final c = chars[pc.characterId];
+      String f(String? own, String? base) => own ?? base ?? '';
+      final name = f(pc.name, c?.name);
+      names[pc.id] = name;
+      characters.add({
+        'project_character_id': pc.id,
+        'name': name,
+        'age': f(pc.age, c?.age),
+        'role': f(pc.role, c?.role),
+        'appearance': f(pc.appearance, c?.appearance),
+        'background': f(pc.background, c?.background),
+        'traits': f(pc.traits, c?.traits),
+        'habits': f(pc.habits, c?.habits),
+        'wants_needs_fears': f(pc.wantsNeedsFears, c?.wantsNeedsFears),
+        'notes': f(pc.notes, c?.notes),
+      });
+    }
+    final draft = await reviseProposal(
+      ai,
+      proposal: {
+        'raw_transcript': p.rawTranscript,
+        'summary_sentences': splitSentences(p.summary),
+        'changes': p.changes,
+      },
+      instruction: instruction,
+      context: {
+        'project': {
+          'title': proj.title,
+          'type': proj.type.name,
+          'summary': proj.summary,
+        },
+        'template': null,
+        'beats': [
+          for (final b in beats)
+            {
+              'id': b.id,
+              'slot_id': b.slotId,
+              'position': b.position,
+              'title': b.title,
+              'description': b.description,
+              'character_names': [
+                for (final i in b.characterIds)
+                  if (names[i] != null) names[i],
+              ],
+              'has_script': (b.blocks ?? b.sayShow ?? const []).isNotEmpty,
+            },
+        ],
+        'characters': characters,
+      },
+      permissions: proj.aiPermissions,
+    );
+    await _write(
+      id,
+      ProposalsCompanion(
+        summary: Value(draft.summary),
+        summarySpans: Value([for (final s in draft.spans) s.toJson()]),
+        changes: Value(draft.changes),
+        updatedAt: Value(DateTime.now().millisecondsSinceEpoch),
+      ),
+    );
+    return draft.notes;
   }
 
   Future<void> editSummary(String id, String text) =>
