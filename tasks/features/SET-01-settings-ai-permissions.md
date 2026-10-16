@@ -23,4 +23,7 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+- Decisions: `settings_providers.dart` holds `newProjectAiPermissions(db)` (stored `ai_permission_defaults` overlaid on DATA_MODEL 8.1 values; always 8 keys), global/project permission setters, `setTheme`, `maskKey`. `SettingsScreen(projectId)` = project switches + global defaults + light-theme switch + API key (masked "•••• last4", save/remove via key_store). Route `settings` (/project/:projectId/settings) already existed; `routes.dart` now passes projectId. No router change needed.
+- Not wired (not my files): home_screen.dart `_create` still inserts `aiPermissions: const {}`; it must use `await newProjectAiPermissions(db)`. sample_project.dart copies raw stored defaults (empty if unset) - should use it too.
+- Gotchas: Drift widget tests need taps outside `runAsync`, then `runAsync` delay, then pumps; end with unmount + pump(1s). Settings tab body changed, so test/core/shell goldens may need regenerating (see run below).
+- Run: analyze, test, boundaries, Color(0x grep: see final report.
