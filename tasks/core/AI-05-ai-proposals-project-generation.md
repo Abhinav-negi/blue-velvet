@@ -31,3 +31,5 @@ None beyond the orchestrator brief.
 - Done-when 5 (live smoke): NOT DONE. `dart run tool/ai_smoke.dart proposals <file>` (new op, written) hit 503 then persistent 429 "Rate limit or quota exceeded" across ~6 tries over ~10 min. Re-run: `timeout 600 dart run tool/ai_smoke.dart proposals <transcript-file>` with the AI_CONTRACT 2.3 transcript; paste ops + wordsCheck here.
 - Packages needed: none (uses existing uuid, http).
 - Section note: proposals.dart expects PROJECT_CONTEXT per AI_CONTRACT 5; callers must pass `beats[].slot_id` (null when unplaced) and `characters[].name`.
+- 2026-10-16 (orchestrator, after AI-08 fallback): `timeout 600 dart run tool/ai_smoke.dart proposals test/fixtures/ai/proposals/generate.json` → live buildProposal OK on the §19 transcript: setSummary, addCharacter Kid, addCharacter Watchman, addBeat b1, all accepted; `wordsCheck: summary [], ungrounded ops []`. Done-when 5 PASS.
+- Smoke-tool nit: the generateProject wordsCheck line runs over `jsonEncode(op)` (so uuids/keys show up as "ungrounded"); check op text fields only. The live setSummary repeated the transcript almost word for word after a short summary.

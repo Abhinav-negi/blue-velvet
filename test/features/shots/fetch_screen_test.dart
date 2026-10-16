@@ -7,10 +7,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:lynch/core/ai/ai_client.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/features/shots/fetch_screen.dart';
-import 'package:lynch/features/shots/shot_options.dart';
 
 http.Response gemini(Object o) => http.Response(
   jsonEncode({
@@ -86,7 +86,7 @@ void main() {
       ProviderScope(
         overrides: [
           dbProvider.overrideWithValue(db),
-          shotAiProvider.overrideWithValue(ai),
+          aiClientProvider.overrideWithValue(ai),
         ],
         child: MaterialApp(home: FetchScreen(permissions: perms)),
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lynch/core/ai/ai_client.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/ai/errors.dart';
 import 'package:lynch/core/ai/fetch.dart';
-import 'package:lynch/core/ai/key_store.dart';
 import 'package:lynch/core/ai/permissions.dart';
 import 'package:lynch/core/data/ai_defaults.dart';
 import 'package:lynch/core/data/db.dart';
@@ -11,11 +11,6 @@ import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
 import 'shot_providers.dart';
-
-/// The AI gateway for the shot library. Tests override with a MockClient.
-final shotAiProvider = Provider<AiClient>(
-  (ref) => AiClient(readStoredKey: readSecureGeminiKey),
-);
 
 /// Global AI defaults (`settings.ai_permission_defaults`). The library has no
 /// project, so a project's own switches are passed in by the caller instead.
@@ -99,7 +94,7 @@ class _PanelState extends ConsumerState<ShotOptionsPanel> {
     });
     try {
       final r = await askShotOptions(
-        ref.read(shotAiProvider),
+        ref.read(aiClientProvider),
         q,
         ref.read(shotsProvider).value ?? const [],
         frameContext: widget.frameContext,

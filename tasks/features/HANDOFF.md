@@ -12,7 +12,7 @@ Read before starting work in this folder. Under 15 lines. Delete a note once it'
 - VOID-02: build on `voidFilterProvider`/`filteredVoidItemsProvider`; grid layout change → regenerate `test/features/void/goldens/grid.png` with `--update-goldens` and look at it. Search uses `VoidItemsDao.search` (FTS5).
 - Lazy ListViews hide off-screen widgets in tests: use a tall test view or a Row in a scroll view.
 - Shell tests expect each tab's title text twice (tab label + screen heading): every tab screen shows its own heading. Replacing a tab body changes `test/core/shell/goldens/*` → orchestrator regenerates them.
-- No app-wide AiClient provider yet: VOID-03 uses a local `voidAiProvider`, SHOT-03 `shotAiProvider` (AiClient + readSecureGeminiKey). Reuse the pattern; a core provider is a future cleanup.
+- AI: read `aiClientProvider` (lib/core/ai/ai_provider.dart), the one app-wide AiClient; tests override it with a MockClient-backed AiClient. Flash falls back to flash-lite on a daily-quota 429 (D-23).
 - PROP-01: reuse `ProposalActions` + providers in proposals_providers.dart; review screen proposal_screen.dart. BEAT-01: beats_providers.dart (`saveBeat`, project beats, frame lookup). PROJ-03: type_fields keys per DATA_MODEL §8.2.
 - Shell goldens were regenerated on master after PROJ-03; branches cut before that see 2 expected shell failures. Never commit `test/**/failures/` (now gitignored).
 - SCR-01: screenplay editor writes `beats.blocks` on every edit; layout from assets/seed/screenplay_format.json; SCR-02 switches on project type at the marked spot in script_screen.dart. Features read beats via `db.beatsDao` (can't import features/beats).

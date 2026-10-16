@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lynch/core/ai/ai_client.dart';
-import 'package:lynch/core/ai/key_store.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/ai/permissions.dart';
 import 'package:lynch/core/ai/scaffold.dart';
 import 'package:lynch/core/data/db.dart';
@@ -9,11 +8,6 @@ import 'package:lynch/core/data/proposal_engine.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:uuid/uuid.dart';
-
-/// Local AI client for the script tab. Tests override it with a fake.
-final scriptAiProvider = Provider<AiClient>(
-  (ref) => AiClient(readStoredKey: readSecureGeminiKey),
-);
 
 bool beatIsEmpty(Beat b) =>
     (b.blocks ?? const []).isEmpty && (b.sayShow ?? const []).isEmpty;
@@ -128,7 +122,7 @@ class _State extends ConsumerState<ScaffoldSuggestions> {
     final b = widget.beat;
     try {
       final d = await scaffoldBeat(
-        ref.read(scriptAiProvider),
+        ref.read(aiClientProvider),
         beat: {
           'id': b.id,
           'title': b.title,

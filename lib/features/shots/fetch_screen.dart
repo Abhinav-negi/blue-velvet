@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/ai/errors.dart';
 import 'package:lynch/core/ai/fetch.dart';
 import 'package:lynch/core/ai/permissions.dart';
@@ -55,7 +56,7 @@ class _FetchState extends ConsumerState<FetchScreen> {
       _saved = false;
     });
     try {
-      final r = await FetchConvert(ref.read(shotAiProvider)).run(
+      final r = await FetchConvert(ref.read(aiClientProvider)).run(
         q,
         kind: _kind,
         projectTypes: _projectTypes.toList(),

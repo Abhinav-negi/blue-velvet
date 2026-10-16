@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/ai/organize.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
@@ -123,7 +124,7 @@ class VoidItemMenu extends ConsumerWidget {
     ItemEdit e;
     try {
       e = await proposeItemEdit(
-        ref.read(voidAiProvider),
+        ref.read(aiClientProvider),
         item,
         instruction,
         forceType: forceType,

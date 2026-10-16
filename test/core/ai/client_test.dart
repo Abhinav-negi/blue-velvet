@@ -122,4 +122,57 @@ void main() {
       await expectLater(keyUsed(), throwsA(isA<AiNoKey>()));
     });
   });
+
+  group('daily-quota fallback (D-23)', () {
+    final daily = http.Response(
+        '{"error":{"details":[{"violations":[{"quotaId":'
+        '"GenerateRequestsPerDayPerProjectPerModel-FreeTier"}]}]}}',
+        429);
+
+    test('daily 429 on flash goes straight to lite, no backoff on flash',
+        () async {
+      final paths = <String>[];
+      final ai = make(MockClient((r) async {
+        paths.add(r.url.path);
+        return r.url.path.contains(geminiModelLite) ? ok('{"a":3}') : daily;
+      }), stored: 'k');
+      expect(await ai.generateJson(prompt: 'hi', schema: schema), {'a': 3});
+      expect(paths.length, 2);
+      expect(paths.first, contains('$geminiModel:'));
+      expect(paths.last, contains('$geminiModelLite:'));
+    });
+
+    test('plain 429 keeps retrying on flash', () async {
+      final paths = <String>[];
+      final ai = make(MockClient((r) async {
+        paths.add(r.url.path);
+        return paths.length < 3 ? http.Response('{}', 429) : ok('{"a":4}');
+      }), stored: 'k');
+      expect(await ai.generateJson(prompt: 'hi', schema: schema), {'a': 4});
+      expect(paths.every((p) => p.contains('$geminiModel:')), isTrue);
+    });
+
+    test('next call after fallback skips flash', () async {
+      final paths = <String>[];
+      final ai = make(MockClient((r) async {
+        paths.add(r.url.path);
+        return r.url.path.contains(geminiModelLite) ? ok('{}') : daily;
+      }), stored: 'k');
+      await ai.generateJson(prompt: 'hi', schema: schema);
+      paths.clear();
+      await ai.generateJson(prompt: 'hi', schema: schema);
+      expect(paths, hasLength(1));
+      expect(paths.single, contains('$geminiModelLite:'));
+    });
+
+    test('lite also daily-exhausted -> AiHttpError 429 quota message',
+        () async {
+      final ai = make(MockClient((r) async => daily), stored: 'k');
+      await expectLater(
+          ai.generateJson(prompt: 'hi', schema: schema),
+          throwsA(isA<AiHttpError>()
+              .having((e) => e.status, 'status', 429)
+              .having((e) => e.message, 'message', contains("Today's free"))));
+    });
+  });
 }

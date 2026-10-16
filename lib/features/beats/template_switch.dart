@@ -2,7 +2,7 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lynch/core/ai/ai_client.dart';
-import 'package:lynch/core/ai/key_store.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/ai/permissions.dart';
 import 'package:lynch/core/ai/remap.dart';
 import 'package:lynch/core/data/db.dart';
@@ -10,11 +10,6 @@ import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
 import 'template_providers.dart';
-
-/// The app's AI gateway for beats. Not wired in core yet; tests override it.
-final beatsAiProvider = Provider<AiClient>(
-  (ref) => AiClient(readStoredKey: readSecureGeminiKey),
-);
 
 Future<List<Beat>> _loadBeats(AppDatabase db, String projectId) =>
     (db.select(db.beats)
@@ -151,7 +146,7 @@ class _SwitchState extends ConsumerState<TemplateSwitchScreen> {
     final beats = await _loadBeats(db, widget.projectId);
     final plan = await proposeSwitch(
       db,
-      ref.read(beatsAiProvider),
+      ref.read(aiClientProvider),
       widget.projectId,
       slots,
     );

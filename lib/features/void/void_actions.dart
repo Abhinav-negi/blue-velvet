@@ -1,17 +1,10 @@
 import 'dart:convert';
 
 import 'package:drift/drift.dart' show Value;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lynch/core/ai/ai_client.dart';
-import 'package:lynch/core/ai/key_store.dart';
 import 'package:lynch/core/ai/organize.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/widgets/diff_view.dart';
-
-/// The app's AI gateway. Not wired in core yet; tests override it with a fake.
-final voidAiProvider = Provider<AiClient>(
-  (ref) => AiClient(readStoredKey: readSecureGeminiKey),
-);
 
 VoidType _typeOf(String s) => VoidType.values[itemTypes.indexOf(s)];
 

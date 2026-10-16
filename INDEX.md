@@ -34,7 +34,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | AI-02 | Offline AI queue | DONE | AI-01, DB-01 | 4 | runJob wiring not built yet |
 | AI-03 | AI: organize + edit item | DONE | AI-01 | 4 | |
 | AI-04 | AI: transcribe audio | BLOCKED | AI-01, SPK-03 | 4 | Merged; live smoke needs voice sample |
-| AI-05 | AI: proposals + project generation | BLOCKED | AI-01, DB-03 | 4 | Merged; live smoke hit Gemini 429 |
+| AI-05 | AI: proposals + project generation | DONE | AI-01, DB-03 | 4 | Smoke tool wordsCheck line includes uuids |
 | AI-06 | AI: scaffold, remap, suggestions | DONE | AI-01 | 4 | Grounding flag may false-positive |
 | AI-07 | AI: fetch & convert + shot options | DONE | AI-01, SPK-03, DB-02 | 4 | UI must ask project type |
 | CAP-01 | Mic dock + listening sheet | TODO | UI-02, SPK-02 | 4 | |
@@ -78,6 +78,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | EXP-02 | Screenplay PDF | DONE | SCR-01, RES-03 | 7 | No MORE/CONTD, title page, scene numbers |
 | EXP-04 | Script PDF + story bible | DONE | SCR-02, CHR-01 | 7 | All tiles shown; no beat headings |
 | NAV-01 | Entry points for unlinked screens | DONE | EXP-04, MAP-01, CHR-01, SHOT-01, SHOT-04, PROP-03 | 7 | |
+| AI-08 | Model fallback + shared AiClient provider | DONE | AI-01 | 7 | |
 | SHOT-02 | Attach shot to frame | TODO | SHOT-01, SB-07 | 8 | |
 | EXP-03 | Storyboard PDF | TODO | SB-07 | 8 | |
 | QA-01 | End-to-end + accessibility pass | TODO | all features + RES-* | 9 | |

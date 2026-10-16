@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lynch/core/ai/ai_client.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/ai/permissions.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/app_theme.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:lynch/features/script/screenplay_format.dart';
-import 'package:lynch/features/script/scaffold_suggestions.dart';
 import 'package:lynch/features/script/script_screen.dart';
 
 class FakeAi extends AiClient {
@@ -76,7 +76,7 @@ void main() {
       ProviderScope(
         overrides: [
           dbProvider.overrideWithValue(db),
-          scriptAiProvider.overrideWithValue(ai),
+          aiClientProvider.overrideWithValue(ai),
         ],
         child: MaterialApp(
           theme: AppTheme.light,

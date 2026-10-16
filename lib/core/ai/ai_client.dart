@@ -9,6 +9,9 @@ import 'permissions.dart';
 /// The one model ID used by the whole app (SPK-03). Aliases move; pin it here.
 const geminiModel = 'gemini-3.5-flash';
 
+/// Fallback when [geminiModel]'s daily free quota is spent (D-23).
+const geminiModelLite = 'gemini-3.5-flash-lite';
+
 const _endpoint = 'https://generativelanguage.googleapis.com/v1beta/models';
 
 /// Single gateway to Gemini: permission gate, key lookup, structured JSON
@@ -33,6 +36,9 @@ class AiClient {
   final Duration retryStep;
   final int maxTries;
   final Duration timeout;
+
+  // ponytail: in-memory only, resets on app restart (one wasted flash call/day).
+  bool _flashSpent = false;
 
   /// Secure storage first, then --dart-define GEMINI_API_KEY.
   Future<String> _key() async {
@@ -103,8 +109,9 @@ class AiClient {
   }
 
   Future<http.Response> _send(String key, String body) async {
-    final uri = Uri.parse('$_endpoint/$geminiModel:generateContent');
     for (var attempt = 1;; attempt++) {
+      final model = _flashSpent ? geminiModelLite : geminiModel;
+      final uri = Uri.parse('$_endpoint/$model:generateContent');
       http.Response res;
       try {
         res = await _client.post(uri, headers: {
@@ -118,6 +125,16 @@ class AiClient {
         throw const AiNetworkError('Network request failed');
       }
       if (res.statusCode == 200) return res;
+      // Body is only inspected, never logged or echoed.
+      if (res.statusCode == 429 && res.body.contains('PerDay')) {
+        if (_flashSpent) {
+          throw const AiHttpError(
+              429, "Today's free Gemini quota is used up, try again tomorrow");
+        }
+        _flashSpent = true;
+        attempt = 0; // fresh retry budget on lite
+        continue;
+      }
       final retryable = res.statusCode == 429 || res.statusCode == 503;
       if (retryable && attempt < maxTries) {
         await Future<void>.delayed(retryStep * attempt);

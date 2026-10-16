@@ -5,13 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:lynch/core/ai/ai_client.dart';
+import 'package:lynch/core/ai/ai_provider.dart';
 import 'package:lynch/core/ai/permissions.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/app_theme.dart';
 import 'package:lynch/core/widgets/diff_view.dart';
 import 'package:lynch/features/void/routes.dart';
-import 'package:lynch/features/void/void_actions.dart';
 
 class FakeAi extends AiClient {
   FakeAi(this.reply) : super(readStoredKey: () async => 'k');
@@ -89,7 +89,7 @@ void main() {
       ProviderScope(
         overrides: [
           dbProvider.overrideWithValue(db),
-          voidAiProvider.overrideWithValue(ai),
+          aiClientProvider.overrideWithValue(ai),
         ],
         child: MaterialApp.router(
           theme: AppTheme.dark,

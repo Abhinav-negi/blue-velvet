@@ -131,3 +131,9 @@ Chose: stay on the free tier, accepting that Google may use inputs to improve it
 Over: enabling billing now.
 Why: Owner's choice; $0 matters more for now. Switching is an AI Studio setting with no code change.
 Revisit if: the owner starts capturing ideas they want kept private.
+
+## D-23 — Flash with flash-lite fallback on daily quota (2026-10-16)
+Chose: call `gemini-3.5-flash`; when it returns a daily-quota 429, retry the same request on `gemini-3.5-flash-lite`.
+Over: flash only, waiting for the daily reset.
+Why: The free tier is ~20 requests/day per model; each model has its own bucket, so the fallback doubles the daily budget at a small quality cost only once flash is spent.
+Revisit if: lite output fails wordsCheck noticeably more often, or billing is enabled.
