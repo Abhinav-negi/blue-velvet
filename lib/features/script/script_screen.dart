@@ -4,6 +4,7 @@ import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
+import 'beat_pager.dart';
 import 'say_show_editor.dart';
 import 'scaffold_suggestions.dart';
 import 'screenplay_editor.dart';
@@ -86,17 +87,22 @@ class _ScriptScreenState extends ConsumerState<ScriptScreen> {
               : Column(
                   children: [
                     Expanded(
-                      child:
-                          type == ProjectType.youtube ||
-                              type == ProjectType.short
-                          ? SayShowEditor(
-                              key: ValueKey(_key(selected)),
-                              beat: selected,
-                            )
-                          : ScreenplayEditor(
-                              key: ValueKey(_key(selected)),
-                              beat: selected,
-                            ),
+                      child: BeatPager(
+                        key: ValueKey('pager-${selected.id}'),
+                        projectId: widget.projectId,
+                        beatId: selected.id,
+                        script:
+                            type == ProjectType.youtube ||
+                                type == ProjectType.short
+                            ? SayShowEditor(
+                                key: ValueKey(_key(selected)),
+                                beat: selected,
+                              )
+                            : ScreenplayEditor(
+                                key: ValueKey(_key(selected)),
+                                beat: selected,
+                              ),
+                      ),
                     ),
                     if (project != null)
                       ScaffoldSuggestions(
