@@ -5,6 +5,7 @@ import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
 import 'say_show_editor.dart';
+import 'scaffold_suggestions.dart';
 import 'screenplay_editor.dart';
 
 final _beatsProvider = StreamProvider.autoDispose.family<List<Beat>, String>(
@@ -27,15 +28,22 @@ class ScriptScreen extends ConsumerStatefulWidget {
 
 class _ScriptScreenState extends ConsumerState<ScriptScreen> {
   String? _beatId;
+  Beat? _saved; // beat as written by an accepted suggestion
+  int _rev = 0;
+  final _asked = <String>{};
+
+  String _key(Beat b) => '${b.id}-$_rev';
 
   @override
   Widget build(BuildContext context) {
     final beats = ref.watch(_beatsProvider(widget.projectId)).value;
     final theme = Theme.of(context);
     final type = ref.watch(_projectProvider(widget.projectId)).value?.type;
-    final selected = beats == null || beats.isEmpty
+    final first = beats == null || beats.isEmpty
         ? null
         : beats.firstWhere((b) => b.id == _beatId, orElse: () => beats.first);
+    final selected = _saved?.id == first?.id ? _saved : first;
+    final project = ref.watch(_projectProvider(widget.projectId)).value;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,7 +64,10 @@ class _ScriptScreenState extends ConsumerState<ScriptScreen> {
                     child: ChoiceChip(
                       label: Text(b.title),
                       selected: b.id == selected!.id,
-                      onSelected: (_) => setState(() => _beatId = b.id),
+                      onSelected: (_) => setState(() {
+                        _beatId = b.id;
+                        _saved = null;
+                      }),
                     ),
                   ),
               ],
@@ -72,9 +83,34 @@ class _ScriptScreenState extends ConsumerState<ScriptScreen> {
                 )
               : type == null
               ? const SizedBox.shrink()
-              : type == ProjectType.youtube || type == ProjectType.short
-              ? SayShowEditor(key: ValueKey(selected.id), beat: selected)
-              : ScreenplayEditor(key: ValueKey(selected.id), beat: selected),
+              : Column(
+                  children: [
+                    Expanded(
+                      child:
+                          type == ProjectType.youtube ||
+                              type == ProjectType.short
+                          ? SayShowEditor(
+                              key: ValueKey(_key(selected)),
+                              beat: selected,
+                            )
+                          : ScreenplayEditor(
+                              key: ValueKey(_key(selected)),
+                              beat: selected,
+                            ),
+                    ),
+                    if (project != null)
+                      ScaffoldSuggestions(
+                        key: ValueKey('sugg-${selected.id}'),
+                        beat: selected,
+                        project: project,
+                        auto: _asked.add(selected.id),
+                        onAccepted: (b) => setState(() {
+                          _saved = b;
+                          _rev++;
+                        }),
+                      ),
+                  ],
+                ),
         ),
       ],
     );
