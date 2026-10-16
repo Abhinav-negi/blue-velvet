@@ -9,9 +9,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../core/data/providers.dart';
+import 'bible_pdf.dart';
 import 'fountain.dart';
 import 'pdf_layout.dart';
 import 'screenplay_pdf.dart';
+import 'script_pdf.dart';
 
 /// Writes [content] to a temp file named [filename] and opens the share sheet.
 /// Tests override this to avoid platform channels. EXP-02/04 reuse it.
@@ -82,6 +84,45 @@ class ExportScreen extends ConsumerWidget {
     await ref.read(shareBytesProvider)(_fileName(data.$1, 'pdf'), bytes);
   }
 
+  Future<ByteData> _font(String name) => rootBundle.load('assets/fonts/$name');
+
+  Future<void> _script(WidgetRef ref) async {
+    final db = ref.read(dbProvider);
+    final project = await db.projectsDao.byId(projectId);
+    if (project == null) return;
+    final beats =
+        await (db.select(db.beats)
+              ..where((t) => t.projectId.equals(projectId))
+              ..orderBy([(t) => OrderingTerm.asc(t.position)]))
+            .get();
+    final model = ScriptModel.from(project.title, [
+      for (final b in beats) b.sayShow ?? const [],
+    ]);
+    final bytes = await scriptPdf(
+      model,
+      await _font('Literata-VF.ttf'),
+      await _font('Inter-VF.ttf'),
+    );
+    await ref.read(shareBytesProvider)(
+      _fileName('${project.title} script', 'pdf'),
+      bytes,
+    );
+  }
+
+  Future<void> _bible(WidgetRef ref) async {
+    final model = await BibleModel.load(ref.read(dbProvider), projectId);
+    if (model == null) return;
+    final bytes = await biblePdf(
+      model,
+      await _font('Literata-VF.ttf'),
+      await _font('Inter-VF.ttf'),
+    );
+    await ref.read(shareBytesProvider)(
+      _fileName('${model.title} story bible', 'pdf'),
+      bytes,
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
     appBar: AppBar(title: const Text('Export')),
@@ -94,8 +135,18 @@ class ExportScreen extends ConsumerWidget {
         ),
         ListTile(
           title: const Text('Screenplay PDF (.pdf)'),
-          subtitle: const Text('Industry format, Courier 12 pt'),
+          subtitle: const Text('Films: industry format, Courier 12 pt'),
           onTap: () => _pdf(ref),
+        ),
+        ListTile(
+          title: const Text('Script PDF (.pdf)'),
+          subtitle: const Text('YouTube and Shorts: Say / Show columns'),
+          onTap: () => _script(ref),
+        ),
+        ListTile(
+          title: const Text('Story bible PDF (.pdf)'),
+          subtitle: const Text('Summary and character sheets'),
+          onTap: () => _bible(ref),
         ),
       ],
     ),
