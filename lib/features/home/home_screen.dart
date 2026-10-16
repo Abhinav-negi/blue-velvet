@@ -15,6 +15,14 @@ final _projectsProvider = StreamProvider<List<Project>>(
   (ref) => ref.watch(dbProvider).projectsDao.watchAll(),
 );
 
+/// Story ideas under review (spec 7); each opens the pre-project review.
+final _ideasProvider = StreamProvider<List<VoidItem>>((ref) {
+  final db = ref.watch(dbProvider);
+  return (db.select(
+    db.voidItems,
+  )..where((v) => v.status.equalsValue(VoidStatus.preProject))).watch();
+});
+
 /// Pending proposals across all projects.
 final _pendingCountProvider = StreamProvider<int>((ref) {
   final db = ref.watch(dbProvider);
@@ -34,6 +42,7 @@ class HomeScreen extends ConsumerWidget {
     ref.watch(sampleInitProvider);
     final projects = ref.watch(_projectsProvider).value ?? const <Project>[];
     final pending = ref.watch(_pendingCountProvider).value ?? 0;
+    final ideas = ref.watch(_ideasProvider).value ?? const <VoidItem>[];
     final text = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
@@ -78,6 +87,20 @@ class HomeScreen extends ConsumerWidget {
             title: const Text('Infinite Void'),
             onTap: () => context.goNamed('void'),
           ),
+          for (final i in ideas)
+            ListTile(
+              leading: const Icon(LucideIcons.lightbulb),
+              title: Text(
+                i.summary,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              subtitle: const Text('Story idea under review'),
+              onTap: () => context.goNamed(
+                'project-from-idea',
+                pathParameters: {'voidItemId': i.id},
+              ),
+            ),
           for (final p in projects)
             ListTile(
               leading: const Icon(LucideIcons.film),

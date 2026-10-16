@@ -24,4 +24,14 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 None beyond the orchestrator brief.
 
 ## Evidence
-(Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+Decisions
+- Route `project-from-idea` (/idea/:voidItemId) in home/routes.dart; Home lists void items with status `pre_project` and opens it. `idea_screen.dart` = UI, `idea_project.dart` = seed loading (project_types + aspect_ratios JSON via rootBundle; template rows from DB, default first) + `createProjectFromIdea`.
+- createProjectFromIdea: AI call first (failure leaves nothing), then ONE transaction: insert project (summary '' , template, aspect ratio name e.g. "2.39:1", newProjectAiPermissions) -> pending proposal with the draft's changes -> ProposalEngine.approve (D-17) -> `created` snapshot -> void item gets promotedProjectId/usedInProjectIds/status ready. Throws StateError if the idea was already promoted.
+- The user-typed working title is required and always wins; the AI title is ignored (contract: AI title only if user didn't give one; we ask up front instead).
+- Edited summary is used for generation only; not saved back to the void item (spans would go stale).
+Gotchas
+- Nothing sets VoidStatus.preProject yet and `lib/features/void` is out of scope: the Void item screen needs a "Promote to project" action that sets status preProject (or goNamed('project-from-idea', pathParameters: {'voidItemId': id})).
+- Ungrounded ops (words not in the raw text) come back accepted=false and are skipped by the engine; test raw text must contain every field value.
+- "Ask for changes" / "add more input" on the pre-project review are not built (only edit summary).
+Commands: flutter analyze -> No issues; flutter test -> all pass (218); check_boundaries -> 0; Color(0x grep -> empty. No golden changes.
+Tests: test/features/home/idea_project_test.dart (3).
