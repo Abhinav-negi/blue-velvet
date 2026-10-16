@@ -10,9 +10,11 @@ import 'package:lynch/core/theme/tokens.dart';
 import 'package:lynch/core/widgets/diff_view.dart';
 
 import 'void_actions.dart';
+import 'void_pick_screen.dart';
 import 'void_providers.dart';
+import 'void_send.dart';
 
-enum _Act { edit, ai, type, merge }
+enum _Act { edit, ai, type, merge, promote, send }
 
 /// App-bar menu on the item screen: edit by hand, ask the AI, change type,
 /// merge. AI results only ever reach the DB through [_approve].
@@ -30,12 +32,23 @@ class VoidItemMenu extends ConsumerWidget {
         _Act.ai => _ask(context, ref),
         _Act.type => _changeType(context, ref),
         _Act.merge => _merge(context, ref),
+        _Act.promote => _promote(context, ref),
+        _Act.send => _send(context, ref),
       },
-      itemBuilder: (_) => const [
+      itemBuilder: (_) => [
         PopupMenuItem(value: _Act.edit, child: Text('Edit')),
         PopupMenuItem(value: _Act.ai, child: Text('Edit with AI')),
         PopupMenuItem(value: _Act.type, child: Text('Change type')),
         PopupMenuItem(value: _Act.merge, child: Text('Merge with...')),
+        if (item.type == VoidType.storyIdea && item.promotedProjectId == null)
+          const PopupMenuItem(
+            value: _Act.promote,
+            child: Text('Promote to project'),
+          ),
+        const PopupMenuItem(
+          value: _Act.send,
+          child: Text('Send to project...'),
+        ),
       ],
     );
   }
@@ -173,6 +186,39 @@ class VoidItemMenu extends ConsumerWidget {
   Future<void> _approve(WidgetRef ref, ItemDraft d) async {
     await applyDraft(ref.read(dbProvider), item, d);
     _done(ref);
+  }
+
+  Future<void> _promote(BuildContext context, WidgetRef ref) async {
+    await promoteIdea(ref.read(dbProvider), item);
+    _done(ref);
+    if (context.mounted) {
+      context.goNamed(
+        'project-from-idea',
+        pathParameters: {'voidItemId': item.id},
+      );
+    }
+  }
+
+  Future<void> _send(BuildContext context, WidgetRef ref) async {
+    final projects = await ref.read(dbProvider).projectsDao.watchAll().first;
+    if (!context.mounted) return;
+    final id = await showDialog<String>(
+      context: context,
+      builder: (ctx) => SimpleDialog(
+        title: const Text('Send to project'),
+        children: [
+          if (projects.isEmpty)
+            const SimpleDialogOption(child: Text('No projects yet.')),
+          for (final p in projects)
+            SimpleDialogOption(
+              onPressed: () => ctx.pop(p.id),
+              child: Text(p.title),
+            ),
+        ],
+      ),
+    );
+    if (id == null || !context.mounted) return;
+    await sendWithFeedback(context, ref, item, id);
   }
 
   Future<void> _merge(BuildContext context, WidgetRef ref) async {

@@ -21,3 +21,4 @@ Read before starting work in this folder. Under 15 lines. Delete a note once it'
 - Golden tests must use `AppTheme` (bare ThemeData falls back to the Ahem box font).
 - New projects: `aiPermissions: await newProjectAiPermissions(db)` (lib/core/data/ai_defaults.dart); home + sample already do. EXP-01: export route /project/:projectId/export, reuse `shareFileProvider`, add tiles to ExportScreen. Drift `.watch().first` hangs in testWidgets: use `.get()`.
 - PROJ-02: route `project-from-idea` (/idea/:voidItemId) takes a void item with status pre_project; Void screen still needs a Promote button that sets that status / links there. `createProjectFromIdea` in home/idea_project.dart.
+- VOID-04: promote/send/pull done in lib/features/void (void_send.dart: sendToProject, projectContext). Route `void-pick` (/void/pick/:projectId) is NOT linked from any project screen yet: push it from a project.
