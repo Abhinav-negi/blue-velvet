@@ -23,3 +23,9 @@ None beyond the orchestrator brief.
 
 ## Evidence
 (Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+
+### SCR-04 evidence
+- Decisions: new `lib/features/script/beat_pager.dart` (PageView: script page + board page, two dots keyed `dot-N[-active]`). Wraps the editor in script_screen.dart; ScaffoldSuggestions stays below the pager. Frames read via `db.beatsDao.watchFrames` (no storyboard import); the board page shows simple numbered tiles (shot caption + notes), no stroke thumbnails (those need the files dir provider from storyboard). "Open board" button pushes route name `board`.
+- Gotcha: pager adds a dot row, so `test/features/script/goldens/scene.png` was regenerated (script folder, mine). No shell goldens failed.
+- Commands: flutter analyze clean; flutter test all pass (197); check_boundaries exit 0; Color(0x grep empty.
+- Left: real stroke thumbnails on the board page (needs shared thumbnail widget in core).
