@@ -120,6 +120,8 @@ void main() {
     final t = tester.widget<Text>(find.text('INT. KITCHEN - NIGHT'));
     expect(t.style, AppType.proposal);
     expect(await saved(tester), isNull);
+    Future<List<Proposal>> proposals() => db.select(db.proposals).get();
+    expect((await tester.runAsync(proposals))!, isEmpty);
 
     await tester.tap(find.byKey(const ValueKey('accept-suggestion')));
     await tester.pumpAndSettle();
@@ -129,6 +131,9 @@ void main() {
       ['INT. KITCHEN - NIGHT', 'Maya waits.'],
     );
     expect(blocks.every((b) => b['scaffold'] == true), isTrue);
+    final ps = (await tester.runAsync(proposals))!;
+    expect(ps.single.status, ProposalStatus.approved);
+    expect(ps.single.changes.single['beat_id'], 'b');
     // The editor now shows the accepted blocks.
     expect(find.text('INT. KITCHEN - NIGHT'), findsOneWidget);
     await finish(tester);

@@ -1,4 +1,3 @@
-import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lynch/core/ai/ai_client.dart';
@@ -6,6 +5,7 @@ import 'package:lynch/core/ai/key_store.dart';
 import 'package:lynch/core/ai/permissions.dart';
 import 'package:lynch/core/ai/scaffold.dart';
 import 'package:lynch/core/data/db.dart';
+import 'package:lynch/core/data/proposal_engine.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
 import 'package:uuid/uuid.dart';
@@ -18,49 +18,69 @@ final scriptAiProvider = Provider<AiClient>(
 bool beatIsEmpty(Beat b) =>
     (b.blocks ?? const []).isEmpty && (b.sayShow ?? const []).isEmpty;
 
-/// Appends an accepted [draft] to the beat (scaffold: true) and returns the
-/// beat as saved. This is the only place a suggestion reaches the DB.
+/// Accepting a suggestion = a one-op pending `addScaffold` proposal that is
+/// approved at once, so the proposal engine stays the only writer (D-17/D-18,
+/// History/Undo). Returns the beat as saved.
 Future<Beat> acceptScaffold(
   AppDatabase db,
   Beat beat,
   ScaffoldDraft draft,
 ) async {
   const uuid = Uuid();
-  final cur = await (db.select(
-    db.beats,
-  )..where((b) => b.id.equals(beat.id))).getSingle();
-  await (db.update(db.beats)..where((b) => b.id.equals(beat.id))).write(
-    BeatsCompanion(
-      blocks: draft.blocks.isEmpty
-          ? const Value.absent()
-          : Value([
-              ...?cur.blocks,
-              for (final b in draft.blocks)
-                {
-                  'id': uuid.v4(),
-                  'type': b.type,
-                  'text': b.text,
-                  'scaffold': true,
-                  'ai_suggested': false,
-                },
-            ]),
-      sayShow: draft.rows.isEmpty
-          ? const Value.absent()
-          : Value([
-              ...?cur.sayShow,
-              for (final r in draft.rows)
-                {
-                  'id': uuid.v4(),
-                  'say': '',
-                  'show': r.show,
-                  'scaffold': true,
-                  'ai_suggested': false,
-                },
-            ]),
-      updatedAt: Value(DateTime.now().millisecondsSinceEpoch),
-    ),
-  );
+  final now = DateTime.now().millisecondsSinceEpoch;
+  final id = uuid.v4();
+  await db
+      .into(db.proposals)
+      .insert(
+        ProposalsCompanion.insert(
+          id: id,
+          projectId: beat.projectId,
+          status: ProposalStatus.pending,
+          summary: 'Scaffold for ${beat.title}',
+          rawTranscript: '',
+          summarySpans: const [],
+          changes: [
+            {
+              'id': uuid.v4(),
+              'accepted': true,
+              'op': 'addScaffold',
+              'beat_id': beat.id,
+              if (draft.blocks.isNotEmpty)
+                'blocks': [
+                  for (final b in draft.blocks)
+                    {'type': b.type, 'text': b.text},
+                ],
+              if (draft.rows.isNotEmpty)
+                'rows': [
+                  for (final r in draft.rows) {'say': '', 'show': r.show},
+                ],
+            },
+          ],
+          createdAt: now,
+          updatedAt: now,
+        ),
+      );
+  await ProposalEngine(db).approve(id);
   return (db.select(db.beats)..where((b) => b.id.equals(beat.id))).getSingle();
+}
+
+/// Names of the beat's characters (forked copy name, else the library name).
+Future<List<String>> beatCharacterNames(AppDatabase db, Beat beat) async {
+  final out = <String>[];
+  for (final id in beat.characterIds) {
+    final pc = await (db.select(
+      db.projectCharacters,
+    )..where((t) => t.id.equals(id))).getSingleOrNull();
+    if (pc == null) continue;
+    final lib = pc.characterId == null
+        ? null
+        : await (db.select(
+            db.characters,
+          )..where((t) => t.id.equals(pc.characterId!))).getSingleOrNull();
+    final n = pc.name ?? lib?.name;
+    if (n != null) out.add(n);
+  }
+  return out;
 }
 
 /// Strip under the editor: "Suggest structure" button plus the pending
@@ -113,7 +133,7 @@ class _State extends ConsumerState<ScaffoldSuggestions> {
           'id': b.id,
           'title': b.title,
           'description': b.description,
-          'character_names': const <String>[],
+          'character_names': await beatCharacterNames(ref.read(dbProvider), b),
           'project_type': widget.project.type.name.replaceAllMapped(
             RegExp('[A-Z]'),
             (m) => '_${m[0]!.toLowerCase()}',
