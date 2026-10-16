@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lynch/core/ai/ai_client.dart';
@@ -7,6 +5,7 @@ import 'package:lynch/core/ai/errors.dart';
 import 'package:lynch/core/ai/fetch.dart';
 import 'package:lynch/core/ai/key_store.dart';
 import 'package:lynch/core/ai/permissions.dart';
+import 'package:lynch/core/data/ai_defaults.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
@@ -20,15 +19,9 @@ final shotAiProvider = Provider<AiClient>(
 
 /// Global AI defaults (`settings.ai_permission_defaults`). The library has no
 /// project, so a project's own switches are passed in by the caller instead.
-final aiDefaultsProvider = FutureProvider<Map<String, dynamic>>((ref) async {
-  final db = ref.watch(dbProvider);
-  final row = await (db.select(
-    db.settings,
-  )..where((t) => t.key.equals('ai_permission_defaults'))).getSingleOrNull();
-  if (row == null) return const {};
-  final v = jsonDecode(row.value);
-  return v is Map<String, dynamic> ? v : const {};
-});
+final aiDefaultsProvider = FutureProvider<Map<String, dynamic>>(
+  (ref) => newProjectAiPermissions(ref.watch(dbProvider)),
+);
 
 /// A library entry the model picked, or a draft fetched from the web.
 class ShotSuggestion {

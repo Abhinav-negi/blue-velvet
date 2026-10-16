@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:lynch/core/data/ai_defaults.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
@@ -131,22 +132,21 @@ class HomeScreen extends ConsumerWidget {
     if (title == null || title.trim().isEmpty) return;
     final now = DateTime.now().millisecondsSinceEpoch;
     final id = const Uuid().v4();
-    await ref
-        .read(dbProvider)
-        .projectsDao
-        .upsert(
-          ProjectsCompanion.insert(
-            id: id,
-            title: title.trim(),
-            type: ProjectType.shortFilm,
-            summary: '',
-            aspectRatio: '16:9',
-            typeFields: const {},
-            aiPermissions: const {},
-            createdAt: now,
-            updatedAt: now,
-          ),
-        );
+    final db = ref.read(dbProvider);
+    final perms = await newProjectAiPermissions(db);
+    await db.projectsDao.upsert(
+      ProjectsCompanion.insert(
+        id: id,
+        title: title.trim(),
+        type: ProjectType.shortFilm,
+        summary: '',
+        aspectRatio: '16:9',
+        typeFields: const {},
+        aiPermissions: perms,
+        createdAt: now,
+        updatedAt: now,
+      ),
+    );
     if (context.mounted) {
       context.goNamed('overview', pathParameters: {'projectId': id});
     }

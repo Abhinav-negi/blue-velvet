@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:drift/drift.dart' show Value;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lynch/core/data/ai_defaults.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:path/path.dart' as p;
@@ -67,7 +68,7 @@ Future<String?> loadSampleProject(
     db.templates,
   )..where((t) => t.id.equals(tid))).getSingleOrNull();
 
-  final defaults = await db.settingsDao.get('ai_permission_defaults');
+  final perms = await newProjectAiPermissions(db);
   await db.transaction(() async {
     await db.projectsDao.upsert(
       ProjectsCompanion.insert(
@@ -80,7 +81,7 @@ Future<String?> loadSampleProject(
         templateId: Value(hasTemplate == null ? null : tid),
         aspectRatio: proj['aspect_ratio'] as String,
         typeFields: const {},
-        aiPermissions: defaults == null ? const {} : m(jsonDecode(defaults)),
+        aiPermissions: perms,
         isSample: const Value(true),
         createdAt: now,
         updatedAt: now,
