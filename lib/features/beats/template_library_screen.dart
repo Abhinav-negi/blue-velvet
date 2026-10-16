@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/theme/tokens.dart';
 
@@ -16,7 +17,16 @@ class TemplateLibraryScreen extends ConsumerWidget {
     final list = ref.watch(templatesProvider).value ?? const <Template>[];
     final scheme = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Templates')),
+      appBar: AppBar(
+        title: const Text('Templates'),
+        actions: [
+          IconButton(
+            tooltip: 'Fetch shots',
+            onPressed: () => context.pushNamed('shot-fetch'),
+            icon: const Icon(Icons.download),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute<void>(builder: (_) => const TemplateEditScreen()),

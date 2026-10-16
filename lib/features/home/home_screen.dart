@@ -40,6 +40,11 @@ class HomeScreen extends ConsumerWidget {
         title: const Text('Projects'),
         actions: [
           IconButton(
+            tooltip: 'Shot library',
+            onPressed: () => context.pushNamed('shots'),
+            icon: const Icon(LucideIcons.camera),
+          ),
+          IconButton(
             tooltip: 'Proposals',
             onPressed: () => context.pushNamed('proposals'),
             icon: const Icon(LucideIcons.inbox),

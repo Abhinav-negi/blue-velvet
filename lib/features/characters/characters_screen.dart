@@ -28,6 +28,14 @@ class CharactersScreen extends ConsumerWidget {
               pathParameters: {'projectId': projectId},
             ),
           ),
+          ListTile(
+            leading: const Icon(LucideIcons.share2),
+            title: const Text('Character map'),
+            onTap: () => context.pushNamed(
+              'character-map',
+              pathParameters: {'projectId': projectId},
+            ),
+          ),
           for (final m in members)
             ListTile(
               leading: const Icon(LucideIcons.user),

@@ -77,7 +77,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | EXP-01 | Fountain export | DONE | SCR-01, RES-03 | 7 | Export route has no entry point yet |
 | EXP-02 | Screenplay PDF | DONE | SCR-01, RES-03 | 7 | No MORE/CONTD, title page, scene numbers |
 | EXP-04 | Script PDF + story bible | DONE | SCR-02, CHR-01 | 7 | All tiles shown; no beat headings |
-| NAV-01 | Entry points for unlinked screens | IN-PROGRESS | EXP-04, MAP-01, CHR-01, SHOT-01, SHOT-04, PROP-03 | 7 | main folder |
+| NAV-01 | Entry points for unlinked screens | DONE | EXP-04, MAP-01, CHR-01, SHOT-01, SHOT-04, PROP-03 | 7 | |
 | SHOT-02 | Attach shot to frame | TODO | SHOT-01, SB-07 | 8 | |
 | EXP-03 | Storyboard PDF | TODO | SB-07 | 8 | |
 | QA-01 | End-to-end + accessibility pass | TODO | all features + RES-* | 9 | |

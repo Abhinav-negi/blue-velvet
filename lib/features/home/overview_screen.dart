@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' show BooleanExpressionOperators, OrderingTerm;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/theme/tokens.dart';
@@ -67,6 +68,18 @@ class OverviewScreen extends ConsumerWidget {
       padding: const EdgeInsets.all(AppSize.sideMargin),
       children: [
         Text('Overview', style: text.headlineSmall),
+        for (final (key, label, icon) in const [
+          ('export', 'Export', LucideIcons.share),
+          ('history', 'History', LucideIcons.history),
+        ])
+          ListTile(
+            key: Key('overview-$key'),
+            contentPadding: EdgeInsets.zero,
+            leading: Icon(icon),
+            title: Text(label),
+            onTap: () =>
+                context.pushNamed(key, pathParameters: {'projectId': id}),
+          ),
         heading('Summary'),
         Text(project.summary.isEmpty ? 'No summary yet.' : project.summary),
         heading('Pending proposals'),
