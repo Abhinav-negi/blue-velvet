@@ -6,6 +6,7 @@ final settingsRoutes = <RouteBase>[
   GoRoute(
     path: '/project/:projectId/settings',
     name: 'settings',
-    builder: (context, state) => const SettingsScreen(),
+    builder: (context, state) =>
+        SettingsScreen(projectId: state.pathParameters['projectId']),
   ),
 ];
