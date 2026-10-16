@@ -159,6 +159,23 @@ void main() {
     expect(rows.every((b) => b.slotId == null), isTrue);
     await finish(tester);
   });
+
+  testWidgets('AI omits beats: all fall back unplaced, none dropped', (
+    tester,
+  ) async {
+    final slots = await seed(tester, true);
+    final ai = FakeAi(
+      () => {
+        'placements': [
+          {'beat_id': 'b0', 'slot_id': slots[0].id, 'position': 0},
+        ],
+      },
+    );
+    final plan = await tester.runAsync(() => proposeSwitch(db, ai, 'p', slots));
+    // Core remap rejects partial answers, so every beat falls back unplaced.
+    expect(plan![null], ['b0', 'b1', 'b2']);
+    await tester.runAsync(db.close);
+  });
 }
 
 const _tpl = 'three-act';
