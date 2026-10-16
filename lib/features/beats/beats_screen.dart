@@ -10,6 +10,7 @@ import 'package:lynch/core/theme/tokens.dart';
 import 'beat_ops.dart';
 import 'beats_providers.dart';
 import 'template_providers.dart';
+import 'template_switch.dart';
 
 /// The beat board: beats grouped by template slot, or a plain ordered list.
 /// Empty slots stay empty, with no warning.
@@ -100,6 +101,10 @@ class BeatsScreen extends ConsumerWidget {
           Row(
             children: [
               Expanded(child: Text('Beats', style: AppType.title)),
+              TextButton(
+                onPressed: () => startSwitch(context, ref, projectId),
+                child: const Text('Switch template'),
+              ),
               TextButton.icon(
                 onPressed: () => context.goNamed(
                   'templates',

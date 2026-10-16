@@ -23,3 +23,10 @@ None beyond the orchestrator brief.
 
 ## Evidence
 (Filled by the subagent: decisions + why · gotchas · commands run + results · what's left.)
+
+### Evidence (BEAT-03)
+- Added lib/features/beats/template_switch.dart: `beatsAiProvider` (local AiClient, tests override), `proposeSwitch` (calls remapTemplate only if auto_placement is on; AI failure or switch off => all beats unplaced), `applySwitch` (one transaction: sets projects.template_id, slot_id and contiguous positions; beats only updated, never deleted), `TemplateSwitchScreen` (draggable preview, Confirm), `startSwitch` (template picker). Entry: "Switch template" button on BeatsScreen.
+- Direct user edit pattern (like beat_ops.dart): plain Drift writes in a transaction, not proposal_engine.
+- Gotcha: Drift `.watch().first` hangs under testWidgets' fake zone; use `.get()`. Board golden board.png regenerated (new button).
+- Ran: flutter analyze (no issues), flutter test (186 pass), check_boundaries.sh (0), Color(0x grep (empty).
+- Left: AI failure reason is not shown to the user (silent fall back to unplaced).
