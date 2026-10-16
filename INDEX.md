@@ -72,7 +72,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | CAP-04 | Capture from anywhere (S1) | TODO | CAP-03 | 7 | |
 | BEAT-03 | Template switch | DONE | BEAT-02, AI-06 | 7 | AI failure falls back silently to unplaced |
 | SCR-03 | Scaffolds + suggestions | DONE | SCR-01, SCR-02, AI-06 | 7 | Accept = one-op proposal, auto-approved |
-| SCR-04 | Script ↔ board swipe | IN-PROGRESS | SCR-01, SB-01 | 7 | wt ../lynch-wt/SCR-04 |
+| SCR-04 | Script ↔ board swipe | DONE | SCR-01, SB-01 | 7 | Board page: no stroke thumbnails yet |
 | SB-07 | Canvas in frames | TODO | SB-01, SB-06 | 7 | |
 | EXP-01 | Fountain export | DONE | SCR-01, RES-03 | 7 | Export route has no entry point yet |
 | EXP-02 | Screenplay PDF | IN-PROGRESS | SCR-01, RES-03 | 7 | wt ../lynch-wt/EXP-02 |
