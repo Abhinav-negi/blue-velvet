@@ -15,7 +15,7 @@ Must not: pubspec.yaml · lib/core/** · lib/router.dart · other lib/features/*
 
 ## Done when
 1. `flutter analyze` → No issues found; `flutter test` → all pass; `bash tool/check_boundaries.sh` → exit 0
-2. Widget test: duplicate copies details and stroke file; delete removes both
+2. Widget test: duplicate copies details and stroke file; delete removes the row and keeps the stroke file (DATA_MODEL 13.1: kept until backup compaction)
 3. Widget test: shot details (size, angle, movement, lens, duration) save and show in the caption
 
 ## Rules

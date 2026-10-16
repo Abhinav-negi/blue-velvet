@@ -46,10 +46,21 @@ No server, no ports. AI and Drive are the only network calls.
 | Test | `flutter test` |
 | Boundary guard | `bash tool/check_boundaries.sh` (created by INF-01) |
 | Token guard | `grep -rn 'Color(0x' lib --include=*.dart \| grep -v lib/core/theme` → no output |
-| Seed check | `for f in assets/seed/*.json; do dart tool/validate_seed.dart "$f"; done` (created by CON-02) |
+| Seed check | `for f in assets/seed/*.json; do [ "${f##*/}" = sample_project.json ] || dart tool/validate_seed.dart "$f"; done` (sample has its own format) (created by CON-02) |
 | Run on phone | `flutter run --dart-define-from-file=.env.json` |
 | Build | `flutter build apk --debug` |
 | AI smoke | `dart run tool/ai_smoke.dart <op> <file>` (created by AI-03) |
+
+Gotchas (permanent):
+- `lib/core/ai/ai_client.dart` must stay pure Dart (no Flutter imports) so `dart run tool/*.dart` smoke scripts compile; Flutter-only bits (secure storage) live in `key_store.dart`. Smoke tools read the key from `.env.json` via `readStoredKey` and never print it.
+- Widget tests with Drift: seed inside `tester.runAsync`, override `dbProvider` with an in-memory DB, and unmount and pump 1 ms before `db.close` (see test/features/home/home_test.dart).
+- Goldens: `pumpAndSettle` before capture (theme animation), no DEBUG banner; open the PNGs when reviewing.
+- Never send the user's email or other personal data to outside services (e.g. User-Agent headers).
+- Worktrees branch from the last commit: uncommitted master changes (regenerated goldens, ledger edits) are invisible there, so agents see stale failures. Ask the user to commit before a session, or tell agents which failures are expected.
+- Never commit `test/**/failures/` (golden diff output; gitignored). Golden tests use `AppTheme`, else text renders as Ahem boxes.
+- Replacing a project tab body changes `test/core/shell/goldens/*`: the orchestrator regenerates them (`flutter test test/core/shell --update-goldens`) and looks at them.
+- Data-safety guards must be real checks, not `assert` (stripped in release builds).
+- Gemini free tier can 429 for a long stretch: live smokes may need a later retry; don't block code merges on them (mark the task BLOCKED with the command).
 
 Toolchain verified 2026-10-15: Flutter 3.47.7 stable, Dart 3.13, Android SDK 36/37, debug APK builds. The project path contains a space ("blue velvet"): always quote paths.
 

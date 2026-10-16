@@ -1,6 +1,12 @@
 # HANDOFF — 2026-10-15
-State: session 1 done. Waves 1–2 nearly complete; core foundation (theme, DB, app shell) merged on master; app builds, 14 tests pass.
-In flight: nothing
-Blocked: SPK-02 — S21 FE not visible to adb (USB debugging not active); SPK-01 — waits for S25 Ultra.
-Next step: ask the subagent cap, then run ready tasks: RES-05, RES-06, RES-07 (research), UI-03, DB-02, DB-03, DB-04, AI-01 (core). DB-04 needs the user's Google OAuth client and the phone.
-Carry forward: path contains a space, quote it. Worktrees go in /home/abhinav/Projects/lynch-wt/<ID> on branch task/<ID>; copying a section HANDOFF into a worktree leaves it dirty (use --force on remove after checking). Read tasks/core/HANDOFF.md before core tasks (naming map, Gemini model + 503 retries, D-21 fetch flow). Review UI screenshots for colour roles: amber = mic/primary only, teal = selected/where-you-are.
+State: session 4 done (all ready work merged on master). Analyze clean, 184 tests pass, boundaries pass. Merged this session: DB-03 (after review + fix round), AI-04, AI-05, SHOT-01/03/04, CHR-01/02, VOID-02/03, BEAT-01/02/04, PROJ-03/04, PROP-01/03, SCR-01/02, SB-01, MAP-01.
+In flight: nothing (no worktrees).
+Blocked: AI-04 — live smoke needs a voice clip in test/fixtures/audio/ (`timeout 600 dart run tool/ai_smoke.dart transcribe <file>`). AI-05 — live smoke hit Gemini 429 (`timeout 600 dart run tool/ai_smoke.dart proposals <file>`); PROJ-02, PROP-02, CAP-03 wait on it. SPK-02 (phone not visible to adb), SPK-01 (waits for S25 Ultra). DB-04 needs the user's Google OAuth client.
+Next step: ask the user to commit master (ledger, regenerated shell goldens, beat_ops guard, .gitignore, removal of test/core/shell/failures). Retry the AI-05 smoke (and AI-04 if a clip exists); if they pass, mark DONE and run PROJ-02/PROP-02/CAP-03. Ready now: BEAT-03, SCR-03, SCR-04 (script/ folder: one at a time with SCR-03), EXP-01/02/04 (one at a time), SET-01 (add core pieces first, see below).
+Carry forward:
+- SET-01 needs core pieces first (theme-mode provider in main.dart, a write-key function in lib/core/ai/key_store.dart). Add them yourself before briefing it.
+- Nothing wires AiQueueRunner.runJob into the app, and there is no core AiClient provider (VOID-03 and SHOT-03 each have a local one). Worth a small core task.
+- Unlinked routes needing entry points: shots, shot-fetch, templates, character-pool, character-map, history (only from the proposal review screen).
+- Undo/restore reverts linked characters' shared sheets in every project (user decision 2026-10-15); restore snapshots "Before restore" first and never touches frames.
+- Visual nits: BEAT-01 "Add beat" FAB has a dark ring; transcribe() byte-slice chunking fails past ~14 MB.
+- Agents' `dart format` runs touch frozen files: tell them to format only their own files.

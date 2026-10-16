@@ -96,7 +96,9 @@ Future<String> splitBeat(AppDatabase db, String beatId, {required int at}) =>
 /// Merges [ids] into the first (survivor). Mirrors the proposal engine:
 /// frames are re-parented, never deleted; script and say/show are appended.
 Future<void> mergeBeats(AppDatabase db, List<String> ids) {
-  assert(ids.length >= 2 && ids.toSet().length == ids.length);
+  if (ids.length < 2 || ids.toSet().length != ids.length) {
+    throw ArgumentError.value(ids, 'ids', 'need 2+ distinct beat ids');
+  }
   return db.transaction(() async {
     Future<Beat> get(String id) =>
         (db.select(db.beats)..where((t) => t.id.equals(id))).getSingle();

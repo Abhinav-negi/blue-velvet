@@ -11,3 +11,6 @@ build/
 .idea/
 .DS_Store
 *.log
+
+# Flutter golden-test failure diffs
+test/**/failures/

@@ -1,4 +1,27 @@
+# HANDOFF — 2026-10-15
+State: session 3 done (hit the 5-hour usage limit). Merged on master: RES-05, AI-01, UI-03, AI-02, AI-03, AI-06, AI-07, VOID-01, PROJ-01, plus dbProvider/seed-at-startup. Analyze clean, 81 tests pass.
+In flight: session 4 batch 4 — AI-05, BEAT-02, MAP-01, PROJ-04, SHOT-04, SCR-02 IN-PROGRESS in ../lynch-wt/<ID> (branch task/<ID>). Batches 1–3 merged.
+Blocked: SPK-02 (phone not visible to adb), SPK-01 (waits for S25 Ultra).
+Next step: ask about DB-03 (reviewer or merge) and the subagent cap, then run ready tasks: AI-04, BEAT-04, SHOT-01, BEAT-01, CHR-01, VOID-02; after DB-03 merges: AI-05, PROJ-03, PROJ-04, PROP-01.
+Carry forward: SET-01 needs core pieces first (theme-mode provider in main.dart, a write-key function in lib/core/ai/key_store.dart). Add them yourself before briefing it. Nothing wires AiQueueRunner.runJob or ProposalEngine into the UI yet. Agents' `dart format` runs touch frozen files: tell them to format only their own files.
+
 # HANDOFF archive (newest first)
+
+# HANDOFF — 2026-10-15
+State: session 2 done (low budget, user away). RES-06, RES-07, DB-02 merged on master; analyze clean, 19 tests pass, all seeds validate.
+In flight: DB-03 REVIEW (lynch-wt/DB-03); AI-02, AI-03, AI-06, AI-07, PROJ-01, VOID-01 (worktrees lynch-wt/<ID>, session 3)
+Blocked: SPK-02 — S21 FE not visible to adb (check again; user said phone is connected); SPK-01 — waits for S25 Ultra.
+Next step: ask the subagent cap, then run ready tasks: RES-05 (research), UI-03, DB-03, AI-01 (core; DB-03 and AI-01 both touch lib/core — check May-touch overlap). DB-04 needs the user present (OAuth client + phone).
+Carry forward: path contains a space, quote it. Worktrees go in /home/abhinav/Projects/lynch-wt/<ID> on branch task/<ID>; create them yourself and do NOT pass isolation:"worktree" to the Agent (it makes a second, unused worktree). Read tasks/core/HANDOFF.md before core tasks and tasks/features/HANDOFF.md before features (SeedLoader not wired yet). Review UI screenshots for colour roles: amber = mic/primary only, teal = selected/where-you-are.
+
+---
+
+# HANDOFF — 2026-10-15
+State: session 1 done. Waves 1–2 nearly complete; core foundation (theme, DB, app shell) merged on master; app builds, 14 tests pass.
+In flight: nothing
+Blocked: SPK-02 — S21 FE not visible to adb (USB debugging not active); SPK-01 — waits for S25 Ultra.
+Next step: ask the subagent cap, then run ready tasks: RES-05, RES-06, RES-07 (research), UI-03, DB-02, DB-03, DB-04, AI-01 (core). DB-04 needs the user's Google OAuth client and the phone.
+Carry forward: path contains a space, quote it. Worktrees go in /home/abhinav/Projects/lynch-wt/<ID> on branch task/<ID>; copying a section HANDOFF into a worktree leaves it dirty (use --force on remove after checking). Read tasks/core/HANDOFF.md before core tasks (naming map, Gemini model + 503 retries, D-21 fetch flow). Review UI screenshots for colour roles: amber = mic/primary only, teal = selected/where-you-are.
 
 # HANDOFF — 2026-10-15
 State: blueprint created, no sessions yet.
