@@ -46,7 +46,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | SB-04 | Aspect ratio + composition guides | TODO | SB-02, RES-07 | 4 | |
 | SB-05 | Shape assist + ruler | TODO | SB-02 | 4 | |
 | SHOT-01 | Shot library browse + detail | DONE | DB-02, UI-02 | 4 | Nothing links to /shots yet |
-| SET-01 | Settings + AI permissions | IN-PROGRESS | UI-02, DB-01 | 4 | wt ../lynch-wt/SET-01 |
+| SET-01 | Settings + AI permissions | DONE | UI-02, DB-01 | 4 | Defaults moved to core/data/ai_defaults.dart |
 | CAP-02 | Recording pipeline (crash-safe) | TODO | CAP-01, AI-04, AI-02 | 5 | |
 | VOID-02 | Void filter + search | DONE | VOID-01 | 5 |  |
 | VOID-03 | Void edit, change type, merge, AI edit | DONE | VOID-01, AI-03 | 5 | No tag editor; local AiClient provider |
@@ -70,11 +70,11 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | CHR-02 | Character import, link, fork | DONE | CHR-01, BEAT-01 | 6 | No unlink/delete UI yet |
 | MAP-01 | Character map | DONE | CHR-01, RES-06 | 6 | Nothing links to character-map yet |
 | CAP-04 | Capture from anywhere (S1) | TODO | CAP-03 | 7 | |
-| BEAT-03 | Template switch | IN-PROGRESS | BEAT-02, AI-06 | 7 | wt ../lynch-wt/BEAT-03 |
-| SCR-03 | Scaffolds + suggestions | IN-PROGRESS | SCR-01, SCR-02, AI-06 | 7 | wt ../lynch-wt/SCR-03 |
+| BEAT-03 | Template switch | DONE | BEAT-02, AI-06 | 7 | AI failure falls back silently to unplaced |
+| SCR-03 | Scaffolds + suggestions | DONE | SCR-01, SCR-02, AI-06 | 7 | Accept = one-op proposal, auto-approved |
 | SCR-04 | Script ↔ board swipe | TODO | SCR-01, SB-01 | 7 | |
 | SB-07 | Canvas in frames | TODO | SB-01, SB-06 | 7 | |
-| EXP-01 | Fountain export | IN-PROGRESS | SCR-01, RES-03 | 7 | wt ../lynch-wt/EXP-01 |
+| EXP-01 | Fountain export | DONE | SCR-01, RES-03 | 7 | Export route has no entry point yet |
 | EXP-02 | Screenplay PDF | TODO | SCR-01, RES-03 | 7 | |
 | EXP-04 | Script PDF + story bible | TODO | SCR-02, CHR-01 | 7 | |
 | SHOT-02 | Attach shot to frame | TODO | SHOT-01, SB-07 | 8 | |
