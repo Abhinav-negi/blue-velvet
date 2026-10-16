@@ -1,4 +1,12 @@
 import 'package:go_router/go_router.dart';
 
-/// No routes yet; the owning task adds them here.
-final exportRoutes = <RouteBase>[];
+import 'export_screen.dart';
+
+final exportRoutes = <RouteBase>[
+  GoRoute(
+    path: '/project/:projectId/export',
+    name: 'export',
+    builder: (context, state) =>
+        ExportScreen(projectId: state.pathParameters['projectId']!),
+  ),
+];
