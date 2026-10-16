@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import 'home_screen.dart';
+import 'idea_screen.dart';
 import 'overview_screen.dart';
 
 final homeRoutes = <RouteBase>[
@@ -8,6 +9,12 @@ final homeRoutes = <RouteBase>[
     path: '/',
     name: 'home',
     builder: (context, state) => const HomeScreen(),
+  ),
+  GoRoute(
+    path: '/idea/:voidItemId',
+    name: 'project-from-idea',
+    builder: (context, state) =>
+        IdeaScreen(voidItemId: state.pathParameters['voidItemId']!),
   ),
 ];
 
