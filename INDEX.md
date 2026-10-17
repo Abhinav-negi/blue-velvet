@@ -50,7 +50,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | CAP-02 | Recording pipeline (crash-safe) | TODO | CAP-01, AI-04, AI-02 | 5 | |
 | VOID-02 | Void filter + search | DONE | VOID-01 | 5 |  |
 | VOID-03 | Void edit, change type, merge, AI edit | DONE | VOID-01, AI-03 | 5 | No tag editor; local AiClient provider |
-| PROJ-02 | Pre-project → project creation | TODO | PROJ-01, AI-05, DB-03, DB-02 | 5 | |
+| PROJ-02 | Pre-project → project creation | DONE | PROJ-01, AI-05, DB-03, DB-02 | 5 | Reached via Void "Promote to project" |
 | PROJ-03 | Project overview | DONE | PROJ-01, DB-03 | 5 | Fields display-only |
 | PROP-01 | Proposal review | DONE | UI-03, DB-03, PROJ-01 | 5 | Edit text = summary only |
 | BEAT-01 | Beat board | DONE | PROJ-01, DB-02 | 5 | FAB has dark ring; check later |
@@ -60,8 +60,8 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | SHOT-04 | Fetch & convert flow | DONE | SHOT-01, BEAT-04, AI-07 | 5 | Beats should link shot-fetch route |
 | SET-02 | Backup UI | TODO | DB-04, SET-01 | 5 | |
 | CAP-03 | Text input, scope, routing | TODO | CAP-02, AI-03, AI-05 | 6 | |
-| VOID-04 | Promote, send, pull, used | TODO | VOID-01, PROJ-02, PROP-01 | 6 | |
-| PROP-02 | Ask for changes + provenance | TODO | PROP-01, AI-05 | 6 | |
+| VOID-04 | Promote, send, pull, used | DONE | VOID-01, PROJ-02, PROP-01 | 6 | Pull from Void: beat board lightbulb |
+| PROP-02 | Ask for changes + provenance | DONE | PROP-01, AI-05 | 6 | AI-error path untested |
 | PROP-03 | History + undo | DONE | PROP-01 | 6 | History reachable only from review screen |
 | BEAT-02 | Beat reorder, split, merge | DONE | BEAT-01 | 6 | Empty-slot drop appends at end |
 | SCR-01 | Screenplay editor | DONE | BEAT-01, RES-03 | 6 | No MORE/CONTD or pagination yet |
@@ -79,6 +79,7 @@ Statuses: TODO · IN-PROGRESS · REVIEW · DONE · BLOCKED · DROPPED   (Note: �
 | EXP-04 | Script PDF + story bible | DONE | SCR-02, CHR-01 | 7 | All tiles shown; no beat headings |
 | NAV-01 | Entry points for unlinked screens | DONE | EXP-04, MAP-01, CHR-01, SHOT-01, SHOT-04, PROP-03 | 7 | |
 | AI-08 | Model fallback + shared AiClient provider | DONE | AI-01 | 7 | |
+| AI-09 | Shared PROJECT_CONTEXT builder + Pull-from-Void entry | DONE | VOID-04, PROP-02 | 7 | |
 | SHOT-02 | Attach shot to frame | TODO | SHOT-01, SB-07 | 8 | |
 | EXP-03 | Storyboard PDF | TODO | SB-07 | 8 | |
 | QA-01 | End-to-end + accessibility pass | TODO | all features + RES-* | 9 | |

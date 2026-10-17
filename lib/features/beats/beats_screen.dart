@@ -101,6 +101,14 @@ class BeatsScreen extends ConsumerWidget {
           Row(
             children: [
               Expanded(child: Text('Beats', style: AppType.title)),
+              IconButton(
+                tooltip: 'Pull from Void',
+                onPressed: () => context.pushNamed(
+                  'void-pick',
+                  pathParameters: {'projectId': projectId},
+                ),
+                icon: const Icon(LucideIcons.lightbulb),
+              ),
               TextButton(
                 onPressed: () => startSwitch(context, ref, projectId),
                 child: const Text('Switch template'),

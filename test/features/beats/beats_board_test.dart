@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lynch/core/data/db.dart';
 import 'package:lynch/core/data/providers.dart';
 import 'package:lynch/core/data/seed_loader.dart';
@@ -55,6 +56,7 @@ void main() {
     WidgetTester t, {
     required bool template,
     bool still = false,
+    GoRouter? router,
   }) async {
     t.view.physicalSize = const Size(400, 900);
     t.view.devicePixelRatio = 1;
@@ -96,7 +98,7 @@ void main() {
     await t.pumpWidget(
       ProviderScope(
         overrides: [dbProvider.overrideWithValue(db)],
-        child: MaterialApp(
+        child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.dark,
           builder: still
@@ -105,7 +107,16 @@ void main() {
                   child: w!,
                 )
               : null,
-          home: const BeatsScreen(projectId: 'p'),
+          routerConfig:
+              router ??
+              GoRouter(
+                routes: [
+                  GoRoute(
+                    path: '/',
+                    builder: (_, _) => const BeatsScreen(projectId: 'p'),
+                  ),
+                ],
+              ),
         ),
       ),
     );
@@ -143,6 +154,27 @@ void main() {
       find.byType(MaterialApp),
       matchesGoldenFile('goldens/board.png'),
     );
+    await finish(t);
+  });
+
+  testWidgets('Pull from Void pushes void-pick with the project id', (t) async {
+    final router = GoRouter(
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (_, _) => const BeatsScreen(projectId: 'p'),
+        ),
+        GoRoute(
+          path: '/void/pick/:projectId',
+          name: 'void-pick',
+          builder: (_, s) => Text('pick ${s.pathParameters['projectId']}'),
+        ),
+      ],
+    );
+    await pump(t, template: false, router: router);
+    await t.tap(find.byTooltip('Pull from Void'));
+    await t.pumpAndSettle();
+    expect(find.text('pick p'), findsOneWidget);
     await finish(t);
   });
 
